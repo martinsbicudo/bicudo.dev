@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@Conf/*": ["./conf/*"],
+      "@Utils/*": ["./utils/*"],
+      "@Context": ["./context/*"],
+      "@Hook/*": ["./hook/*"],
+      "@Common/*": ["./components/common/*"],
+      "@Container/*": ["./components/container/*"],
+      "@Presentation/*": ["./components/presentation/*"]
+    }
+  }
+}
