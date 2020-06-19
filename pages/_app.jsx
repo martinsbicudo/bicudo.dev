@@ -2,13 +2,13 @@ import React from 'react';
 
 import { func, string, number, oneOfType, objectOf } from 'prop-types';
 
-import ThemeProvider from '@Context/theme/provider';
+import { GlobalProvider } from '@Context';
 
 function App({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <GlobalProvider>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </GlobalProvider>
   );
 }
 

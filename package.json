@@ -15,6 +15,7 @@
   "dependencies": {
     "@zeit/eslint-config-node": "^0.3.0",
     "color": "^3.1.2",
+    "moment": "^2.27.0",
     "next": "9.4.4",
     "next-eslint": "^0.0.4",
     "prop-types": "^15.7.2",
