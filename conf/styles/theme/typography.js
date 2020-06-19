@@ -1,0 +1,11 @@
+export default {
+  FONT_SIZE_8: 0.8,
+  FONT_SIZE_10: 1,
+  FONT_SIZE_12: 1.2,
+  FONT_SIZE_14: 1.4,
+  FONT_SIZE_16: 1.6,
+  FONT_SIZE_18: 1.8,
+  FONT_SIZE_20: 2.0,
+  FONT_SIZE_22: 2.2,
+  FONT_SIZE_24: 2.4,
+};
