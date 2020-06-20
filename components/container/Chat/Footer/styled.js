@@ -14,7 +14,3 @@ export const StyledFooterTyping = styled('p')`
   height: 3.2rem;
   border-bottom: 0.1rem dashed rgba(100, 100, 100, 0.2);
 `;
-
-export const StyledFooterChoices = styled('div')`
-  padding-top: 2rem;
-`;

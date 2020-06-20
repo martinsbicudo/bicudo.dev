@@ -9,7 +9,9 @@ function Chat() {
       <ChatContainer.Main>
         <ChatContainer.Messages />
       </ChatContainer.Main>
-      <ChatContainer.Footer />
+      <ChatContainer.Footer>
+        <ChatContainer.Choices />
+      </ChatContainer.Footer>
     </ChatContainer.Box>
   );
 }

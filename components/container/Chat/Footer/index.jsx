@@ -1,14 +1,12 @@
 import React from 'react';
 
+import { node } from 'prop-types';
+
 import { useRobot } from '@Hook';
 
-import {
-  StyledFooter,
-  StyledFooterTyping,
-  StyledFooterChoices,
-} from './styled';
+import { StyledFooter, StyledFooterTyping } from './styled';
 
-function Footer() {
+function Footer({ children }) {
   const { isTyping } = useRobot();
 
   return (
@@ -16,9 +14,13 @@ function Footer() {
       <StyledFooterTyping>
         {isTyping && 'Robot is typing...'}
       </StyledFooterTyping>
-      <StyledFooterChoices>choices</StyledFooterChoices>
+      {children}
     </StyledFooter>
   );
 }
+
+Footer.propTypes = {
+  children: node.isRequired,
+};
 
 export default Footer;

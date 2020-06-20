@@ -6277,6 +6277,11 @@ react-scrollbars-custom@^4.0.25:
     react-draggable "^4.4.2"
     zoom-level "^2.5.0"
 
+react-to-string@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-to-string/-/react-to-string-0.1.1.tgz#c0a7a263c519d9a7c25f634cf0323c75e0e6d84a"
+  integrity sha512-iF+dmbl6qFmPhThzruJ3JUjpLhhtXxBBLR5dWGo1aGVeqesKJ70lK4ge6WM4rg+QWvZhyl4WPz5QeAysbQnj4w==
+
 react-universal-interface@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
