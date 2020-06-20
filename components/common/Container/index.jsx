@@ -4,12 +4,21 @@ import { string, array, node, oneOfType } from 'prop-types';
 
 import { StyledContainer } from './styled';
 
-function Container({ children, ...props }) {
-  return <StyledContainer {...props}>{children}</StyledContainer>;
+function Container({ className, children, ...props }) {
+  return (
+    <StyledContainer {...props} className={className}>
+      {children}
+    </StyledContainer>
+  );
 }
 
 Container.propTypes = {
+  className: string,
   children: oneOfType([string, array, node]).isRequired,
+};
+
+Container.defaultProps = {
+  className: undefined,
 };
 
 export default Container;

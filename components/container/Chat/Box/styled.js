@@ -5,11 +5,13 @@ export const StyledBox = styled('div')`
   min-height: 50rem;
 
   ${({ theme }) =>
-    theme.GRID.get().responsive({
-      '>plus': 'padding: 4rem 2rem;',
-      '>mobile&<plus': 'padding: 3rem 1rem;',
-      '<mobile': 'padding: 2rem 0;',
-    })}
+    theme.GRID.set()
+      .responsive({
+        '>plus': 'padding: 4rem 2rem;',
+        '>mobile&<plus': 'padding: 3rem 1rem;',
+        '<mobile': 'padding: 2rem 0;',
+      })
+      .getStyle()}
 `;
 
 export const StyledBoxContent = styled('div')`
@@ -32,8 +34,10 @@ export const StyledBoxContent = styled('div')`
         : 'rgba(0, 0, 0, 0.3)'};
 
   ${({ theme }) =>
-    theme.GRID.get().responsive({
-      '>tablet': 'padding: 0 4rem;',
-      '>plus&<tablet': 'padding: 0 2rem;',
-    })}
+    theme.GRID.set()
+      .responsive({
+        '>tablet': 'padding: 0 4rem;',
+        '>plus&<tablet': 'padding: 0 2rem;',
+      })
+      .getStyle()}
 `;

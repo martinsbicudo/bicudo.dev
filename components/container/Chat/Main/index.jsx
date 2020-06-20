@@ -1,17 +1,19 @@
 import React from 'react';
 
-import { useRobot } from '@Hook';
+import { node } from 'prop-types';
 
 import { StyledMain, StyledMainMessages } from './styled';
 
-function Main() {
-  const { messages } = useRobot();
-
+function Main({ children }) {
   return (
     <StyledMain>
-      <StyledMainMessages>{JSON.stringify(messages)}</StyledMainMessages>
+      <StyledMainMessages>{children}</StyledMainMessages>
     </StyledMain>
   );
 }
+
+Main.propTypes = {
+  children: node.isRequired,
+};
 
 export default Main;

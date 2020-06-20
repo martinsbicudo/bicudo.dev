@@ -34,6 +34,10 @@ class Grid {
     this.style += newStyle;
   }
 
+  getStyle() {
+    return this.style;
+  }
+
   flex(params = {}) {
     const {
       wrap = false,
@@ -114,5 +118,5 @@ class Grid {
 
 export default {
   ...config,
-  get: () => new Grid(),
+  set: () => new Grid(),
 };

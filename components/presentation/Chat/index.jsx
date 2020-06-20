@@ -6,7 +6,9 @@ function Chat() {
   return (
     <ChatContainer.Box>
       <ChatContainer.Aside />
-      <ChatContainer.Main />
+      <ChatContainer.Main>
+        <ChatContainer.Messages />
+      </ChatContainer.Main>
       <ChatContainer.Footer />
     </ChatContainer.Box>
   );
