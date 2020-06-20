@@ -1,6 +1,6 @@
 import config from './config';
 
-const getQueries = (responsives, action = (_) => _) => {
+function getQueries(responsives, action = (_) => _) {
   return Object.entries(responsives).reduce((currentStyle, [key, style]) => {
     const tags = Object.entries(config.TAGS).map(([tag, width]) => [
       new RegExp(tag.toLowerCase(), 'g'),
@@ -23,74 +23,96 @@ const getQueries = (responsives, action = (_) => _) => {
 
     return `${currentStyle}@media ${query}{${action(style)}}`;
   }, '');
-};
+}
 
-const setGrid = (params = {}) => {
-  const {
-    wrap = false,
-    columns = false,
-    align = false,
-    justify = false,
-    content = false,
-    reverse = false,
-  } = params;
+class Grid {
+  constructor() {
+    this.style = '';
+  }
 
-  return `
-    display: flex;
-    ${wrap ? `flex-wrap: ${wrap === 'reverse' ? 'wrap-reverse' : 'wrap'};` : ''}
-    ${
-      columns ? `flex-direction: ${reverse ? 'column-reverse' : 'column'};` : ''
+  addStyle(newStyle) {
+    this.style += newStyle;
+  }
+
+  flex(params = {}) {
+    const {
+      wrap = false,
+      columns = false,
+      align = false,
+      justify = false,
+      content = false,
+      reverse = false,
+    } = params;
+
+    this.addStyle(`
+      display: flex;
+      ${
+        wrap
+          ? `flex-wrap: ${wrap === 'reverse' ? 'wrap-reverse' : 'wrap'};`
+          : ''
+      }
+      ${
+        columns
+          ? `flex-direction: ${reverse ? 'column-reverse' : 'column'};`
+          : ''
+      }
+      ${!columns && reverse ? 'flex-direction: row-reverse;' : ''}
+      ${align ? `align-items: ${align};` : ''}
+      ${justify ? `justify-content: ${justify};` : ''}
+      ${content ? `align-content: ${content};` : ''}
+    `);
+
+    return this;
+  }
+
+  flexResponsive(responsives) {
+    this.addStyle(getQueries(responsives, (style) => this.setFlex(style)));
+
+    return this;
+  }
+
+  col(params = {}) {
+    const { col = 'auto', align = false } = params;
+    const selfAlign = align ? `align-self: ${align};` : '';
+
+    if (Number.isInteger(Number(col))) {
+      this.addStyle(`
+        flex: 1 0 calc((100% / ${config.COLUMNS} * ${col}));
+        max-width: calc((100% / ${config.COLUMNS} * ${col}));
+        width: calc((100% / ${config.COLUMNS} * ${col}));
+        ${selfAlign}
+      `);
     }
-    ${!columns && reverse ? 'flex-direction: row-reverse;' : ''}
-    ${align ? `align-items: ${align};` : ''}
-    ${justify ? `justify-content: ${justify};` : ''}
-    ${content ? `align-content: ${content};` : ''}
-  `;
-};
 
-const setGridResponsive = (responsives) =>
-  getQueries(responsives, (style) => setGrid(style));
+    if (col === 'content') {
+      this.addStyle(`
+        flex: 0 0 auto;
+        ${selfAlign}
+      `);
+    }
 
-const setCol = (params = {}) => {
-  const { col = 'auto', align = false } = params;
-  const selfAlign = align ? `align-self: ${align};` : '';
-
-  if (Number.isInteger(Number(col))) {
-    return `
-      flex: 1 0 calc((100% / ${config.COLUMNS} * ${col}));
-      max-width: calc((100% / ${config.COLUMNS} * ${col}));
-      width: calc((100% / ${config.COLUMNS} * ${col}));
+    this.addStyle(`
+      flex: 1 1 auto;
       ${selfAlign}
-    `;
+    `);
+
+    return this;
   }
 
-  if (col === 'content') {
-    return `
-      flex: 0 0 auto;
-      ${selfAlign}
-    `;
+  colResponsive(responsives) {
+    this.addStyle(getQueries(responsives, (style) => this.setCol(style)));
+
+    return this;
   }
 
-  return `
-    flex: 1 1 auto;
-    ${selfAlign}
-  `;
-};
+  responsive(responsives) {
+    this.addStyle(getQueries(responsives));
 
-const setColResponsive = (responsives) =>
-  getQueries(responsives, (style) => setCol(style));
+    return this;
+  }
+}
 
-const setResponsive = (responsives) => getQueries(responsives);
-
-const GRID = {
+export default {
   ...config,
-  HELPERS: {
-    setGrid,
-    setGridResponsive,
-    setCol,
-    setColResponsive,
-    setResponsive,
-  },
+  get: () => new Grid(),
 };
-
-export default GRID;
