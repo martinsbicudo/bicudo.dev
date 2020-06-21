@@ -11,7 +11,8 @@ export const StyledMessages = styled('ul')`
     theme.GRID.set()
       .responsive({
         '>plus': 'padding: 1.5rem;',
-        '<plus': 'padding: 0 1.5rem;',
+        '>mobile&<plus': 'padding: 0 1.5rem;',
+        '<mobile': 'padding: 0 1rem;',
       })
       .getStyle()}
 `;

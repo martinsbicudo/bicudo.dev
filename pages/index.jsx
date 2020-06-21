@@ -1,5 +1,5 @@
-import { Chat } from '@Presentation';
+import Presentation from '@Presentation';
 
 export default function Home() {
-  return <Chat />;
+  return <Presentation />;
 }

@@ -2,20 +2,21 @@ import React from 'react';
 
 import { node } from 'prop-types';
 
+import { Footer as FooterCommon } from '@Common';
 import { useRobot } from '@Hook';
 
-import { StyledFooter, StyledFooterTyping } from './styled';
+import { StyledFooterTyping } from './styled';
 
 function Footer({ children }) {
   const { isTyping } = useRobot();
 
   return (
-    <StyledFooter>
+    <FooterCommon>
       <StyledFooterTyping>
         {isTyping && 'Robot is typing...'}
       </StyledFooterTyping>
       {children}
-    </StyledFooter>
+    </FooterCommon>
   );
 }
 

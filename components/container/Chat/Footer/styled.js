@@ -1,10 +1,5 @@
 import { createStyledComponent as styled } from '@Utils';
 
-export const StyledFooter = styled('footer')`
-  grid-area: footer;
-  padding: 0 4rem 3rem;
-`;
-
 export const StyledFooterTyping = styled('p')`
   padding: 1rem 0;
   text-align: right;

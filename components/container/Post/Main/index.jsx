@@ -4,14 +4,8 @@ import { node } from 'prop-types';
 
 import { Main as MainCommon } from '@Common';
 
-import { StyledMainContent } from './styled';
-
 function Main({ children }) {
-  return (
-    <MainCommon>
-      <StyledMainContent>{children}</StyledMainContent>
-    </MainCommon>
-  );
+  return <MainCommon>{children}</MainCommon>;
 }
 
 Main.propTypes = {

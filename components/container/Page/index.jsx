@@ -4,15 +4,15 @@ import { node } from 'prop-types';
 
 import { Container } from '@Common';
 
-import { StyledBox, StyledBoxContent } from './styled';
+import { StyledPage, StyledPageContent } from './styled';
 
 function Box({ children }) {
   return (
-    <StyledBox>
+    <StyledPage>
       <Container>
-        <StyledBoxContent>{children}</StyledBoxContent>
+        <StyledPageContent>{children}</StyledPageContent>
       </Container>
-    </StyledBox>
+    </StyledPage>
   );
 }
 
