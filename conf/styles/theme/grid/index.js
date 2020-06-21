@@ -3,17 +3,17 @@ import config from './config';
 function getQueries(responsives, action = (_) => _) {
   return Object.entries(responsives).reduce((currentStyle, [key, style]) => {
     const tags = Object.entries(config.TAGS).map(([tag, width]) => [
-      new RegExp(tag.toLowerCase(), 'g'),
-      `${width}px)`,
+      [new RegExp(`\\-${tag.toLowerCase()}`, 'g'), `${width}px)`],
+      [new RegExp(`\\+${tag.toLowerCase()}`, 'g'), `${width + 1}px)`],
     ]);
+
     const replaces = [
       [/ /g, ''],
       [/&/g, ' and '],
       [/\|/g, ','],
-      [/</g, '(max-width:'],
-      [/>/g, '(min-width:'],
-      [/=/g, '(width:'],
-      ...tags,
+      [/</g, '(max-width:-'],
+      [/>/g, '(min-width:+'],
+      ...tags.flat(),
     ];
 
     const query = replaces.reduce(

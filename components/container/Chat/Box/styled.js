@@ -19,7 +19,6 @@ export const StyledBoxContent = styled('div')`
   grid-template-areas:
     'aside main'
     'aside footer';
-  grid-template-columns: max-content auto;
   grid-template-rows: auto max-content;
   background-color: ${({ theme }) => theme.COLORS[theme.TYPE]};
   position: relative;
@@ -36,8 +35,14 @@ export const StyledBoxContent = styled('div')`
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>tablet': 'padding: 0 4rem;',
-        '>plus&<tablet': 'padding: 0 2rem;',
+        '>tablet': `
+          padding: 0 4rem;
+          grid-template-columns: 30% auto;
+        `,
+        '>plus&<tablet': `
+          padding: 0 2rem;
+          grid-template-columns: 0 100%;
+        `,
       })
       .getStyle()}
 `;
