@@ -4,7 +4,6 @@ export const StyledPhoto = styled('figure')`
   position: absolute;
   z-index: 2;
   top: 0;
-  left: 0;
   width: 6rem;
   height: 6rem;
   cursor: pointer;
@@ -24,22 +23,24 @@ export const StyledPhoto = styled('figure')`
     theme.GRID.set()
       .responsive({
         '>plus': `
-          transform: translate(-40%, -40%);
-          &:hover { transform: translate(-40%, -40%) scale(0.95); }
+          left: 0;
+          transform: translate(-50%, -50%);
+          &:hover { transform: translate(-50%, -50%) scale(0.95); }
         `,
         '>mobile': `
           width: 6rem;
           height: 6rem;
         `,
         '>mobile&<plus': `
-          transform: translate(-30%, -30%);
-          &:hover { transform: translate(-30%, -30%) scale(0.95); }
+          transform: translate(-50%, -40%);
+          &:hover { transform: translate(-50%, -40%) scale(0.95); }
         `,
+        '<plus': 'left: 50%;',
         '<mobile': `
           width: 5rem;
           height: 5rem;
-          transform: translate(-20%, -20%);
-          &:hover { transform: translate(-20%, -20%) scale(0.95); }
+          transform: translate(-50%, -30%);
+          &:hover { transform: translate(-50%, -30%) scale(0.95); }
         `,
       })
       .getStyle()}

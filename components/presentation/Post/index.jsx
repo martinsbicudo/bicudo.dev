@@ -5,7 +5,9 @@ import { Post as PostContainer } from '@Container';
 function Post() {
   return (
     <>
-      <PostContainer.Main>main</PostContainer.Main>
+      <PostContainer.Main>
+        <PostContainer.Posts />
+      </PostContainer.Main>
       <PostContainer.Footer>footer</PostContainer.Footer>
     </>
   );

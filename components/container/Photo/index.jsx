@@ -6,7 +6,7 @@ import { StyledPhoto, StyledPhotoImage } from './styled';
 
 function Photo() {
   return (
-    <Link href="/post/[title]" as="/post/o-bicudo">
+    <Link href="/post/[pid]" as="/post/o-bicudo">
       <StyledPhoto>
         <StyledPhotoImage src="/images/bicudo.jpeg" />
       </StyledPhoto>
