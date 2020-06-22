@@ -11,7 +11,7 @@ function ThemeProvider({ children }) {
   const [config, setConfig] = useState({
     TYPE: 'LIGHT',
     COLOR: 'THIRDY',
-    FONT_SIZE: 10,
+    FONT_SIZE: 1,
   });
 
   function setTheme(values) {

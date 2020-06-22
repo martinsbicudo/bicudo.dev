@@ -2,7 +2,7 @@ import { createStyledComponent as styled } from '@Utils';
 
 export const StyledPhoto = styled('figure')`
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   top: 0;
   width: 6rem;
   height: 6rem;

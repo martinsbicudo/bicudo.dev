@@ -17,7 +17,7 @@ export default createGlobalStyle`
   }
 
   html {
-    font-size: ${({ theme }) => `${theme.FONT_SIZE}px`};
+    font-size: ${({ theme }) => `${theme.FONT_SIZE * 10}px`};
     color: ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? theme.COLORS.DARK : theme.COLORS.LIGHT};
     background: ${({ theme }) => {
@@ -32,9 +32,9 @@ export default createGlobalStyle`
   }
 
   body {
-    min-width: ${({ theme }) => `${theme.GRID.MINIMUM}rem`};
     display: flex;
     flex-direction: column;
+    min-width: ${({ theme }) => `${theme.GRID.MINIMUM}rem`};
   }
 
   body, #__next {

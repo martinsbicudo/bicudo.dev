@@ -5,14 +5,12 @@ import { node } from 'prop-types';
 import * as providers from './providers';
 
 function GlobalProvider({ children }) {
-  function ComposeProviders({ children: component }) {
-    return Object.values(providers).reduceRight(
-      (current, Provider) => <Provider>{current}</Provider>,
-      component
-    );
-  }
+  const ComposeProviders = Object.values(providers).reduceRight(
+    (current, Provider) => <Provider>{current}</Provider>,
+    children
+  );
 
-  return <ComposeProviders>{children}</ComposeProviders>;
+  return ComposeProviders;
 }
 
 GlobalProvider.propTypes = {

@@ -21,6 +21,7 @@ export const StyledPageContent = styled('div')`
     'aside footer';
   grid-template-rows: auto max-content;
   position: relative;
+  z-index: 0;
   border-radius: 2rem;
   width: 100%;
   height: 100%;
