@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-
 import camelcase from 'camelcase';
 import { number, string } from 'prop-types';
 
 import * as posts from '@Conf/posts';
-import { Aside, Modal, Page as PageContainer, Photo } from '@Container';
+import {
+  Aside,
+  Modal,
+  Page as PageContainer,
+  Photo,
+  Settings,
+} from '@Container';
 import { useHistory } from '@Hook';
 
+import Blog from './Blog';
 import Chat from './Chat';
 import Error from './Error';
-import Post from './Post';
 
 function Presentation({ pid, sid, statusCode }) {
   const history = useHistory();
-  const [pidState] = useState(pid);
 
   function postExist(id = pid) {
     return id in posts;
@@ -30,6 +33,14 @@ function Presentation({ pid, sid, statusCode }) {
     return camelcase(prevPid);
   }
 
+  function getIsToRenderBlogList() {
+    const [currentHistory, prevHistory] = history;
+    const currentPagePathname = currentHistory?.pathname ?? '';
+    const prevPagePathname = prevHistory?.pathname ?? '';
+
+    return [currentPagePathname, prevPagePathname].includes('/blog');
+  }
+
   function renderModal() {
     if (!modalExist()) return null;
 
@@ -38,18 +49,16 @@ function Presentation({ pid, sid, statusCode }) {
 
   function renderPage() {
     const prevPid = getPrevPid();
+    const isToRenderBlogList = getIsToRenderBlogList();
 
     if (statusCode === 404) return <Error />;
+    if (isToRenderBlogList) return <Blog />;
     if (prevPid && postExist(prevPid) && modalExist())
-      return <Post pid={prevPid} />;
+      return <Blog pid={prevPid} />;
     if ((!pid && !sid) || modalExist()) return <Chat />;
 
-    return !postExist() && !modalExist() ? <Error /> : <Post pid={pid} />;
+    return !postExist() && !modalExist() ? <Error /> : <Blog pid={pid} />;
   }
-
-  useEffect(() => {
-    console.log(pidState);
-  }, [pid]);
 
   return (
     <>
@@ -58,6 +67,7 @@ function Presentation({ pid, sid, statusCode }) {
         <Photo />
         <Aside />
         {renderPage()}
+        <Settings />
       </PageContainer>
     </>
   );

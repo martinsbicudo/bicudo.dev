@@ -1,7 +1,7 @@
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledMessageContainer = styled('li', ['robot'])`
-  ${({ robot }) => (robot ? 'justify-content: flex-end;' : '')}
+  ${({ robot }) => (!robot ? 'justify-content: flex-end;' : '')}
   ${({ theme }) =>
     theme.GRID.set()
       .flex({
@@ -37,20 +37,20 @@ export const StyledMessage = styled('div', ['robot'])`
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT' ? theme.COLOR.WHITE : 'rgba(100, 100, 100, .1)'};
   border-radius: 1.5rem 1.5rem
-    ${({ robot }) => (robot ? '0 1.5rem' : '1.5rem 0')};
-  text-align: ${({ robot }) => (robot ? 'right' : 'left')};
+    ${({ robot }) => (robot ? '1.5rem 0' : '0 1.5rem')};
+  text-align: ${({ robot }) => (robot ? 'left' : 'right')};
 
   ${({ theme, robot }) =>
     theme.GRID.set()
       .flex({
-        reverse: robot,
+        reverse: !robot,
         align: 'center',
       })
       .getStyle()}
 `;
 
 export const StyledMessageTime = styled('p', ['robot'])`
-  text-align: ${({ robot }) => (robot ? 'right' : 'left')};
+  text-align: ${({ robot }) => (robot ? 'left' : 'right')};
   padding: 0.5rem 1rem 0 1rem;
   min-width: 100%;
 `;
@@ -67,7 +67,7 @@ export const StyledIconBox = styled('figure', ['robot'])`
   border: 0.1rem solid
     ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(0, 0, 0, 0.1)'};
-  ${({ robot }) => `margin-${robot ? 'left' : 'right'}: 1.5rem;`}
+  ${({ robot }) => `margin-${robot ? 'right' : 'left'}: 1.5rem;`}
 
   ${({ theme }) =>
     theme.GRID.set()

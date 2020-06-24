@@ -1,3 +1,5 @@
+import Color from 'color';
+
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledPhoto = styled('figure')`
@@ -7,12 +9,13 @@ export const StyledPhoto = styled('figure')`
   width: 6rem;
   height: 6rem;
   cursor: pointer;
-  border: 0.3rem solid ${({ theme }) => theme.COLORS[theme.COLOR]};
   overflow: hidden;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.COLORS[theme.TYPE]};
   transition: transform 0.1s;
   will-change: transform;
+  border: 0.3rem solid ${({ theme }) => theme.COLORS[theme.COLOR]};
+  background-color: ${({ theme }) =>
+    Color(theme.COLORS[theme.TYPE]).darken(0.1)};
   box-shadow: 0 0 2rem 0
     ${({ theme }) =>
       theme.TYPE === 'LIGHT'

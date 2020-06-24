@@ -4,14 +4,12 @@ import { AiOutlineClose } from 'react-icons/ai';
 import Router from 'next/router';
 import { string } from 'prop-types';
 
+import { Lightbox } from '@Common';
+import { useHistory } from '@Hook';
+
 import Display from './Display';
 import Shortcuts from './Shortcuts';
-import {
-  StyledModal,
-  StyledModalContainer,
-  StyledModalContent,
-  StyledModalClose,
-} from './styled';
+import { StyledModal, StyledModalContent, StyledModalClose } from './styled';
 
 const contents = {
   display: Display,
@@ -19,27 +17,34 @@ const contents = {
 };
 
 function Modal({ sid }) {
+  const history = useHistory();
+
   function renderContent() {
     const ModalContent = contents[sid];
 
     return <ModalContent />;
   }
 
+  // eslint-disable-next-line consistent-return
   function handleClose() {
-    return Router.back({ shallow: true });
+    if (history.length > 1) return Router.back();
+
+    return Router.push('/');
   }
 
   return (
-    <StyledModal>
-      <StyledModalContainer>
-        <StyledModalContent>
-          <StyledModalClose onClick={handleClose}>
-            <AiOutlineClose />
-          </StyledModalClose>
-          {renderContent()}
-        </StyledModalContent>
-      </StyledModalContainer>
-    </StyledModal>
+    <Lightbox inside={false} onClose={handleClose} startOpen>
+      {({ close }) => (
+        <StyledModal>
+          <StyledModalContent>
+            <StyledModalClose onClick={close}>
+              <AiOutlineClose />
+            </StyledModalClose>
+            {renderContent()}
+          </StyledModalContent>
+        </StyledModal>
+      )}
+    </Lightbox>
   );
 }
 

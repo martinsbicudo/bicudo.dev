@@ -1,19 +1,14 @@
 import { Container } from '@Common';
 import { createStyledComponent as styled } from '@Utils';
 
-export const StyledModal = styled('div')`
-  position: fixed;
-  top: 0;
-  left: 0;
+export const StyledModal = styled(Container)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  padding: 4rem;
-  background-color: ${({ theme }) =>
-    theme.TYPE === 'LIGHT' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(100, 100, 100, 0.5)'};
-`;
+  transform: translate(-50%, -50%);
+  height: initial;
 
-export const StyledModalContainer = styled(Container)`
   ${({ theme }) =>
     theme.GRID.set()
       .flex({

@@ -51,6 +51,7 @@ export const StyledDisplayButtons = styled('div')`
     theme.GRID.set()
       .flex({
         justify: 'space-evenly',
+        wrap: true,
       })
       .getStyle()}
 `;
@@ -112,6 +113,7 @@ export const StyledDisplayColorButton = styled(StyledDisplayButton)`
 export const StyledDisplayFontSizeButton = styled(StyledDisplayButton)`
   flex: 1;
   height: 3rem;
+  font-size: 1.2rem;
   border-radius: inherit;
   background-color: ${({ theme, active }) =>
     active
