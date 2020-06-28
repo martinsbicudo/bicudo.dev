@@ -8,4 +8,12 @@ export const StyledFooterTyping = styled('p')`
   line-height: 1.2rem;
   height: 3.2rem;
   border-bottom: 0.1rem dashed rgba(100, 100, 100, 0.2);
+
+  ${({ theme }) =>
+    theme.GRID.set()
+      .responsive({
+        '>plus': 'margin-bottom: 2rem;',
+        '<plus': 'margin-bottom: 1rem;',
+      })
+      .getStyle()}
 `;

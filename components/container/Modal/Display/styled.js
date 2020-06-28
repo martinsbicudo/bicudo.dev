@@ -5,7 +5,6 @@ import { createStyledComponent as styled } from '@Utils';
 export const StyledDisplay = styled('div')``;
 
 export const StyledDisplayTitle = styled('h1')`
-  font-size: 1.8rem;
   text-align: center;
   margin: 0 auto;
   padding: 0.3rem 1rem;
@@ -13,6 +12,14 @@ export const StyledDisplayTitle = styled('h1')`
   background: rgba(150, 150, 150, 0.1);
   width: max-content;
   color: ${({ theme }) => Color(theme.COLORS[theme.COLOR]).darken(0.3)};
+
+  ${({ theme }) =>
+    theme.GRID.set()
+      .responsive({
+        '>plus': 'font-size: 1.8rem;',
+        '<plus': 'font-size: 1.6rem;',
+      })
+      .getStyle()}
 `;
 
 export const StyledDisplayDescription = styled('p')`
@@ -115,6 +122,7 @@ export const StyledDisplayFontSizeButton = styled(StyledDisplayButton)`
   height: 3rem;
   font-size: 1.2rem;
   border-radius: inherit;
+  padding: 0 0.5rem;
   background-color: ${({ theme, active }) =>
     active
       ? theme.COLORS[theme.COLOR]

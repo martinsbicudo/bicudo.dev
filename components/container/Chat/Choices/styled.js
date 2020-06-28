@@ -13,7 +13,6 @@ export const StyledChoices = styled('div')`
     }
   }
 
-  padding-top: 2rem;
   animation: choices-fade 1s;
 
   ${({ theme }) =>

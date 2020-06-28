@@ -18,6 +18,10 @@ export const StyledSettingsButton = styled('button')`
   background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
   cursor: pointer;
 
+  svg {
+    opacity: 0.7;
+  }
+
   ${({ theme }) =>
     theme.GRID.set()
       .flex({
@@ -34,7 +38,7 @@ export const StyledSettingsOpenButton = styled(StyledSettingsButton)`
 
   svg {
     padding: 0.7rem;
-    background-color: rgba(150, 150, 150, 0.1);
+    background-color: rgba(150, 150, 150, 0.2);
     border-radius: inherit;
   }
 
@@ -49,8 +53,10 @@ export const StyledSettingsOpenButton = styled(StyledSettingsButton)`
 
 export const StyledSettingsItemButton = styled(StyledSettingsButton)`
   border-radius: 4rem;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   z-index: 1;
+  box-shadow: 0 0 2rem rgba(100, 100, 100, 0.3);
+  border: 0.5rem solid rgba(255, 255, 255, 0.5);
 `;
 
 export const StyledSettingsList = styled('ul')`

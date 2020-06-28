@@ -35,7 +35,7 @@ export const StyledMessage = styled('div', ['robot'])`
         ? 'rgba(100, 100, 100, 0.2)'
         : 'rgba(0, 0, 0, 0.1)'};
   background-color: ${({ theme }) =>
-    theme.TYPE === 'LIGHT' ? theme.COLOR.WHITE : 'rgba(100, 100, 100, .1)'};
+    theme.TYPE === 'LIGHT' ? theme.COLOR.WHITE : 'rgba(100, 100, 100, 0.1)'};
   border-radius: 1.5rem 1.5rem
     ${({ robot }) => (robot ? '1.5rem 0' : '0 1.5rem')};
   text-align: ${({ robot }) => (robot ? 'left' : 'right')};
@@ -63,7 +63,7 @@ export const StyledIconBox = styled('figure', ['robot'])`
   color: ${({ theme }) =>
     theme.TYPE === 'LIGHT' ? theme.COLOR.DARK : theme.COLORS.LIGHT};
   background-color: ${({ theme }) =>
-    theme.TYPE === 'LIGHT' ? 'rgba(100, 100, 100, 0.2)' : 'rgba(0, 0, 0, .1)'};
+    theme.TYPE === 'LIGHT' ? 'rgba(100, 100, 100, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
   border: 0.1rem solid
     ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(0, 0, 0, 0.1)'};

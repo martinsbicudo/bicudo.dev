@@ -12,7 +12,7 @@ function Blog({ pid, sid }) {
   const router = useRouter();
 
   return (
-    <Content sid={sid}>
+    <Content pid={pid} sid={sid}>
       <Layout sid={sid || router.query.sid}>
         <BlogContainer.Main>
           {pid ? <BlogContainer.Post pid={pid} /> : 'LISTA MAROTA'}

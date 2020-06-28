@@ -1,8 +1,9 @@
 import React from 'react';
 import {
   AiOutlineControl,
+  AiOutlineCloseSquare,
   AiOutlineBgColors,
-  AiOutlineThunderbolt,
+  AiOutlineMacCommand,
 } from 'react-icons/ai';
 
 import { useRouter } from 'next/router';
@@ -20,7 +21,7 @@ import {
 function Theme() {
   const { pathname, query, push } = useRouter();
 
-  function handleClick(sid) {
+  function openSettings(sid) {
     return push(
       {
         pathname,
@@ -33,18 +34,29 @@ function Theme() {
     );
   }
 
-  function renderOptions(isOpen) {
+  function handleClick(sid, close) {
+    return () => {
+      openSettings(sid);
+      close();
+    };
+  }
+
+  function renderOptions(values) {
     return (
-      isOpen && (
+      values.isOpen && (
         <StyledSettingsList>
           <StyledSettingsListItem>
-            <StyledSettingsItemButton onClick={() => handleClick('display')}>
+            <StyledSettingsItemButton
+              onClick={handleClick('display', values.close)}
+            >
               <AiOutlineBgColors />
             </StyledSettingsItemButton>
           </StyledSettingsListItem>
           <StyledSettingsListItem>
-            <StyledSettingsItemButton onClick={() => handleClick('shortcuts')}>
-              <AiOutlineThunderbolt />
+            <StyledSettingsItemButton
+              onClick={handleClick('shortcuts', values.close)}
+            >
+              <AiOutlineMacCommand />
             </StyledSettingsItemButton>
           </StyledSettingsListItem>
         </StyledSettingsList>
@@ -54,12 +66,12 @@ function Theme() {
 
   return (
     <Lightbox inside={false}>
-      {({ isOpen, toggle }) => (
+      {({ isOpen, close, toggle }) => (
         <StyledSettings>
           <StyledSettingsOpenButton onClick={toggle}>
-            <AiOutlineControl />
+            {isOpen ? <AiOutlineCloseSquare /> : <AiOutlineControl />}
           </StyledSettingsOpenButton>
-          {renderOptions(isOpen)}
+          {renderOptions({ isOpen, close })}
         </StyledSettings>
       )}
     </Lightbox>
