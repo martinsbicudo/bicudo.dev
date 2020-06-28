@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSessionStorage } from 'react-use';
 
 import { useRouter } from 'next/router';
 import { node } from 'prop-types';
@@ -7,7 +8,7 @@ import HistoryContext from '.';
 
 function HistoryProvider({ children }) {
   const router = useRouter();
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useSessionStorage('_history.bicudo', []);
 
   function addHistory() {
     const { pathname, route, query, asPath, basePath } = router;

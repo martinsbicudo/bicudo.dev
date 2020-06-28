@@ -5,7 +5,7 @@ import {
   AiOutlineThunderbolt,
 } from 'react-icons/ai';
 
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Lightbox } from '@Common';
 
@@ -18,23 +18,34 @@ import {
 } from './styled';
 
 function Theme() {
+  const { pathname, query, push } = useRouter();
+
+  function handleClick(sid) {
+    return push(
+      {
+        pathname,
+        query: {
+          sid,
+          ...query,
+        },
+      },
+      `/settings/${sid}`
+    );
+  }
+
   function renderOptions(isOpen) {
     return (
       isOpen && (
         <StyledSettingsList>
           <StyledSettingsListItem>
-            <Link href="/settings/[sid]" as="/settings/display">
-              <StyledSettingsItemButton>
-                <AiOutlineBgColors />
-              </StyledSettingsItemButton>
-            </Link>
+            <StyledSettingsItemButton onClick={() => handleClick('display')}>
+              <AiOutlineBgColors />
+            </StyledSettingsItemButton>
           </StyledSettingsListItem>
           <StyledSettingsListItem>
-            <Link href="/settings/[sid]" as="/settings/shortcuts">
-              <StyledSettingsItemButton>
-                <AiOutlineThunderbolt />
-              </StyledSettingsItemButton>
-            </Link>
+            <StyledSettingsItemButton onClick={() => handleClick('shortcuts')}>
+              <AiOutlineThunderbolt />
+            </StyledSettingsItemButton>
           </StyledSettingsListItem>
         </StyledSettingsList>
       )

@@ -1,12 +1,13 @@
 import React from 'react';
 
+import camelcase from 'camelcase';
 import { string } from 'prop-types';
 
 import * as posts from '@Conf/posts';
 
 function Post({ pid }) {
   function renderPost() {
-    const Component = posts[pid];
+    const Component = posts[camelcase(pid)];
     return <Component />;
   }
 
