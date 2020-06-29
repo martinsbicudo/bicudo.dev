@@ -3,9 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { string } from 'prop-types';
 
-import { Error as ErrorContainer } from '@Container';
-
-import Layout from '../Layout';
+import { Error as ErrorContainer, Layout } from '@Container';
 
 function Error({ sid }) {
   const router = useRouter();

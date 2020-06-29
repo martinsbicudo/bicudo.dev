@@ -7,6 +7,7 @@ export { default as Aside } from './Aside';
 export { Blog };
 export { Chat };
 export { Error };
+export { default as Layout } from './Layout';
 export { Modal };
 export { default as Page } from './Page';
 export { default as Photo } from './Photo';

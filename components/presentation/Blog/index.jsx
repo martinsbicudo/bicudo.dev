@@ -1,29 +1,20 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
 import { string } from 'prop-types';
 
-import { Blog as BlogContainer } from '@Container';
-
-import Content from '../Content';
-import Layout from '../Layout';
+import { Blog as BlogContainer, Layout } from '@Container';
+import { withError } from '@Hoc';
 
 function Blog({ pid, sid }) {
-  const router = useRouter();
-
   return (
-    <Content pid={pid} sid={sid}>
-      <Layout sid={sid || router.query.sid}>
-        <BlogContainer.Main>
-          {pid ? <BlogContainer.Post pid={pid} /> : 'LISTA MAROTA'}
-        </BlogContainer.Main>
-        <BlogContainer.Footer>footer</BlogContainer.Footer>
-      </Layout>
-    </Content>
+    <Layout sid={sid}>
+      <BlogContainer.Main>
+        {pid ? <BlogContainer.Post pid={pid} /> : 'LISTA MAROTA'}
+      </BlogContainer.Main>
+      <BlogContainer.Footer>footer</BlogContainer.Footer>
+    </Layout>
   );
 }
-
-Blog.getInitialProps = ({ query }) => query;
 
 Blog.propTypes = {
   pid: string,
@@ -35,4 +26,4 @@ Blog.defaultProps = {
   sid: undefined,
 };
 
-export default Blog;
+export default withError(Blog);

@@ -6,6 +6,7 @@
       "@Conf/*": ["./conf/*"],
       "@Utils/*": ["./utils/*"],
       "@Context": ["./context/*"],
+      "@Hoc/*": ["./hoc/*"],
       "@Hook/*": ["./hook/*"],
       "@Common/*": ["./components/common/*"],
       "@Container/*": ["./components/container/*"],

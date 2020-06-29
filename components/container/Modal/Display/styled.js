@@ -9,7 +9,7 @@ export const StyledDisplayTitle = styled('h1')`
   margin: 0 auto;
   padding: 0.3rem 1rem;
   border-radius: 0.3rem;
-  background: rgba(150, 150, 150, 0.1);
+  background-color: rgba(150, 150, 150, 0.1);
   width: max-content;
   color: ${({ theme }) => Color(theme.COLORS[theme.COLOR]).darken(0.3)};
 

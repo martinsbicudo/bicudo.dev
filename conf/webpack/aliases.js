@@ -5,6 +5,7 @@ module.exports = {
   '@Conf': path.resolve('./conf'),
   '@Utils': path.resolve('./utils'),
   '@Context': path.resolve('./context'),
+  '@Hoc': path.resolve('./hoc'),
   '@Hook': path.resolve('./hook'),
   '@Common': path.resolve('./components/common'),
   '@Container': path.resolve('./components/container'),
