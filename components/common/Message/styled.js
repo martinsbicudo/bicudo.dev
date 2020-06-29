@@ -13,7 +13,7 @@ export const StyledMessageContainer = styled('li', ['robot'])`
 export const StyledMessage = styled('div', ['robot'])`
   @keyframes message-fade {
     from {
-      transform: translateY(1rem);
+      transform: translateY(10px);
       opacity: 0;
     }
 
@@ -23,21 +23,20 @@ export const StyledMessage = styled('div', ['robot'])`
     }
   }
 
-  min-width: 12rem;
+  min-width: 120px;
   font-size: 1.4rem;
   max-width: 90%;
   animation: message-fade 1s;
-  padding: 1.5rem 2rem;
-  border: 0.1rem solid rgba(100, 100, 100, 0.1);
-  box-shadow: 0 0 1.5rem 0
+  padding: 15px 20px;
+  border: 1px solid rgba(100, 100, 100, 0.1);
+  box-shadow: 0 0 15px 0
     ${({ theme }) =>
       theme.TYPE === 'LIGHT'
         ? 'rgba(100, 100, 100, 0.2)'
         : 'rgba(0, 0, 0, 0.1)'};
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT' ? theme.COLOR.WHITE : 'rgba(100, 100, 100, 0.1)'};
-  border-radius: 1.5rem 1.5rem
-    ${({ robot }) => (robot ? '1.5rem 0' : '0 1.5rem')};
+  border-radius: 15px 15px ${({ robot }) => (robot ? '15px 0' : '0 15px')};
   text-align: ${({ robot }) => (robot ? 'left' : 'right')};
 
   ${({ theme, robot }) =>
@@ -51,7 +50,7 @@ export const StyledMessage = styled('div', ['robot'])`
 
 export const StyledMessageTime = styled('p', ['robot'])`
   text-align: ${({ robot }) => (robot ? 'left' : 'right')};
-  padding: 0.5rem 1rem 0 1rem;
+  padding: 5px 10px 0 10px;
   min-width: 100%;
 `;
 
@@ -64,10 +63,10 @@ export const StyledIconBox = styled('figure', ['robot'])`
     theme.TYPE === 'LIGHT' ? theme.COLOR.DARK : theme.COLORS.LIGHT};
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT' ? 'rgba(100, 100, 100, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
-  border: 0.1rem solid
+  border: 1px solid
     ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(0, 0, 0, 0.1)'};
-  ${({ robot }) => `margin-${robot ? 'right' : 'left'}: 1.5rem;`}
+  ${({ robot }) => `margin-${robot ? 'right' : 'left'}: 15px;`}
 
   ${({ theme }) =>
     theme.GRID.set()

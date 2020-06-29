@@ -17,6 +17,7 @@ export default createGlobalStyle`
   }
 
   html {
+    height: 100vh;
     font-size: ${({ theme }) => `${theme.FONT_SIZE * 10}px`};
     color: ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? theme.COLORS.DARK : theme.COLORS.LIGHT};
@@ -34,7 +35,7 @@ export default createGlobalStyle`
   body {
     display: flex;
     flex-direction: column;
-    min-width: ${({ theme }) => `${theme.GRID.MINIMUM}rem`};
+    min-width: ${({ theme }) => `${theme.GRID.MINIMUM * 10}px`};
   }
 
   body, #__next {

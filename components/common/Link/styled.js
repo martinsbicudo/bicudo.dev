@@ -14,7 +14,7 @@ export const StyledLink = styled('a')`
     display: block;
     position: absolute;
     right: 0;
-    height: 0.1rem;
+    height: 1px;
     background: currentColor;
     will-change: opacity;
     transition: opacity 0.2s;
@@ -23,7 +23,7 @@ export const StyledLink = styled('a')`
   &::before {
     top: 0;
     transform: translate(0, -100%);
-    width: 1rem;
+    width: 10px;
   }
 
   &::after {

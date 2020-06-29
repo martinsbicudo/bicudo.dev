@@ -27,7 +27,7 @@ function Display() {
   } = useTheme();
   const typesKeys = ['DARK', 'LIGHT'];
   const extraColorsKeys = ['WHITE', 'BLACK'];
-  const sizesText = ['SMALL', 'NORMAL', 'MIDDLE', 'LARGE', 'GIANT'];
+  const sizesText = ['SMALL', 'NORMAL', 'MIDDLE', 'LARGE'];
 
   function getTypes() {
     return Object.keys(COLORS).filter((key) => typesKeys.includes(key));
@@ -40,7 +40,7 @@ function Display() {
   }
 
   function getFontSizes() {
-    return Object.values(TYPOGRAPHY).filter((value, i) => i < 5);
+    return Object.values(TYPOGRAPHY).filter((value, i) => i < 4);
   }
 
   function isActive(values) {

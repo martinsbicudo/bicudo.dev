@@ -10,10 +10,10 @@ export const StyledMain = styled('main')`
         columns: true,
       })
       .responsive({
-        '>tablet': 'padding: 0 4rem;',
-        '>plus&<tablet': 'padding: 0em 2rem;',
-        '>mobile&<plus': 'padding: 3.5rem 3rem 0;',
-        '<mobile': 'padding: 3.5rem 2.5rem 0;',
+        '>tablet': 'padding: 0 40px;',
+        '>plus&<tablet': 'padding: 0 20px;',
+        '>mobile&<plus': 'padding: 10px 30px 0;',
+        '<mobile': 'padding: 10px 25px 0;',
       })
       .getStyle()}
 `;

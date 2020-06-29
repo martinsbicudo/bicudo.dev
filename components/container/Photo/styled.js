@@ -6,20 +6,18 @@ export const StyledPhoto = styled('figure')`
   position: absolute;
   z-index: 1;
   top: 0;
-  width: 6rem;
-  height: 6rem;
   cursor: pointer;
   overflow: hidden;
   border-radius: 50%;
   transition: transform 0.1s;
   will-change: transform;
-  padding: 0.3rem;
+  padding: 3px;
   background: ${({ theme }) => `
     linear-gradient(to bottom right, ${Color(theme.COLORS[theme.COLOR]).darken(
       0.3
     )}, ${theme.COLORS[theme.COLOR]});
   `};
-  box-shadow: 0 0 2rem 0
+  box-shadow: 0 0 20px 0
     ${({ theme }) =>
       theme.TYPE === 'LIGHT'
         ? 'rgba(100, 100, 100, 0.4)'
@@ -31,16 +29,22 @@ export const StyledPhoto = styled('figure')`
         '>mobile': `
           width: 6rem;
           height: 6rem;
+        `,
+        '>mobile&<plus': `
+          transform: translate(-50%, -2.5rem);
+          &:hover { transform: translate(-50%, -2.5rem) scale(0.95); }
+        `,
+        '>plus': `
           left: 0;
-          transform: translate(-50%, -50%);
-          &:hover { transform: translate(-50%, -50%) scale(0.95); }
+          transform: translate(-2.5rem,-50%);
+          &:hover { transform: translate(-2.5rem,-50%) scale(0.95); }
         `,
         '<plus': 'left: 50%;',
         '<mobile': `
           width: 5rem;
           height: 5rem;
-          transform: translate(-50%, -40%);
-          &:hover { transform: translate(-50%, -40%) scale(0.95); }
+          transform: translate(-50%,-1.5rem);
+          &:hover { transform: translate(-50%,-1.5rem) scale(0.95); }
         `,
       })
       .getStyle()}

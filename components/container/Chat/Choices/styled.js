@@ -3,7 +3,7 @@ import { createStyledComponent as styled } from '@Utils';
 export const StyledChoices = styled('div')`
   @keyframes choices-fade {
     from {
-      transform: translateY(1rem);
+      transform: translateY(10px);
       opacity: 0;
     }
 

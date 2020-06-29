@@ -3,7 +3,7 @@ import Color from 'color';
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledDateContainer = styled('li')`
-  margin: 1rem 0 2rem;
+  margin: 10px 0 20px;
 
   ${({ theme }) =>
     theme.GRID.set()
@@ -14,8 +14,8 @@ export const StyledDateContainer = styled('li')`
 `;
 
 export const StyledDate = styled('span')`
-  padding: 0.2rem 0.75rem;
-  border-radius: 0.3rem;
+  padding: 3px 7.5px;
+  border-radius: 3px;
   font-size: 1.2rem;
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT'

@@ -10,9 +10,9 @@ export const StyledFooter = styled('footer')`
         justify: 'flex-end',
       })
       .responsive({
-        '>plus': 'padding: 0 4rem 3rem;',
-        '>mobile&<plus': 'padding: 0 3rem 2rem;',
-        '<mobile': 'padding: 0 2.5rem 2rem;',
+        '>plus': 'padding: 0 40px 30px;',
+        '>mobile&<plus': 'padding: 0 30px 20px;',
+        '<mobile': 'padding: 0 25px 20px;',
       })
       .getStyle()}
 `;

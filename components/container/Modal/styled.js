@@ -1,11 +1,5 @@
 import { createStyledComponent as styled } from '@Utils';
 
-/* margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  max-width: ${({ theme }) => `${theme.GRID.CONTAINER}rem`};
-  padding: 0 1.5rem;
- */
 export const StyledModal = styled('div')`
   position: absolute;
   top: 50%;
@@ -13,7 +7,7 @@ export const StyledModal = styled('div')`
   z-index: 1;
   transform: translate(-50%, -50%);
   height: initial;
-  max-width: ${({ theme }) => `${theme.GRID.CONTAINER - 5}rem`};
+  max-width: ${({ theme }) => `${(theme.GRID.CONTAINER - 5) * 10}px`};
 
   ${({ theme }) =>
     theme.GRID.set()
@@ -22,29 +16,29 @@ export const StyledModal = styled('div')`
         align: 'center',
       })
       .responsive({
-        '<plus': 'width: calc(100% - 10rem);',
+        '<plus': 'width: calc(100% - 100px);',
       })
       .getStyle()}
 `;
 
 export const StyledModalContent = styled('section')`
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 20px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 60rem;
-  min-width: 27.5rem;
+  max-width: 600px;
+  min-width: 275px;
   position: relative;
-  border: 0.1rem solid rgba(100, 100, 100, 0.1);
+  border: 1px solid rgba(100, 100, 100, 0.1);
   background-color: ${({ theme }) => theme.COLORS[theme.TYPE]};
-  box-shadow: 0 0 2rem 0
+  box-shadow: 0 0 20px 0
     ${({ theme }) =>
       theme.TYPE === 'LIGHT' ? 'rgba(50, 50, 50, 0.3)' : 'rgba(0, 0, 0, 0.2)'};
 
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>tablet': 'min-width: 50rem;',
-        '>plus&<tablet': 'min-width: 45rem;',
+        '>tablet': 'min-width: 500px;',
+        '>plus&<tablet': 'min-width: 450px;',
         '<plus': 'width: 100%',
       })
       .getStyle()}
@@ -55,9 +49,9 @@ export const StyledModalClose = styled('button')`
   top: 0;
   right: 0;
   transform: translate(50%, -50%);
-  border-radius: 4rem;
-  width: 3rem;
-  height: 3rem;
+  border-radius: 40px;
+  width: 30px;
+  height: 30px;
   background: inherit;
   color: inherit;
   box-shadow: inherit;

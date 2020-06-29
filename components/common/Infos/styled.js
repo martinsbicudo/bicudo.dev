@@ -11,24 +11,24 @@ export const StyledInfosTitle = styled('h1')`
   align-items: center;
   font-weight: lighter;
   font-size: 2.4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 
   svg {
-    margin-right: 1rem;
+    margin-right: 10px;
     color: ${({ theme }) => Color(theme.COLORS[theme.COLOR]).darken(0.5)};
   }
 `;
 
 export const StyledInfosList = styled('dl')`
   &:not(:last-child) {
-    padding-bottom: 4rem;
+    padding-bottom: 40px;
   }
 `;
 
 export const StyledInfosListName = styled('dt')`
   font-size: 1.6rem;
   font-weight: 400;
-  margin: 1rem 0 0.5rem;
+  margin: 10px 0 5px;
 `;
 
 export const StyledInfosListContent = styled('dd')`
@@ -40,10 +40,10 @@ export const StyledInfosItems = styled('ul')`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -0.5rem;
-  width: calc(100% + 1rem);
+  margin: 0 -5px;
+  width: calc(100% + 10px);
 `;
 
 export const StyledInfosItemsItem = styled('li')`
-  padding: 0.5rem;
+  padding: 5px;
 `;

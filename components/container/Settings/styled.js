@@ -14,7 +14,7 @@ export const StyledSettingsButton = styled('button')`
   right: 0;
   width: 4.5rem;
   height: 4.5rem;
-  box-shadow: 0 0 0.5rem 0.1rem rgba(100, 100, 100, 0.2);
+  box-shadow: 0 0 5px 1px rgba(100, 100, 100, 0.2);
   background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
   cursor: pointer;
 
@@ -32,7 +32,7 @@ export const StyledSettingsButton = styled('button')`
 `;
 
 export const StyledSettingsOpenButton = styled(StyledSettingsButton)`
-  border-radius: 1rem;
+  border-radius: 10px;
   z-index: 2;
   font-size: 3.6rem;
 
@@ -52,11 +52,11 @@ export const StyledSettingsOpenButton = styled(StyledSettingsButton)`
 `;
 
 export const StyledSettingsItemButton = styled(StyledSettingsButton)`
-  border-radius: 4rem;
+  border-radius: 40px;
   font-size: 2.2rem;
   z-index: 1;
-  box-shadow: 0 0 2rem rgba(100, 100, 100, 0.3);
-  border: 0.5rem solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.3);
+  border: 5px solid rgba(255, 255, 255, 0.5);
 `;
 
 export const StyledSettingsList = styled('ul')`

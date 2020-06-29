@@ -5,10 +5,11 @@ import { createStyledComponent as styled } from '@Utils';
 export const StyledDisplay = styled('div')``;
 
 export const StyledDisplayTitle = styled('h1')`
+  max-width: 100%;
   text-align: center;
   margin: 0 auto;
-  padding: 0.3rem 1rem;
-  border-radius: 0.3rem;
+  padding: 3px 10px;
+  border-radius: 3px;
   background-color: rgba(150, 150, 150, 0.1);
   width: max-content;
   color: ${({ theme }) => Color(theme.COLORS[theme.COLOR]).darken(0.3)};
@@ -17,7 +18,8 @@ export const StyledDisplayTitle = styled('h1')`
     theme.GRID.set()
       .responsive({
         '>plus': 'font-size: 1.8rem;',
-        '<plus': 'font-size: 1.6rem;',
+        '>mobile&<plus': 'font-size: 1.6rem;',
+        '<mobile': 'font-size: 1.4rem;',
       })
       .getStyle()}
 `;
@@ -27,8 +29,8 @@ export const StyledDisplayDescription = styled('p')`
   opacity: 0.6;
   text-align: center;
   width: 100%;
-  max-width: 30rem;
-  margin: 0.5rem auto 2rem;
+  max-width: 300px;
+  margin: 5px auto 20px;
 
   svg {
     font-size: 1.6rem;
@@ -38,7 +40,7 @@ export const StyledDisplayDescription = styled('p')`
 
 export const StyledDisplaySubtitle = styled('h2')`
   font-size: 1rem;
-  margin: 0 0 0.5rem 0.5rem;
+  margin: 0 0 5px 5px;
   opacity: 0.6;
 `;
 
@@ -47,12 +49,12 @@ export const StyledDisplayList = styled('ul')`
 `;
 
 export const StyledDisplayItem = styled('li')`
-  padding: 1rem 0;
+  padding: 10px 0;
 `;
 
 export const StyledDisplayButtons = styled('div')`
   background-color: rgba(150, 150, 150, 0.1);
-  border-radius: 0.5rem;
+  border-radius: 5px;
 
   ${({ theme }) =>
     theme.GRID.set()
@@ -68,9 +70,9 @@ export const StyledDisplayButton = styled('button', [
   'color',
   'active',
 ])`
-  margin: 1rem;
+  margin: 10px;
   cursor: pointer;
-  border: 0.1rem solid rgba(150, 150, 150, 0.1);
+  border: 1px solid rgba(150, 150, 150, 0.1);
   transition: opacity 0.2s;
   will-change: opacity;
   color: ${({ theme, type, color }) =>
@@ -81,7 +83,7 @@ export const StyledDisplayButton = styled('button', [
   ${({ theme, type, color, active }) =>
     active
       ? `
-        box-shadow: 0 0 0.1rem 0.4rem ${Color(
+        box-shadow: 0 0 1px 4px ${Color(
           theme.COLORS[type || color || theme.COLOR]
         ).lighten(0.15)}};`
       : `
@@ -106,23 +108,23 @@ export const StyledDisplayButton = styled('button', [
 export const StyledDisplayTypeButton = styled(StyledDisplayButton)`
   flex: 1;
   border-radius: inherit;
-  height: 6rem;
+  height: 60px;
   background-color: ${({ theme, type }) => theme.COLORS[type]};
 `;
 
 export const StyledDisplayColorButton = styled(StyledDisplayButton)`
-  border-radius: 6rem;
-  min-width: 6rem;
-  height: 6rem;
+  border-radius: 60px;
+  min-width: 60px;
+  height: 60px;
   background-color: ${({ theme, color }) => theme.COLORS[color]};
 `;
 
 export const StyledDisplayFontSizeButton = styled(StyledDisplayButton)`
   flex: 1;
-  height: 3rem;
+  height: 30px;
   font-size: 1.2rem;
   border-radius: inherit;
-  padding: 0 0.5rem;
+  padding: 0 5px;
   background-color: ${({ theme, active }) =>
     active
       ? theme.COLORS[theme.COLOR]

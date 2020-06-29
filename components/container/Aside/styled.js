@@ -4,14 +4,14 @@ import { Infos } from '@Common';
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledAside = styled('aside')`
-  min-width: 22.5rem;
+  min-width: 225px;
   grid-area: aside;
 
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>desktop': 'padding: 4rem 2rem 2rem 3rem;',
-        '>tablet&<desktop': `padding: 3rem 2rem 2rem 1rem;`,
+        '>desktop': 'padding: 40px 20px 20px 30px;',
+        '>tablet&<desktop': `padding: 30px 20px 20px 10px;`,
         '<tablet': `
         display: none;
       `,
@@ -20,23 +20,23 @@ export const StyledAside = styled('aside')`
 `;
 
 export const StyledAsideInfos = styled(Infos)`
-  padding: 2rem 0;
+  padding: 20px 0;
   overflow: hidden;
 `;
 
 export const StyledAsideRepository = styled('a')`
-  margin-left: 1rem;
+  margin-left: 10px;
   font-size: 1rem;
-  padding: 0.2rem 0.5rem;
+  padding: 2px 5px;
   background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
   color: ${({ theme }) => theme.COLORS.BLACK};
-  border-radius: 0.3rem;
+  border-radius: 3px;
   align-self: baseline;
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s;
   will-change: background-color;
-  transform: rotate(5deg) translate(-3rem, -1rem);
+  transform: rotate(5deg) translate(-30px, -10px);
   font-weight: bolder;
 
   &:not(:hover) {
@@ -46,7 +46,7 @@ export const StyledAsideRepository = styled('a')`
 `;
 
 export const StyledAsideLinkItem = styled('a')`
-  border: 0.1rem solid transparent;
+  border: 1px solid transparent;
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT'
       ? Color(theme.COLORS[theme.COLOR]).fade(0.9)
@@ -76,14 +76,14 @@ export const StyledAsideSocialItem = styled(StyledAsideLinkItem)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   font-size: 1.6rem;
 `;
 
 export const StyledAsideStackItem = styled(StyledAsideLinkItem)`
-  border-radius: 0.3rem;
-  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  padding: 2px 5px;
   font-size: 1.2rem;
 `;
