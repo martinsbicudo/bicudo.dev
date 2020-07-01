@@ -1,17 +1,31 @@
 import React from 'react';
+import { renderToString } from 'react-dom/server';
 
 import camelcase from 'camelcase';
 import { string } from 'prop-types';
+import readingTime from 'reading-time';
+import stripHtml from 'string-strip-html';
 
 import * as posts from '@Conf/posts';
 
 function Post({ pid }) {
-  function renderPost() {
-    const Component = posts[camelcase(pid)];
-    return <Component />;
+  const PostComponent = posts[camelcase(pid)];
+  const Component = <PostComponent />;
+
+  function getReadTime() {
+    const postHtmlString = renderToString(Component);
+    const postString = stripHtml(postHtmlString);
+    const { text } = readingTime(postString);
+
+    return text.replace('read', 'de leitura');
   }
 
-  return renderPost();
+  return (
+    <>
+      {getReadTime()}
+      {Component};
+    </>
+  );
 }
 
 Post.propTypes = {
