@@ -8,8 +8,10 @@ import stripHtml from 'string-strip-html';
 
 import * as posts from '@Conf/posts';
 
+import { StyledPostReadTime } from './styled';
+
 function Post({ pid }) {
-  const PostComponent = posts[camelcase(pid)];
+  const { meta, default: PostComponent } = posts[camelcase(pid)];
   const Component = <PostComponent />;
 
   function getReadTime() {
@@ -22,8 +24,10 @@ function Post({ pid }) {
 
   return (
     <>
-      {getReadTime()}
-      {Component};
+      <StyledPostReadTime>{getReadTime()}</StyledPostReadTime>
+      <p>{meta.publishDate}</p>
+      <h1>{meta.title}</h1>
+      {Component}
     </>
   );
 }

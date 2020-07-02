@@ -1,1 +1,3 @@
-export { default as oBicudo } from '~/posts/o-bicudo.mdx';
+import * as oBicudo from '~/posts/o-bicudo.mdx';
+
+export { oBicudo };

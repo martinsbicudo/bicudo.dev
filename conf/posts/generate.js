@@ -20,16 +20,21 @@ function getPath(file) {
 
 async function getContent() {
   const files = await glob.sync(`${folder}/*${ext}`);
-  const content = files.reduceRight(
+  const imports = files.reduceRight(
     (currentImports, file) =>
-      // Indentation needs to be like this because of the eslint
-      // eslint-disable-next-line prettier/prettier
-`export { default as ${camelcase(getPID(file))} } from '~/${file}';
+      `import * as ${camelcase(getPID(file))} from '~/${file}';
+${currentImports}`,
+    ''
+  );
+  const exports = files.reduceRight(
+    (currentImports, file) =>
+      `export { ${camelcase(getPID(file))} };
 ${currentImports}`,
     ''
   );
 
-  return content;
+  return `${imports}
+${exports}`;
 }
 
 async function writePostsJS() {

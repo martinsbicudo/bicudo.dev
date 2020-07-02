@@ -6,6 +6,7 @@
     "dev": "yarn posts:watch & next dev",
     "build": "next build",
     "start": "next start",
+    "posts:create": "node ./conf/posts/create",
     "posts:generate": "node ./conf/posts/build",
     "posts:watch": "WATCH_POSTS=true yarn posts:generate"
   },
