@@ -6,19 +6,14 @@ export const StyledMessages = styled('ul')`
   flex-direction: column;
   list-style: none;
   width: 100%;
+  padding: 0 10px;
 
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>plus': 'padding: 15px;',
-        '>mobile&<plus': `
-          padding: 0 15px;
-          margin-top: 2.5rem;
-        `,
-        '<mobile': `
-          padding: 0 10px;
-          margin-top: 2.5rem;
-        `,
+        '>plus': 'margin-top: 1rem',
+        '>mobile&<plus': 'margin-top: 3rem;',
+        '<mobile': 'margin-top: 2.5rem;',
       })
       .getStyle()}
 `;

@@ -31,20 +31,20 @@ export const StyledPhoto = styled('figure')`
           height: 6rem;
         `,
         '>mobile&<plus': `
-          transform: translate(-50%, -2.5rem);
-          &:hover { transform: translate(-50%, -2.5rem) scale(0.95); }
+          transform: translate(-50%, -1.75rem);
+          &:hover { transform: translate(-50%, -1.75rem) scale(0.95); }
         `,
         '>plus': `
           left: 0;
-          transform: translate(-2.5rem,-50%);
-          &:hover { transform: translate(-2.5rem,-50%) scale(0.95); }
+          transform: translate(-2rem,-40%);
+          &:hover { transform: translate(-2rem,-40%) scale(0.95); }
         `,
         '<plus': 'left: 50%;',
         '<mobile': `
           width: 5rem;
           height: 5rem;
-          transform: translate(-50%,-1.5rem);
-          &:hover { transform: translate(-50%,-1.5rem) scale(0.95); }
+          transform: translate(-50%,-1.25rem);
+          &:hover { transform: translate(-50%,-1.25rem) scale(0.95); }
         `,
       })
       .getStyle()}

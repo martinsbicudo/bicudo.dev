@@ -10,11 +10,9 @@ export const StyledAside = styled('aside')`
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>desktop': 'padding: 40px 20px 20px 30px;',
-        '>tablet&<desktop': `padding: 30px 20px 20px 10px;`,
-        '<tablet': `
-        display: none;
-      `,
+        '>desktop': 'padding: 30px 20px 20px 15px;',
+        '>tablet&<desktop': `padding: 25px 20px 20px 10px;`,
+        '<tablet': 'display: none;',
       })
       .getStyle()}
 `;

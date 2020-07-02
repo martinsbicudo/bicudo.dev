@@ -45,8 +45,8 @@ export const StyledSettingsOpenButton = styled(StyledSettingsButton)`
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>mobile': 'transform: translate(30%, 30%);',
-        '<mobile': 'transform: translate(20%, 30%);',
+        '>mobile': 'transform: translate(25%, 30%);',
+        '<mobile': 'transform: translate(15%,25%);',
       })
       .getStyle()};
 `;

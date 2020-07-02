@@ -5,5 +5,5 @@ export const StyledContainer = styled('div')`
   width: 100%;
   height: 100%;
   max-width: ${({ theme }) => `${theme.GRID.CONTAINER * 10}px`};
-  padding: 0 15px;
+  padding: 0 10px;
 `;

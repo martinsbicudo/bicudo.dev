@@ -3,7 +3,10 @@ import Color from 'color';
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledLink = styled('a')`
-  color: ${({ theme }) => Color(theme.COLORS[theme.COLOR]).darken(0.5)};
+  color: ${({ theme }) =>
+    theme.TYPE === 'LIGHT'
+      ? Color(theme.COLORS[theme.COLOR]).darken(0.5)
+      : Color(theme.COLORS[theme.COLOR]).lighten(0.1)};
   position: relative;
   cursor: pointer;
   text-decoration: none;

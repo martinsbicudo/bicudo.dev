@@ -4,10 +4,10 @@ export const StyledMainContent = styled('div')`
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '<plus': 'padding-top: 4rem;',
-        '>plus&<tablet': 'padding-top: 3.5rem;',
-        '>tablet&<desktop': 'margin-top: 5rem;',
-        '>desktop': 'margin-top: 6rem;',
+        '<plus': 'padding: 2rem 10px 0;',
+        '>plus&<tablet': 'padding-top: 2.5rem;',
+        '>tablet&<desktop': 'margin-top: 4rem;',
+        '>desktop': 'margin-top: 5rem;',
       })
       .getStyle()}
 `;

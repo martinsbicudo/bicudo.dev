@@ -11,9 +11,8 @@ export const StyledMain = styled('main')`
       })
       .responsive({
         '>tablet': 'padding: 0 40px;',
-        '>plus&<tablet': 'padding: 0 20px;',
-        '>mobile&<plus': 'padding: 10px 30px 0;',
-        '<mobile': 'padding: 10px 25px 0;',
+        '>mobile&<plus': 'padding: 15px 10px 0;',
+        '<mobile': 'padding: 10px 5px 0;',
       })
       .getStyle()}
 `;

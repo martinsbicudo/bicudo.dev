@@ -9,8 +9,8 @@ import { GlobalStyle, theme } from '@Conf/styles';
 function ThemeProvider({ children }) {
   const [maxHeight, setMaxHeight] = useState(null);
   const [config, setConfig] = useState({
-    TYPE: 'LIGHT',
-    COLOR: 'THIRDY',
+    TYPE: 'DARK',
+    COLOR: 'PRIMARY',
     FONT_SIZE: 1,
   });
 

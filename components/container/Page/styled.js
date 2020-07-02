@@ -7,9 +7,9 @@ export const StyledPage = styled('div')`
   ${({ theme }) =>
     theme.GRID.set()
       .responsive({
-        '>plus': 'padding: 40px 20px;',
-        '>mobile&<plus': 'padding: 30px 10px;',
-        '<mobile': 'padding: 20px 0;',
+        '>plus': 'padding: 30px 15px;',
+        '>mobile&<plus': 'padding: 20px 5px;',
+        '<mobile': 'padding: 15px 0;',
       })
       .getStyle()}
 `;
