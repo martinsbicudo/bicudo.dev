@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { useEvent } from 'react-use';
+import {
+  useEvent,
+  useLocalStorage,
+  useUpdateEffect,
+  useEffectOnce,
+} from 'react-use';
 
 import { node } from 'prop-types';
 import { ThemeProvider as StyledProvider } from 'styled-components';
@@ -13,6 +18,18 @@ function ThemeProvider({ children }) {
     COLOR: 'PRIMARY',
     FONT_SIZE: 1,
   });
+  const [configStorage, setConfigStorage] = useLocalStorage(
+    'bicudo.theme',
+    config
+  );
+
+  useEffectOnce(() => {
+    setConfig(configStorage);
+  });
+
+  useUpdateEffect(() => {
+    setConfigStorage(config);
+  }, [config]);
 
   function setTheme(values) {
     setConfig((currentConfig) => ({
