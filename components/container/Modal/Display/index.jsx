@@ -19,32 +19,22 @@ import {
 function Display() {
   const {
     TYPE,
+    TYPES,
     COLOR,
     FONT_SIZE,
-    COLORS,
-    TYPOGRAPHY,
-    HELPERS: { setType, setColor, setFontSize },
+    FONT_SIZES,
+    COLORS_THEME,
+    HELPERS: { setType, setColor, setFontSize, getFontSizeFromKey },
   } = useTheme();
-  const typesKeys = ['DARK', 'LIGHT'];
-  const extraColorsKeys = ['WHITE', 'BLACK'];
-  const sizesText = ['SMALL', 'NORMAL', 'MIDDLE', 'LARGE'];
-
-  function getTypes() {
-    return Object.keys(COLORS).filter((key) => typesKeys.includes(key));
-  }
-
-  function getColors() {
-    return Object.keys(COLORS).filter(
-      (key) => ![...typesKeys, ...extraColorsKeys].includes(key)
-    );
-  }
-
-  function getFontSizes() {
-    return Object.values(TYPOGRAPHY).filter((value, i) => i < 4);
-  }
+  const [types, colors, fontSizes] = [
+    TYPES,
+    COLORS_THEME,
+    FONT_SIZES,
+  ].map((values) => Object.keys(values));
 
   function isActive(values) {
-    if (values.fontSize) return values.fontSize === FONT_SIZE;
+    if (values.fontSize)
+      return getFontSizeFromKey(values.fontSize) === FONT_SIZE;
 
     return values.type ? values.type === TYPE : values.color === COLOR;
   }
@@ -65,7 +55,7 @@ function Display() {
         <StyledDisplayItem>
           <StyledDisplaySubtitle>COR DE FUNDO</StyledDisplaySubtitle>
           <StyledDisplayButtons>
-            {getTypes().map((type) => (
+            {types.map((type) => (
               <StyledDisplayTypeButton
                 key={type}
                 type={type}
@@ -80,7 +70,7 @@ function Display() {
         <StyledDisplayItem>
           <StyledDisplaySubtitle>COR PADRÃO</StyledDisplaySubtitle>
           <StyledDisplayButtons>
-            {getColors().map((color) => (
+            {colors.map((color) => (
               <StyledDisplayColorButton
                 key={color}
                 color={color}
@@ -95,14 +85,14 @@ function Display() {
         <StyledDisplayItem>
           <StyledDisplaySubtitle>TAMANHO DA FONTE</StyledDisplaySubtitle>
           <StyledDisplayButtons>
-            {getFontSizes().map((fontSize, i) => (
+            {fontSizes.map((fontSize) => (
               <StyledDisplayFontSizeButton
                 key={fontSize}
                 size={fontSize}
                 active={isActive({ fontSize })}
                 onClick={() => setFontSize(fontSize)}
               >
-                {sizesText[i]}
+                {fontSize}
               </StyledDisplayFontSizeButton>
             ))}
           </StyledDisplayButtons>

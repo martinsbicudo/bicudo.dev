@@ -4779,6 +4779,13 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
 
+key-events@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/key-events/-/key-events-0.1.1.tgz#6a92df990634a14e09c592c9a75896f915a35706"
+  integrity sha512-lul8mgZxA4BKvo0+t1L80s/8qk3A2vFFBwpVjyTCRzLl8RrZDF68WjjTzW6tkGcZCt6fm8zXRAW628C11xsBAA==
+  dependencies:
+    vkey "^1.0.1"
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -8540,6 +8547,11 @@ vfile@^4.0.0:
     replace-ext "1.0.0"
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
+
+vkey@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vkey/-/vkey-1.0.1.tgz#71c56acb759e80321c95d616c2b7fc55059181c0"
+  integrity sha1-ccVqy3WegDIcldYWwrf8VQWRgcA=
 
 vm-browserify@^1.0.1:
   version "1.1.2"

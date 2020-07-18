@@ -10,6 +10,7 @@ import { node } from 'prop-types';
 import { ThemeProvider as StyledProvider } from 'styled-components';
 
 import { GlobalStyle, theme } from '@Conf/styles';
+import { useShortcuts } from '@Hook';
 
 function ThemeProvider({ children }) {
   const [maxHeight, setMaxHeight] = useState(null);
@@ -57,14 +58,59 @@ function ThemeProvider({ children }) {
     setMaxHeight(height);
   });
 
+  function getFontSizeFromKey(FONT_SIZE) {
+    const [syzes, typographies] = [
+      theme.FONT_SIZES,
+      theme.TYPOGRAPHY,
+    ].map((values) => Object.values(values));
+    const fontSizeIndex = syzes.indexOf(FONT_SIZE);
+
+    return typographies[fontSizeIndex];
+  }
+
+  const HELPERS = {
+    setType: (TYPE) => setTheme({ TYPE }),
+    setColor: (COLOR) => setTheme({ COLOR }),
+    setFontSize: (FONT_SIZE) =>
+      setTheme({
+        FONT_SIZE:
+          typeof FONT_SIZE === 'string'
+            ? getFontSizeFromKey(FONT_SIZE)
+            : FONT_SIZE,
+      }),
+    getFontSizeFromKey,
+  };
+
+  function getShortcuts() {
+    const [types, colors, sizes] = [
+      theme.TYPES,
+      theme.COLORS_THEME,
+      theme.FONT_SIZES,
+    ].map((values) => Object.keys(values));
+
+    function createShortcutes(values, action) {
+      return values.reduce(
+        (currentValues, value) => ({
+          ...currentValues,
+          [value]: () => action(value),
+        }),
+        {}
+      );
+    }
+
+    return {
+      ...createShortcutes(types, HELPERS.setType),
+      ...createShortcutes(colors, HELPERS.setColor),
+      ...createShortcutes(sizes, HELPERS.setFontSize),
+    };
+  }
+
+  useShortcuts(getShortcuts());
+
   const value = {
     ...config,
     ...theme,
-    HELPERS: {
-      setType: (TYPE) => setTheme({ TYPE }),
-      setColor: (COLOR) => setTheme({ COLOR }),
-      setFontSize: (FONT_SIZE) => setTheme({ FONT_SIZE }),
-    },
+    HELPERS,
   };
 
   return (
