@@ -1,23 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useUpdateEffect } from 'react-use';
 
 import keyevents from 'key-events';
 
-export default function useShortcuts(shortcuts) {
-  const [pressedKeys, setPressedKeys] = useState('');
+import { shortcuts } from '~/store/action';
+
+export default function useShortcuts() {
+  const dispatch = useDispatch();
+  const { pressedKeys } = useSelector((state) => state.shortcuts);
 
   function addPressedKeys(key) {
-    return setPressedKeys((currentKeys) => `${currentKeys}${key}`);
+    return dispatch(shortcuts.addPressedKeys(key));
   }
 
-  useEffect(() => {
+  function startVerifyPressedKeys() {
     const keys = keyevents();
-    keys.on('keydown', addPressedKeys);
-  }, []);
+    return keys.on('keydown', addPressedKeys);
+  }
+
+  function addShortcuts(events) {
+    return dispatch(shortcuts.addShortcuts(events));
+  }
 
   useUpdateEffect(() => {
-    Object.entries(shortcuts).forEach(([shortcut, event]) => {
-      pressedKeys.endsWith(shortcut) && event();
-    });
+    dispatch(shortcuts.verifyShortcuts());
   }, [pressedKeys]);
+
+  return {
+    startVerifyPressedKeys,
+    addPressedKeys,
+    addShortcuts,
+  };
 }

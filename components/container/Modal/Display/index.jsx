@@ -24,7 +24,7 @@ function Display() {
     FONT_SIZE,
     FONT_SIZES,
     COLORS_THEME,
-    HELPERS: { setType, setColor, setFontSize, getFontSizeFromKey },
+    HELPERS: { setType, setColor, setFontSize, getFontSizeFromType },
   } = useTheme();
   const [types, colors, fontSizes] = [
     TYPES,
@@ -34,7 +34,7 @@ function Display() {
 
   function isActive(values) {
     if (values.fontSize)
-      return getFontSizeFromKey(values.fontSize) === FONT_SIZE;
+      return getFontSizeFromType(values.fontSize) === FONT_SIZE;
 
     return values.type ? values.type === TYPE : values.color === COLOR;
   }

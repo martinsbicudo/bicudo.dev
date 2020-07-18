@@ -2,6 +2,8 @@ import React from 'react';
 
 import { func, string, number, oneOfType, objectOf } from 'prop-types';
 
+import { wrapper } from '~/store';
+
 import { GlobalProvider } from '@Context';
 
 function App({ Component, pageProps }) {
@@ -17,4 +19,4 @@ App.propTypes = {
   pageProps: objectOf(oneOfType([func, string, number])).isRequired,
 };
 
-export default App;
+export default wrapper.withRedux(App);

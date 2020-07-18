@@ -12,8 +12,8 @@ import { useHistory } from '@Hook';
 
 export default (Component) => {
   function WithError({ statusCode, pid, sid, ...props }) {
-    const [, prevHistory] = useHistory();
     const { pathname } = useRouter();
+    const [, prevHistory] = useHistory();
 
     function settingsExist() {
       const prevPid = prevHistory?.query?.sid ?? '';
