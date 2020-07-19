@@ -2,7 +2,7 @@ import constants from '@Conf/constants';
 
 import Router from 'next/router';
 
-import { Link } from '@Common';
+import Link from '@Common/Link';
 
 const { BICUDO } = constants;
 
