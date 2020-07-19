@@ -15,7 +15,7 @@ export const verifyShortcuts = () => (...[, getState]) => {
     shortcuts: { pressedKeys, events },
   } = getState();
 
-  Object.entries(events).forEach(([shortcut, event]) => {
+  Object.entries(events).forEach(([shortcut, { event }]) => {
     pressedKeys.endsWith(shortcut) && event();
   });
 

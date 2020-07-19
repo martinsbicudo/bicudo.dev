@@ -10,22 +10,37 @@ import { getThemeShortcuts } from '@Utils';
 import { StyledPage, StyledPageContent } from './styled';
 
 function Box({ children }) {
-  const { startVerifyPressedKeys, addShortcuts } = useShortcuts();
+  const { addShortcuts } = useShortcuts();
   const themeShortcuts = getThemeShortcuts();
 
   const pageShortcuts = {
-    BICUDO: () => {
-      const pathname = '/blog/o-bicudo';
-      return Router.asPath !== pathname && Router.push('/blog/[pid]', pathname);
+    BICUDO: {
+      description: (
+        <p>
+          Abre a página de apresentação do <strong data-label>bicudo</strong>
+        </p>
+      ),
+      event() {
+        const pathname = '/blog/o-bicudo';
+        return (
+          Router.asPath !== pathname && Router.push('/blog/[pid]', pathname)
+        );
+      },
     },
-    POSTS: () => {
-      const pathname = '/blog';
-      return Router.asPath !== pathname && Router.push(pathname);
+    POSTS: {
+      description: (
+        <p>
+          Abre a página de <strong data-label>posts</strong>
+        </p>
+      ),
+      event() {
+        const pathname = '/blog';
+        return Router.asPath !== pathname && Router.push(pathname);
+      },
     },
   };
 
   useEffect(() => {
-    startVerifyPressedKeys();
     addShortcuts({
       ...themeShortcuts,
       ...pageShortcuts,
