@@ -8,7 +8,7 @@ import stripHtml from 'string-strip-html';
 
 import * as posts from '@Conf/posts';
 
-import { StyledPostReadTime } from './styled';
+import { StyledPostReadTime, StyledPostTitle, StyledPostDate } from './styled';
 
 function Post({ pid }) {
   const { meta, default: PostComponent } = posts[camelcase(pid)];
@@ -25,8 +25,8 @@ function Post({ pid }) {
   return (
     <>
       <StyledPostReadTime>{getReadTime()}</StyledPostReadTime>
-      <p>{meta.publishDate}</p>
-      <h1>{meta.title}</h1>
+      <StyledPostDate>{meta.publishDate}</StyledPostDate>
+      <StyledPostTitle>{meta.title}</StyledPostTitle>
       {Component}
     </>
   );

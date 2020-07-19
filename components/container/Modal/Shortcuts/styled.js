@@ -64,7 +64,7 @@ export const StyledShortcutsCommands = styled('dl', ['amount'])`
   ${({ theme, amount }) =>
     theme.GRID.set()
       .responsive({
-        '<plus': 'height: 80vh;',
+        '<plus': 'height: 60vh;',
         '>plus': `height: ${3.6 * amount}rem;`,
       })
       .getStyle()}

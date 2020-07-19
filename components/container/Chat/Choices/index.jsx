@@ -1,6 +1,8 @@
 import React from 'react';
 import reactToString from 'react-to-string';
 
+import isFunction from 'is-function';
+
 import { Choice } from '@Common';
 import { useRobot } from '@Hook';
 
@@ -13,7 +15,7 @@ function Choices() {
     const currentMessages = [...messages];
     const [{ choices = [] } = {}] = currentMessages.reverse();
 
-    return choices;
+    return isFunction(choices) ? choices() : choices;
   }
 
   async function handleSetMessage(message) {

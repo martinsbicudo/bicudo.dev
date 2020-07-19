@@ -1,6 +1,4 @@
-import bicudo from './bicudo';
-import blog from './blog';
-import contato from './contato';
+import initialChoices from './initial-choices';
 
 export default [
   <p key="first-message">
@@ -10,26 +8,6 @@ export default [
   </p>,
   {
     message: 'Como posso ajuda-lo?',
-    choices: [
-      {
-        message: (
-          <p>
-            Quero saber sobre o{' '}
-            <strong>
-              <i>Blog</i>
-            </strong>
-          </p>
-        ),
-        answer: blog,
-      },
-      {
-        message: 'Quero entrar em contato',
-        answer: contato,
-      },
-      {
-        message: 'Quero saber mais sobre o Bicudo',
-        answer: bicudo,
-      },
-    ],
+    choices: initialChoices,
   },
 ];

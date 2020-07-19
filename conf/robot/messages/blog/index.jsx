@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   message: 'Sobre o blog???????',
   choices: [
     {
@@ -14,4 +14,4 @@ export default {
       },
     },
   ],
-};
+});
