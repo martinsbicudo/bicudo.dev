@@ -26,8 +26,6 @@ export const StyledAsideRepository = styled('a')`
   margin-left: 10px;
   font-size: 1rem;
   padding: 2px 5px;
-  background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
-  color: ${({ theme }) => theme.COLORS.BLACK};
   border-radius: 3px;
   align-self: baseline;
   cursor: pointer;
@@ -36,6 +34,8 @@ export const StyledAsideRepository = styled('a')`
   will-change: background-color;
   transform: rotate(5deg) translate(-30px, -10px);
   font-weight: bolder;
+  background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
+  color: ${({ theme }) => theme.COLORS.BLACK};
 
   &:not(:hover) {
     background-color: ${({ theme }) =>
@@ -45,6 +45,10 @@ export const StyledAsideRepository = styled('a')`
 
 export const StyledAsideLinkItem = styled('a')`
   border: 1px solid transparent;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  will-change: border-color, color;
+  font-weight: 600;
   background-color: ${({ theme }) =>
     theme.TYPE === 'LIGHT'
       ? Color(theme.COLORS[theme.COLOR]).fade(0.9)
@@ -53,10 +57,6 @@ export const StyledAsideLinkItem = styled('a')`
     theme.TYPE === 'LIGHT'
       ? Color(theme.COLORS[theme.COLOR]).darken(0.5)
       : theme.COLORS[theme.COLOR]};
-  text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
-  will-change: border-color, color;
-  font-weight: 600;
 
   strong {
     display: none;
@@ -71,13 +71,18 @@ export const StyledAsideLinkItem = styled('a')`
 `;
 
 export const StyledAsideSocialItem = styled(StyledAsideLinkItem)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   font-size: 1.6rem;
+
+  ${({ theme }) =>
+    theme.GRID.set()
+      .flex({
+        justify: 'center',
+        align: 'center',
+      })
+      .getStyle()}
 `;
 
 export const StyledAsideStackItem = styled(StyledAsideLinkItem)`

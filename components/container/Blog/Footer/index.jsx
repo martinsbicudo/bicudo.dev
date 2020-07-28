@@ -1,15 +1,29 @@
 import React from 'react';
 
-import { node } from 'prop-types';
+import { string } from 'prop-types';
 
-import { Footer as FooterCommon } from '@Common';
+import { Footer as FooterCommon, Link } from '@Common';
 
-function Footer({ children }) {
-  return <FooterCommon>{children}</FooterCommon>;
+function Footer({ pid }) {
+  function renderFooter() {
+    return (
+      <FooterCommon>
+        <Link href="/blog/[pid]/comments" as={`/blog/${pid}/comments`}>
+          Comentários
+        </Link>
+      </FooterCommon>
+    );
+  }
+
+  return pid ? renderFooter() : null;
 }
 
 Footer.propTypes = {
-  children: node.isRequired,
+  pid: string,
+};
+
+Footer.defaultProps = {
+  pid: undefined,
 };
 
 export default Footer;

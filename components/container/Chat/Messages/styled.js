@@ -2,14 +2,15 @@ import { Message } from '@Common';
 import { createStyledComponent as styled } from '@Utils';
 
 export const StyledMessages = styled('ul')`
-  display: flex;
-  flex-direction: column;
   list-style: none;
   width: 100%;
   padding: 0 10px;
 
   ${({ theme }) =>
     theme.GRID.set()
+      .flex({
+        column: true,
+      })
       .responsive({
         '>plus': 'margin-top: 1rem',
         '>mobile&<plus': 'margin-top: 3rem;',

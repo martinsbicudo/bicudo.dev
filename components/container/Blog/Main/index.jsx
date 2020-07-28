@@ -1,21 +1,32 @@
 import React from 'react';
 
-import { node } from 'prop-types';
+import { string } from 'prop-types';
 
 import { Main as MainCommon } from '@Common';
 
+import List from '../List';
+import Post from '../Post';
 import { StyledMainContent } from './styled';
 
-function Main({ children }) {
+function Main({ pid }) {
+  function renderContent() {
+    if (pid) return <Post pid={pid} />;
+    return <List />;
+  }
+
   return (
     <MainCommon>
-      <StyledMainContent>{children}</StyledMainContent>
+      <StyledMainContent>{renderContent()}</StyledMainContent>
     </MainCommon>
   );
 }
 
 Main.propTypes = {
-  children: node.isRequired,
+  pid: string,
+};
+
+Main.defaultProps = {
+  pid: undefined,
 };
 
 export default Main;

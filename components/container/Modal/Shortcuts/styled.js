@@ -71,7 +71,6 @@ export const StyledShortcutsCommands = styled('dl', ['amount'])`
 `;
 
 export const StyledShortcutsItem = styled('dl')`
-  display: flex;
   font-size: 1.4rem;
   margin: 3px;
   padding: 6px;
@@ -82,6 +81,7 @@ export const StyledShortcutsItem = styled('dl')`
 
   ${({ theme }) =>
     theme.GRID.set()
+      .flex()
       .responsive({
         '<plus': `
           flex-direction: column;
@@ -93,9 +93,6 @@ export const StyledShortcutsItem = styled('dl')`
 `;
 
 export const StyledShortcutsCommand = styled('dt')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-width: 100px;
   font-weight: bolder;
   padding: 4px;
@@ -107,6 +104,10 @@ export const StyledShortcutsCommand = styled('dt')`
 
   ${({ theme }) =>
     theme.GRID.set()
+      .flex({
+        justify: 'center',
+        align: 'center',
+      })
       .responsive({
         '>plus': 'margin-right: 6px;',
         '<plus': 'margin-bottom: 6px;',

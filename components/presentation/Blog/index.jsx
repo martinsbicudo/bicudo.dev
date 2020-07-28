@@ -8,10 +8,8 @@ import { withError } from '@Hoc';
 function Blog({ pid, sid }) {
   return (
     <Layout sid={sid}>
-      <BlogContainer.Main>
-        {pid ? <BlogContainer.Post pid={pid} /> : 'LISTA MAROTA'}
-      </BlogContainer.Main>
-      <BlogContainer.Footer>footer</BlogContainer.Footer>
+      <BlogContainer.Main pid={pid} />
+      <BlogContainer.Footer pid={pid} />
     </Layout>
   );
 }

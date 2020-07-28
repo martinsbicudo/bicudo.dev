@@ -10,17 +10,21 @@ function getResponsivePadding({ theme }) {
 
 export const StyledPostReadTime = styled('span')`
   ${getResponsivePadding}
-  display: inline-block;
-  padding: 1px 3px;
-  border-radius: 2px;
   margin-bottom: 5px;
-  background-color: ${({ theme }) => theme.COLORS[theme.COLOR]};
-  color: ${({ theme }) => theme.COLORS.DARK};
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.COLORS[theme.COLOR]};
+
+  svg {
+    margin-right: 5px;
+    font-size: 1.6em;
+  }
+
+  ${({ theme }) => theme.GRID.set().flex({ align: 'center' }).getStyle()}
 `;
 
 export const StyledPostDate = styled('p')`
   ${getResponsivePadding}
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 `;
 
 export const StyledPostTitle = styled('h1')`

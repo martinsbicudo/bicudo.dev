@@ -7,11 +7,16 @@ export const StyledInfos = styled('div')`
 `;
 
 export const StyledInfosTitle = styled('h1')`
-  display: flex;
-  align-items: center;
   font-weight: lighter;
   font-size: 2.4rem;
   margin-bottom: 20px;
+
+  ${({ theme }) =>
+    theme.GRID.set()
+      .flex({
+        align: 'center',
+      })
+      .getStyle()}
 
   svg {
     margin-right: 10px;
@@ -38,10 +43,15 @@ export const StyledInfosListContent = styled('dd')`
 
 export const StyledInfosItems = styled('ul')`
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
   margin: 0 -5px;
   width: calc(100% + 10px);
+
+  ${({ theme }) =>
+    theme.GRID.set()
+      .flex({
+        wrap: true,
+      })
+      .getStyle()}
 `;
 
 export const StyledInfosItemsItem = styled('li')`

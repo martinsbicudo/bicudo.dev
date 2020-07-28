@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { AiOutlineRead } from 'react-icons/ai';
 
 import camelcase from 'camelcase';
 import { string } from 'prop-types';
@@ -24,7 +25,10 @@ function Post({ pid }) {
 
   return (
     <>
-      <StyledPostReadTime>{getReadTime()}</StyledPostReadTime>
+      <StyledPostReadTime>
+        <AiOutlineRead />
+        {getReadTime()}
+      </StyledPostReadTime>
       <StyledPostDate>{meta.publishDate}</StyledPostDate>
       <StyledPostTitle>{meta.title}</StyledPostTitle>
       {Component}

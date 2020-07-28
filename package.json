@@ -21,6 +21,7 @@
     "@zeit/eslint-config-node": "^0.3.0",
     "camelcase": "^6.0.0",
     "color": "^3.1.2",
+    "disqus-react": "^1.0.9",
     "glob": "^7.1.6",
     "is-function": "^1.0.2",
     "key-events": "^0.1.1",

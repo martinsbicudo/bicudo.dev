@@ -6,7 +6,7 @@ export const StyledFooter = styled('footer')`
   ${({ theme }) =>
     theme.GRID.set()
       .flex({
-        columns: true,
+        column: true,
         justify: 'flex-end',
       })
       .responsive({

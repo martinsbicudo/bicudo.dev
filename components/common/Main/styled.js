@@ -7,7 +7,7 @@ export const StyledMain = styled('main')`
   ${({ theme }) =>
     theme.GRID.set()
       .flex({
-        columns: true,
+        column: true,
       })
       .responsive({
         '>tablet': 'padding: 0 40px;',

@@ -41,7 +41,7 @@ class Grid {
   flex(params = {}) {
     const {
       wrap = false,
-      columns = false,
+      column = false,
       align = false,
       justify = false,
       content = false,
@@ -56,11 +56,11 @@ class Grid {
           : ''
       }
       ${
-        columns
+        column
           ? `flex-direction: ${reverse ? 'column-reverse' : 'column'};`
           : ''
       }
-      ${!columns && reverse ? 'flex-direction: row-reverse;' : ''}
+      ${!column && reverse ? 'flex-direction: row-reverse;' : ''}
       ${align ? `align-items: ${align};` : ''}
       ${justify ? `justify-content: ${justify};` : ''}
       ${content ? `align-content: ${content};` : ''}
