@@ -21,7 +21,10 @@ module.exports = {
     AGE: getBicudoAge(),
     TIME_EXPERIENCE: getTimeExperience(),
     JOB: {
-      POSITION: 'Front-End',
+      POSITION: {
+        NAME: 'Front-End',
+        NICKNAME: 'Pintador de DIVS',
+      },
       COMPANY: {
         NAME: 'PagSeguro',
         URL: 'http://pagseguro.uol.com.br',

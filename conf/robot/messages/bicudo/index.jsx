@@ -12,13 +12,14 @@ export default (getInitialChoices) => ({
       <p>
         <i>
           - Olar, me chamo <strong>{BICUDO.NAME}</strong>, {BICUDO.AGE} anos,{' '}
-          {BICUDO.JOB.POSITION} na{' '}
+          <strong>{BICUDO.JOB.POSITION.NAME}</strong>, ou{' '}
+          <strong>{BICUDO.JOB.POSITION.NICKNAME}</strong>, na{' '}
           <Link target="_blank" href={BICUDO.JOB.COMPANY.URL}>
             {BICUDO.JOB.COMPANY.NAME}
           </Link>
           . Apaixonado por técnologia e sempre em busca de novos conhecimentos.
           Trabalho na área há {BICUDO.TIME_EXPERIENCE} anos e atualmente não me
-          vejo trabalhando com outra coisa - By <strong>Bicudo</strong>
+          vejo trabalhando com outra coisa - by <strong>Bicudo</strong>
         </i>
       </p>
       <br />

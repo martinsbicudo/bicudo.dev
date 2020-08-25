@@ -24,7 +24,7 @@ function Shortcuts() {
       <StyledShortcutsTitle>Shortcuts</StyledShortcutsTitle>
       <StyledShortcutsInfo>
         Digite o comando/palavra no seu teclado e veja a mágica <br />
-        <strong>(Não funciona em tablets e celulares)</strong>
+        <strong>(Não funciona em tablets ou celulares)</strong>
       </StyledShortcutsInfo>
       <StyledShortcuts>
         <StyledShortcutsItem>
