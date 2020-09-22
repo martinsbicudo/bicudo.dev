@@ -4791,6 +4791,11 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
 
+kebab-case@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/kebab-case/-/kebab-case-1.0.0.tgz#3f9e4990adcad0c686c0e701f7645868f75f91eb"
+  integrity sha1-P55JkK3K0MaGwOcB92RYaPdfkes=
+
 key-events@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/key-events/-/key-events-0.1.1.tgz#6a92df990634a14e09c592c9a75896f915a35706"

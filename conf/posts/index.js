@@ -1,3 +1,3 @@
-import * as oBicudo from '~/posts/o-bicudo.mdx';
+import * as euEuMesmoEOBicudo from '~/posts/eu-eu-mesmo-e-o-bicudo.mdx';
 
-export { oBicudo };
+export { euEuMesmoEOBicudo };

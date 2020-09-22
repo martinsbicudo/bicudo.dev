@@ -32,7 +32,17 @@ export default (getInitialChoices) => ({
       answer: {
         message: 'Perfeito, aguarde um momento...',
         action() {
-          return Router.push('/blog/[pid]', '/blog/o-bicudo');
+          Router.push('/blog/[pid]', '/blog/eu-eu-mesmo-e-o-bicudo');
+
+          return [
+            {
+              message: 'Obrigado',
+              answer: {
+                message: 'Posso ajuda-lo com algo mais?',
+                choices: getInitialChoices,
+              },
+            },
+          ];
         },
       },
     },

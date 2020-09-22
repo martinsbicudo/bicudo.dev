@@ -21,7 +21,7 @@ function Box({ children }) {
         </p>
       ),
       event() {
-        const pathname = '/blog/o-bicudo';
+        const pathname = '/blog/eu-eu-mesmo-e-o-bicudo';
         return (
           Router.asPath !== pathname && Router.push('/blog/[pid]', pathname)
         );

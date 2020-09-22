@@ -1,10 +1,11 @@
+import kebabCase from 'kebab-case';
 import Link from 'next/link';
 
 import * as posts from '@Conf/posts';
 
 import { StyledPostsList, StyledPostsPost } from './styled';
 
-export default () => ({
+export default (getInitialChoices) => ({
   message: (() => {
     const postsEntries = Object.entries(posts);
     const postsLength = postsEntries.length;
@@ -17,7 +18,7 @@ export default () => ({
         {postsLength > 3 ? ' segue alguns abaixo:' : ' segue:'}
         <StyledPostsList>
           {postsEntries.map(([name, { meta }]) => (
-            <Link key={name} href="/blog/[pid]" as={`/blog/${name}`}>
+            <Link key={name} href="/blog/[pid]" as={`/blog/${kebabCase(name)}`}>
               <StyledPostsPost>{meta.title}</StyledPostsPost>
             </Link>
           ))}
@@ -27,15 +28,10 @@ export default () => ({
   })(),
   choices: [
     {
-      message: 'to zuandooo',
+      message: 'Obrigado',
       answer: {
-        message: 'ahhhh de boa então',
-      },
-    },
-    {
-      message: 'sai fora',
-      answer: {
-        message: 'Ok',
+        message: 'Posso ajuda-lo com algo mais?',
+        choices: getInitialChoices,
       },
     },
   ],

@@ -47,6 +47,25 @@ function RobotProvider({ children }) {
     });
   }
 
+  function addChoices(choices) {
+    if (choices) {
+      setMessages((currentMessages) => {
+        const reverseMessages = [...currentMessages].reverse();
+
+        return reverseMessages
+          .map((message, i) =>
+            i === 0
+              ? {
+                  ...message,
+                  choices,
+                }
+              : message
+          )
+          .reverse();
+      });
+    }
+  }
+
   function setAsyncMessage(message, delay = INITIAL_MESSAGES_DELAY) {
     setIsTyping(true);
     return new Promise((resolve) =>
@@ -61,8 +80,10 @@ function RobotProvider({ children }) {
     );
   }
 
-  async function setDelay(delay) {
-    await new Promise((resolve) => setTimeout(() => resolve(), delay));
+  async function setDelay(delay, action) {
+    await new Promise((resolve) =>
+      setTimeout(async () => resolve(await action()), delay)
+    );
   }
 
   async function setMessage(message) {
@@ -70,12 +91,14 @@ function RobotProvider({ children }) {
 
     if (message?.message?.answer) {
       const { answer } = message.message;
-      await setDelay(TYPING_DELAY);
-      await setAsyncMessage(answer, ANSWER_DELAY);
+      await setDelay(TYPING_DELAY, async () => {
+        await setAsyncMessage(answer, ANSWER_DELAY);
+      });
 
       if (answer?.action) {
-        await setDelay(ACTION_DELAY);
-        answer.action({ router });
+        await setDelay(ACTION_DELAY, () =>
+          addChoices(answer.action({ router }))
+        );
       }
     }
   }

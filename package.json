@@ -24,6 +24,7 @@
     "disqus-react": "^1.0.9",
     "glob": "^7.1.6",
     "is-function": "^1.0.2",
+    "kebab-case": "^1.0.0",
     "key-events": "^0.1.1",
     "moment": "^2.27.0",
     "next": "9.4.4",
