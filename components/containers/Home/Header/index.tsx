@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
       <S.HeaderTitle>Sou o {CONSTANTS.NAME}</S.HeaderTitle>
       <S.HeaderText>
         Atualmente trabalhando como front-end, apaixonado por tecnologia,{' '}
-        {CONSTANTS.AGE} anos, brasieiro e nascido em Santos/SP.
+        {CONSTANTS.AGE} anos, brasileiro e nascido em Santos/SP.
       </S.HeaderText>
       <S.HeaderText>
         No meu tempo livre eu gosto de jogar no celular, ler mangás, e assistir
