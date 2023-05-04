@@ -1,0 +1,60 @@
+import { Container } from '@Commons'
+import { up } from 'styled-breakpoints'
+import styled from 'styled-components'
+
+import { getThemeColor } from '~/utils'
+
+export const Footer = styled.footer`
+  width: 100%;
+  background-color: ${getThemeColor('black')};
+`
+
+export const FooterContent = styled(Container)`
+  margin-top: 50px;
+  padding-top: 50px;
+`
+
+export const FooterTop = styled.div`
+  padding-bottom: 30px;
+  border-bottom: 1px solid ${getThemeColor('gray3')};
+`
+
+export const FooterImageBox = styled.figure`
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+`
+
+export const FooterImageInfos = styled.div`
+  padding-left: 15px;
+`
+
+export const FooterImageTitle = styled.figcaption`
+  font-size: 2.8rem;
+`
+
+export const FooterImageSubtitle = styled.span`
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: ${getThemeColor('gray')};
+`
+
+export const FooterAbout = styled.p`
+  width: 100%;
+  max-width: 500px;
+  font-size: 1.6rem;
+`
+
+export const FooterBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+`
+
+export const FooterSocialsBox = styled.div`
+  max-width: 250px;
+
+  ${up('sm')} {
+    max-width: 100%;
+  }
+`

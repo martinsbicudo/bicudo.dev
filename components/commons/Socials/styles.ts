@@ -1,0 +1,72 @@
+import { up } from 'styled-breakpoints'
+import styled, { css } from 'styled-components'
+
+import { getThemeColor } from '~/utils'
+
+import { StyledSocialsItemProps } from './interface'
+
+export const Socials = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+`
+
+export const SocialsImageBox = styled.figure`
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+`
+
+export const SocialsLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 50px;
+  color: ${getThemeColor('gray')};
+  background-color: ${getThemeColor('gray3')};
+  will-change: color;
+  transition: color 0.2s;
+  cursor: pointer;
+
+  span {
+    margin-right: 5px;
+  }
+
+  svg {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+
+  &:hover {
+    color: ${getThemeColor('white')};
+  }
+`
+
+export const SocialsItem = styled.li<StyledSocialsItemProps>`
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  &:last-child ${SocialsLink} {
+    color: ${getThemeColor('main')};
+    background-color: ${getThemeColor('white')};
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  ${({ withResponsive }) =>
+    withResponsive &&
+    css`
+      ${up('lg')} {
+        &:last-child {
+          display: none;
+        }
+      }
+    `}
+`

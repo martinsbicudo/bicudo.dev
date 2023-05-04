@@ -1,0 +1,70 @@
+import NextImage from 'next/image'
+import NextLink from 'next/link'
+
+import styled, { css } from 'styled-components'
+
+import { getThemeColor } from '~/utils'
+
+import { StypedPostItemProps } from './interface'
+
+export const PostItemWrapper = styled(NextLink)`
+  text-decoration: none;
+  color: ${getThemeColor('white')};
+`
+
+export const PostItem = styled.li<StypedPostItemProps>`
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: ${getThemeColor('gray3')};
+
+  ${({ $inProgress }) =>
+    !$inProgress &&
+    css`
+      cursor: pointer;
+    `}
+`
+
+export const PostItemTop = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+`
+
+export const PostItemDate = styled.span`
+  height: 20px;
+  padding: 0 7px;
+  font-size: 1rem;
+  line-height: 20px;
+  border-radius: 5px;
+  color: ${getThemeColor('white')};
+  background-color: ${getThemeColor('black')};
+`
+
+export const PostItemFixed = styled.span`
+  height: 1.2rem;
+  font-size: 1.2rem;
+  margin-right: 5px;
+  color: ${getThemeColor('white')};
+`
+
+export const PostItemImageBox = styled.figure`
+  position: relative;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 2rem 0 ${getThemeColor('main')};
+  overflow: hidden;
+`
+
+export const PostItemImage = styled(NextImage)`
+  width: 100%;
+  object-fit: cover;
+`
+
+export const PostItemTitle = styled.h2`
+  font-size: 1.8rem;
+`
