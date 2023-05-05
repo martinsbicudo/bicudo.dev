@@ -5,7 +5,7 @@ import { getThemeColor } from '~/utils'
 export const GithubContributionsWrapper = styled.div`
   flex: 1;
   color: ${getThemeColor('white')};
-  padding: 0 10px 30px;
+  padding: 0 10px 20px;
 
   & > div {
     max-width: 220px;

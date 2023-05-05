@@ -12,7 +12,6 @@ export const HomeContainer = styled(Container)`
   position: relative;
   min-height: 100vh;
   padding-top: 25px;
-  padding-bottom: 25px;
 
   ${up('md')} {
     flex-wrap: nowrap;
@@ -23,8 +22,11 @@ export const HomeTop = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 50px);
   padding-right: 25px;
+
+  ${up('sm')} {
+    max-height: 100vh;
+  }
 
   ${up('md')} {
     max-width: 350px;
@@ -59,4 +61,5 @@ export const HomeSocialsBox = styled.div`
 
 export const HomeBottom = styled.div`
   flex: 1;
+  padding-bottom: 25px;
 `

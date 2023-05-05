@@ -2,12 +2,15 @@ import HeatMap from 'react-best-heatmap'
 
 import { format } from 'date-fns'
 
-import { CONTRIBUTIONS } from './constants'
+import CONSTANTS from '~/constants'
+
 import { GithubContributionsProps } from './interface'
 import legend from './legend'
 import * as S from './styles'
 
 const GithubContributions = ({ contributions }: GithubContributionsProps) => {
+  const rangeDays = CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS
+
   const getContributionValueLabel = (value: number) => {
     if (value === 0) return 'No contributions'
     return `${value} contribution${value > 1 ? 's' : ''}`
@@ -15,7 +18,7 @@ const GithubContributions = ({ contributions }: GithubContributionsProps) => {
 
   const renderGithubHeatmap = () => {
     const startDate = new Date()
-    startDate.setDate(startDate.getDate() - CONTRIBUTIONS.RANGE_DAYS)
+    startDate.setDate(startDate.getDate() - rangeDays)
 
     const values = contributions.map((contribution) => {
       const value = contribution.value
@@ -34,7 +37,7 @@ const GithubContributions = ({ contributions }: GithubContributionsProps) => {
       <HeatMap
         startDate={startDate}
         values={values}
-        rangeDays={CONTRIBUTIONS.RANGE_DAYS}
+        rangeDays={rangeDays}
         legend={legend}
       />
     )
@@ -43,7 +46,7 @@ const GithubContributions = ({ contributions }: GithubContributionsProps) => {
   return (
     <S.GithubContributionsWrapper>
       <S.GithubContributionsTitle>
-        The last <span>{CONTRIBUTIONS.RANGE_DAYS}</span> days contributions
+        The last <span>{rangeDays}</span> days contributions
       </S.GithubContributionsTitle>
       {renderGithubHeatmap()}
     </S.GithubContributionsWrapper>
