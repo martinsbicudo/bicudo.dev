@@ -9,7 +9,6 @@ export const Home = styled.main`
 export const HomeContainer = styled(Container)`
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
   position: relative;
   min-height: 100vh;
   padding-top: 25px;
@@ -50,7 +49,8 @@ export const HomeTopBottom = styled.div`
 export const HomeSocialsBox = styled.div`
   flex: 1;
   min-width: 175px;
-  max-width: 250px;
+  max-width: 300px;
+  padding-bottom: 25px;
 
   ${up('md')} {
     max-width: initial;
