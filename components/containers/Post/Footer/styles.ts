@@ -31,11 +31,13 @@ export const FooterImageInfos = styled.div`
 
 export const FooterImageTitle = styled.figcaption`
   font-size: 2.8rem;
+  font-family: Arial;
 `
 
 export const FooterImageSubtitle = styled.span`
   font-size: 1.6rem;
   line-height: 1.6rem;
+  font-weight: 300;
   color: ${getThemeColor('gray')};
 `
 
@@ -43,6 +45,7 @@ export const FooterAbout = styled.p`
   width: 100%;
   max-width: 500px;
   font-size: 1.6rem;
+  font-weight: 300;
 `
 
 export const FooterBottom = styled.div`

@@ -15,13 +15,15 @@ export const GithubContributionsWrapper = styled.div`
 
 export const GithubContributionsTitle = styled.h2`
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
   text-transform: uppercase;
 
   span {
     display: inline-block;
-    padding: 0 3px;
+    font-weight: bolder;
     margin: 0 2px;
+    padding: 0 3px;
     color: ${getThemeColor('main')};
     background-color: ${getThemeColor('white')};
     border-radius: 3px;
