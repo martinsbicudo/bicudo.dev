@@ -4,7 +4,7 @@
 
 ## About
 
-IN PROGRESSS
+WIP
 
 ## Setup
 

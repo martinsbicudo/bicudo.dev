@@ -9,6 +9,7 @@ import { getThemeColor } from '~/utils'
 import { StypedPostItemProps } from './interface'
 
 export const PostItemWrapper = styled(NextLink)`
+  position: relative;
   text-decoration: none;
   color: ${getThemeColor('white')};
   padding: 5px;
@@ -35,11 +36,16 @@ export const PostItem = styled.li<StypedPostItemProps>`
   border-radius: 5px;
   background-color: ${getThemeColor('gray3')};
 
-  ${({ $inProgress }) =>
-    !$inProgress &&
-    css`
+  ${({ $wip }) => {
+    if ($wip)
+      return css`
+        opacity: 0.7;
+      `
+
+    return css`
       cursor: pointer;
-    `}
+    `
+  }}
 `
 
 export const PostItemTop = styled.div`

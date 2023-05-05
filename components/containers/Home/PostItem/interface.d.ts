@@ -10,9 +10,9 @@ export type PostType = {
   }
   date: string
   fixed?: boolean
-  inProgress: boolean
+  wip: boolean
 }
 
 export interface StypedPostItemProps {
-  $inProgress: boolean
+  $wip: boolean
 }

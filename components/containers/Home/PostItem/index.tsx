@@ -11,21 +11,21 @@ const PostItem = ({
   title,
   coverImage,
   fixed,
-  inProgress,
+  wip,
   ...post
 }: Omit<PostType, 'description' | 'source'>) => {
   const date = format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
 
   return (
-    <S.PostItemWrapper href={inProgress ? '' : `/${slug}`}>
-      <S.PostItem $inProgress={inProgress}>
+    <S.PostItemWrapper href={wip ? '' : `/${slug}`}>
+      <S.PostItem $wip={wip}>
         <S.PostItemTop>
           {fixed && (
             <S.PostItemFixed>
               <BsPin />
             </S.PostItemFixed>
           )}
-          <S.PostItemDate>{inProgress ? 'IN PROGRESS' : date}</S.PostItemDate>
+          <S.PostItemDate>{wip ? 'WIP' : date}</S.PostItemDate>
         </S.PostItemTop>
         {coverImage && (
           <S.PostItemImageBox>

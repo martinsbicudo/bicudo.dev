@@ -12,7 +12,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     'coverImage',
     'content',
     'date',
-    'inProgress',
   ])
   const source = await serialize(post.content || '')
 

@@ -6,19 +6,17 @@ import * as S from './styles'
 
 const PostsList = ({ posts }: PostsListProps) => (
   <S.PostsList>
-    {posts.map(
-      ({ slug, title, coverImage, date, fixed, inProgress = false }) => (
-        <PostItem
-          key={slug}
-          slug={slug}
-          title={title}
-          coverImage={coverImage}
-          date={date}
-          fixed={fixed}
-          inProgress={inProgress}
-        />
-      )
-    )}
+    {posts.map(({ slug, title, coverImage, date, fixed, wip = false }) => (
+      <PostItem
+        key={slug}
+        slug={slug}
+        title={title}
+        coverImage={coverImage}
+        date={date}
+        fixed={fixed}
+        wip={wip}
+      />
+    ))}
   </S.PostsList>
 )
 

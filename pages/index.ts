@@ -9,7 +9,7 @@ export const getServerSideProps = async () => {
     'coverImage',
     'date',
     'fixed',
-    'inProgress',
+    'wip',
   ])
 
   return {
