@@ -1,6 +1,8 @@
+import { getGithubContributions } from '~/services'
 import { blogPosts } from '~/utils'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
+  const githubContributions = await getGithubContributions()
   const posts = blogPosts.getAllPosts([
     'slug',
     'title',
@@ -11,7 +13,7 @@ export const getStaticProps = async () => {
   ])
 
   return {
-    props: { posts },
+    props: { posts, githubContributions },
   }
 }
 

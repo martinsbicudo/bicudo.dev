@@ -20,7 +20,7 @@ const Post = ({ post }: PostProps) => {
 
   if (!router.isFallback && !post?.slug) return <ErrorPage statusCode={404} />
 
-  const pageTitle = `${post.title} | ${CONSTANTS.NAME}`
+  const pageTitle = `${post.title} | ${CONSTANTS.PERSON.NAME}`
   const date = format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
 
   const getReadTime = () => {

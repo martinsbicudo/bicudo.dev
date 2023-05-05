@@ -7,6 +7,10 @@ export const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
 
+  ${up('sm')} {
+    padding: 0 25px;
+  }
+
   ${up('lg')} {
     padding: 0 50px;
   }

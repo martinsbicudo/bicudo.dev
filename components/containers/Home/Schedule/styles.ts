@@ -4,9 +4,8 @@ import styled from 'styled-components'
 import { getThemeColor } from '~/utils'
 
 export const ScheduleWrapper = styled.div`
-  flex: 1;
   width: 100%;
-  padding-bottom: 30px;
+  padding-top: 30px;
   display: none;
 
   ${up('lg')} {
@@ -24,6 +23,7 @@ export const Schedule = styled.div`
 
 export const ScheduleTitle = styled.h2`
   font-size: 1.8rem;
+  font-weight: 300;
 `
 
 export const ScheduleLink = styled.a`

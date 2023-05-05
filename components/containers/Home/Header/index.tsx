@@ -11,10 +11,10 @@ const Header = (): JSX.Element => {
         <Logo />
       </figure>
       <S.HeaderWelcome>BEM-VINDO :)</S.HeaderWelcome>
-      <S.HeaderTitle>Sou o {CONSTANTS.NAME}</S.HeaderTitle>
+      <S.HeaderTitle>Sou o {CONSTANTS.PERSON.NAME}</S.HeaderTitle>
       <S.HeaderText>
-        Atualmente trabalhando como front-end, apaixonado por tecnologia,{' '}
-        {CONSTANTS.AGE} anos, brasileiro e nascido em Santos/SP.
+        Front-end, apaixonado por tecnologia, {CONSTANTS.PERSON.AGE} anos,
+        brasileiro e nascido em Santos/SP.
       </S.HeaderText>
       <S.HeaderText>
         No meu tempo livre eu gosto de jogar no celular, ler mangás, e assistir

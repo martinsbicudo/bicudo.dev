@@ -12,14 +12,14 @@ const Footer = () => {
           <S.FooterImageBox>
             <Bicudo size={64} />
             <S.FooterImageInfos>
-              <S.FooterImageTitle>{CONSTANTS.NAME}</S.FooterImageTitle>
+              <S.FooterImageTitle>{CONSTANTS.PERSON.NAME}</S.FooterImageTitle>
               <S.FooterImageSubtitle>Front-End Developer</S.FooterImageSubtitle>
             </S.FooterImageInfos>
           </S.FooterImageBox>
           <S.FooterAbout>
             Desenvolvedor front-end por mais de 5 anos, trabalhando
             principalmente com react.js, apaixonado por tecnologia,{' '}
-            {CONSTANTS.AGE} anos, brasileiro e nascido em Santos/SP.
+            {CONSTANTS.PERSON.AGE} anos, brasileiro e nascido em Santos/SP.
           </S.FooterAbout>
         </S.FooterTop>
         <S.FooterBottom>
