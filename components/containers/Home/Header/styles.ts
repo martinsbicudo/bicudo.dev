@@ -18,8 +18,8 @@ export const HeaderWelcome = styled.span`
 
 export const HeaderTitle = styled.h1`
   font-size: 5rem;
+  font-family: Arial;
   line-height: 5rem;
-  letter-spacing: 2px;
   margin: 15px 0;
 `
 
