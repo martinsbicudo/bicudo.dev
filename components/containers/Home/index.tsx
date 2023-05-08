@@ -11,7 +11,7 @@ import PostList from './PostList'
 import Schedule from './Schedule'
 import * as S from './styles'
 
-const Home = ({ posts, githubContributions }: HomeProps): JSX.Element => {
+const Home = ({ posts }: HomeProps): JSX.Element => {
   const pageTitle = `${CONSTANTS.PERSON.NAME} | Front-End Developer`
 
   return (
@@ -24,7 +24,7 @@ const Home = ({ posts, githubContributions }: HomeProps): JSX.Element => {
             <S.HomeSocialsBox>
               <Socials withBicudo withScheduleResponsive />
             </S.HomeSocialsBox>
-            <GithubContributions contributions={githubContributions} />
+            <GithubContributions />
           </S.HomeTopBottom>
         </S.HomeTop>
         <S.HomeBottom>
