@@ -1,15 +1,25 @@
+import { useState, useEffect } from 'react'
 import HeatMap from 'react-best-heatmap'
 
 import { format } from 'date-fns'
 
 import CONSTANTS from '~/constants'
+import { getGithubContributions } from '~/services'
 
-import { GithubContributionsProps } from './interface'
 import legend from './legend'
+import Loading from './Loading'
 import * as S from './styles'
 
-const GithubContributions = ({ contributions }: GithubContributionsProps) => {
+const GithubContributions = () => {
+  const [contributions, setContributions] = useState([])
+  const [loading, setLoading] = useState(true)
   const rangeDays = CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS
+
+  const getContributions = async () => {
+    const data = await getGithubContributions()
+    setContributions(data)
+    setLoading(false)
+  }
 
   const getContributionValueLabel = (value: number) => {
     if (value === 0) return 'No contributions'
@@ -17,6 +27,8 @@ const GithubContributions = ({ contributions }: GithubContributionsProps) => {
   }
 
   const renderGithubHeatmap = () => {
+    if (loading) return <Loading />
+
     const startDate = new Date()
     startDate.setDate(startDate.getDate() - rangeDays)
 
@@ -42,6 +54,10 @@ const GithubContributions = ({ contributions }: GithubContributionsProps) => {
       />
     )
   }
+
+  useEffect(() => {
+    getContributions()
+  }, [])
 
   return (
     <S.GithubContributionsWrapper>

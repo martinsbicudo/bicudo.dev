@@ -22,14 +22,12 @@ export const HomeTop = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 275px;
   padding-right: 25px;
-
-  ${up('sm')} {
-    max-height: 100vh;
-  }
 
   ${up('md')} {
     max-width: 350px;
+    min-height: calc(100vh - 50px);
   }
 
   ${up('lg')} {

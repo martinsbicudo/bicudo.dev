@@ -12,12 +12,9 @@ import {
 } from './interface'
 
 const getGithubContributionsYear = async (year: number) =>
-  await axios.get<ContributionsDataType>(
-    `https://skyline.github.com/martinsbicudo/${year}.json`,
-    {
-      httpsAgent: new https.Agent({ rejectUnauthorized: false }),
-    }
-  )
+  await axios.get<ContributionsDataType>(`/api/github-contributions/${year}`, {
+    httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+  })
 
 const getDayToDate = (year: number, day: number) => {
   const date = new Date(year, 0, day)
