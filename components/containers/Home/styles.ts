@@ -9,9 +9,9 @@ export const Home = styled.main`
 export const HomeContainer = styled(Container)`
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   position: relative;
   min-height: 100vh;
-  padding-top: 25px;
 
   ${up('md')} {
     flex-wrap: nowrap;
@@ -24,6 +24,7 @@ export const HomeTop = styled.div`
   flex-direction: column;
   min-width: 275px;
   padding-right: 25px;
+  padding-top: 25px;
 
   ${up('md')} {
     max-width: 350px;
@@ -32,7 +33,7 @@ export const HomeTop = styled.div`
 
   ${up('lg')} {
     position: sticky;
-    top: 50px;
+    top: 0;
     padding-right: 50px;
     padding-bottom: 0;
   }
@@ -50,7 +51,6 @@ export const HomeSocialsBox = styled.div`
   flex: 1;
   min-width: 175px;
   max-width: 300px;
-  padding-bottom: 25px;
 
   ${up('md')} {
     max-width: initial;
@@ -60,4 +60,5 @@ export const HomeSocialsBox = styled.div`
 export const HomeBottom = styled.div`
   flex: 1;
   padding-bottom: 25px;
+  padding-top: 25px;
 `

@@ -15,7 +15,7 @@ export const PostItemWrapper = styled(NextLink)`
   padding: 5px;
   min-width: 300px;
   flex: calc(50% - 10px);
-  transition: opacity 0.2s, transform 0.3s;
+  transition: opacity 0.2s;
 
   ${up('md')} {
     min-width: 250px;
@@ -24,7 +24,6 @@ export const PostItemWrapper = styled(NextLink)`
   &:hover {
     position: relative;
     z-index: 1;
-    transform: scale(1.1);
   }
 `
 
