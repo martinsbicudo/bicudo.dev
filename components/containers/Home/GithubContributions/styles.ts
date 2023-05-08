@@ -11,7 +11,8 @@ export const GithubContributionsWrapper = styled.div`
   padding: 0 10px 20px;
   min-width: 250px;
 
-  & > div:not(${LoadingWrapper}) {
+  & > div:not(${LoadingWrapper}),
+  & > ${LoadingWrapper} > div {
     max-width: 225px;
     padding-top: 20px;
   }
