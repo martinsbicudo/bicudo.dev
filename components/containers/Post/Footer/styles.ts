@@ -37,7 +37,7 @@ export const FooterImageTitle = styled.figcaption`
 export const FooterImageSubtitle = styled.span`
   font-size: 1.6rem;
   line-height: 1.6rem;
-  font-weight: 300;
+  font-weight: 200;
   color: ${getThemeColor('gray')};
 `
 
@@ -45,7 +45,7 @@ export const FooterAbout = styled.p`
   width: 100%;
   max-width: 500px;
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 200;
 `
 
 export const FooterBottom = styled.div`

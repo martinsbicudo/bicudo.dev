@@ -23,7 +23,7 @@ export const Schedule = styled.div`
 
 export const ScheduleTitle = styled.h2`
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 200;
 `
 
 export const ScheduleLink = styled.a`

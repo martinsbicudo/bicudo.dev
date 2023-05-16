@@ -59,7 +59,7 @@ export const PostTitle = styled.h1`
 
 export const PostDescription = styled.p`
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 200;
 
   ${up('lg')} {
     text-align: center;

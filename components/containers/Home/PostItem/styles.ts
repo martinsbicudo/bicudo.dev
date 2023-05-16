@@ -83,5 +83,5 @@ export const PostItemImage = styled(NextImage)`
 
 export const PostItemTitle = styled.h2`
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 200;
 `
