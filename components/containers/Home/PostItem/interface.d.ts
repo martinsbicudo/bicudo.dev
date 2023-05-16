@@ -1,3 +1,5 @@
+import { Children } from 'react'
+
 export type PostType = {
   slug: string
   title: string
@@ -13,6 +15,10 @@ export type PostType = {
   wip: boolean
 }
 
-export interface StypedPostItemProps {
+export interface PostItemWrapperProps {
+  children: Children
+}
+
+export interface StyledPostItemProps {
   $wip: boolean
 }

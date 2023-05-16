@@ -92,6 +92,17 @@ export const PostImage = styled(NextImage)`
   object-fit: cover;
 `
 
+export const PostLangBox = styled.div`
+  position: fixed;
+  z-index: 1;
+  top: 25px;
+  right: 15px;
+
+  ${up('lg')} {
+    right: 50px;
+  }
+`
+
 export const PostBackLink = styled(NextLink)`
   position: fixed;
   z-index: 1;

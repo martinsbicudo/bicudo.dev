@@ -1,9 +1,9 @@
-import React from 'react'
+import { useCallback } from 'react'
 import { BsPin } from 'react-icons/bs'
 
 import { format } from 'date-fns'
 
-import { PostType } from './interface'
+import { PostType, PostItemWrapperProps } from './interface'
 import * as S from './styles'
 
 const PostItem = ({
@@ -16,8 +16,17 @@ const PostItem = ({
 }: Omit<PostType, 'description' | 'source'>) => {
   const date = format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
 
+  const Wrapper = useCallback(
+    ({ children }: PostItemWrapperProps) => {
+      if (wip) return <S.PostItemWrapper as="div">{children}</S.PostItemWrapper>
+
+      return <S.PostItemWrapper href={`/${slug}`}>{children}</S.PostItemWrapper>
+    },
+    [wip, slug]
+  )
+
   return (
-    <S.PostItemWrapper href={wip ? '' : `/${slug}`}>
+    <Wrapper>
       <S.PostItem $wip={wip}>
         <S.PostItemTop>
           {fixed && (
@@ -39,7 +48,7 @@ const PostItem = ({
         )}
         <S.PostItemTitle>{title}</S.PostItemTitle>
       </S.PostItem>
-    </S.PostItemWrapper>
+    </Wrapper>
   )
 }
 

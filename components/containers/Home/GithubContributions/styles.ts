@@ -3,16 +3,13 @@ import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
 
-import { LoadingWrapper } from './Loading/styles'
-
 export const GithubContributionsWrapper = styled.div`
   flex: 1;
   color: ${getThemeColor('white')};
   padding: 0 10px 20px;
   min-width: 250px;
 
-  & > div:not(${LoadingWrapper}),
-  & > ${LoadingWrapper} > div {
+  & .rbh-container {
     max-width: 225px;
     padding-top: 20px;
   }

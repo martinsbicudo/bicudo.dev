@@ -1,17 +1,13 @@
 import { blogPosts } from '~/utils'
 
-export const getStaticProps = async () => {
-  const posts = blogPosts.getAllPosts([
-    'slug',
-    'title',
-    'coverImage',
-    'date',
-    'fixed',
-    'wip',
-  ])
+export const getStaticProps = async ({ locale }) => {
+  const posts = blogPosts.getAllPosts(
+    ['slug', 'title', 'coverImage', 'date', 'fixed', 'wip'],
+    locale
+  )
 
   return {
-    props: { posts },
+    props: { posts, locale },
   }
 }
 

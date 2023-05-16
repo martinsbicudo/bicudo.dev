@@ -3,9 +3,10 @@ import HeatMap from 'react-best-heatmap'
 import CONSTANTS from '~/constants'
 
 import legend from '../legend'
+import Loading from './Loading'
 import * as S from './styles'
 
-const Loading = () => {
+const Placeholder = () => {
   const rangeDays = CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS
 
   const renderGithubHeatmap = () => {
@@ -13,18 +14,19 @@ const Loading = () => {
     startDate.setDate(startDate.getDate() - rangeDays)
 
     return (
-      <S.LoadingWrapper>
+      <S.PlaceholderWrapper>
+        <Loading />
         <HeatMap
           startDate={startDate}
           values={[]}
           rangeDays={rangeDays}
           legend={legend}
         />
-      </S.LoadingWrapper>
+      </S.PlaceholderWrapper>
     )
   }
 
   return renderGithubHeatmap()
 }
 
-export default Loading
+export default Placeholder

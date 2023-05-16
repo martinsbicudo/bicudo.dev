@@ -1,10 +1,12 @@
 import { Bicudo, Socials } from '@Commons'
 
-import CONSTANTS from '~/constants'
+import { useLang } from '~/hooks'
 
 import * as S from './styles'
 
 const Footer = () => {
+  const lang = useLang()
+
   return (
     <S.Footer>
       <S.FooterContent>
@@ -12,15 +14,13 @@ const Footer = () => {
           <S.FooterImageBox>
             <Bicudo size={64} />
             <S.FooterImageInfos>
-              <S.FooterImageTitle>{CONSTANTS.PERSON.NAME}</S.FooterImageTitle>
-              <S.FooterImageSubtitle>Front-End Developer</S.FooterImageSubtitle>
+              <S.FooterImageTitle>{lang.POST.FOOTER.TITLE}</S.FooterImageTitle>
+              <S.FooterImageSubtitle>
+                {lang.POST.FOOTER.SUBTITLE}
+              </S.FooterImageSubtitle>
             </S.FooterImageInfos>
           </S.FooterImageBox>
-          <S.FooterAbout>
-            Desenvolvedor front-end por mais de 5 anos, trabalhando
-            principalmente com react.js, apaixonado por tecnologia,{' '}
-            {CONSTANTS.PERSON.AGE} anos, brasileiro e nascido em Santos/SP.
-          </S.FooterAbout>
+          <S.FooterAbout>{lang.POST.FOOTER.ABOUT}</S.FooterAbout>
         </S.FooterTop>
         <S.FooterBottom>
           <S.FooterSocialsBox>

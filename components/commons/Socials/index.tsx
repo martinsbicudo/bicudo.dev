@@ -8,52 +8,58 @@ import {
 
 import { Bicudo } from '@Commons'
 
+import { useLang } from '~/hooks'
+
 import { SocialsProps } from './interface'
 import * as S from './styles'
 
 const Socials = ({
   withBicudo = false,
   withScheduleResponsive = false,
-}: SocialsProps) => (
-  <S.Socials>
-    {withBicudo && (
+}: SocialsProps) => {
+  const lang = useLang()
+
+  return (
+    <S.Socials>
+      {withBicudo && (
+        <S.SocialsItem>
+          <Bicudo />
+        </S.SocialsItem>
+      )}
       <S.SocialsItem>
-        <Bicudo />
+        <S.SocialsLink
+          href="https://www.linkedin.com/in/martinsbicudo"
+          target="_blank"
+        >
+          <TbBrandLinkedin />
+        </S.SocialsLink>
       </S.SocialsItem>
-    )}
-    <S.SocialsItem>
-      <S.SocialsLink
-        href="https://www.linkedin.com/in/martinsbicudo"
-        target="_blank"
-      >
-        <TbBrandLinkedin />
-      </S.SocialsLink>
-    </S.SocialsItem>
-    <S.SocialsItem>
-      <S.SocialsLink href="https://github.com/martinsbicudo" target="_blank">
-        <TbBrandGithub />
-      </S.SocialsLink>
-    </S.SocialsItem>
-    <S.SocialsItem>
-      <S.SocialsLink href="https://twitter.com/martinsbicudo" target="_blank">
-        <TbBrandTwitter />
-      </S.SocialsLink>
-    </S.SocialsItem>
-    <S.SocialsItem>
-      <S.SocialsLink href="mailto:victor_bicudo@outlook.com">
-        <TbMail />
-      </S.SocialsLink>
-    </S.SocialsItem>
-    <S.SocialsItem withResponsive={withScheduleResponsive}>
-      <S.SocialsLink
-        href="https://superpowered.me/martinsbicudo"
-        target="_blank"
-      >
-        <span>MARCAR UM PAPO</span>
-        <TbCalendarEvent />
-      </S.SocialsLink>
-    </S.SocialsItem>
-  </S.Socials>
-)
+      <S.SocialsItem>
+        <S.SocialsLink href="https://github.com/martinsbicudo" target="_blank">
+          <TbBrandGithub />
+        </S.SocialsLink>
+      </S.SocialsItem>
+      <S.SocialsItem>
+        <S.SocialsLink href="https://twitter.com/martinsbicudo" target="_blank">
+          <TbBrandTwitter />
+        </S.SocialsLink>
+      </S.SocialsItem>
+      <S.SocialsItem>
+        <S.SocialsLink href="mailto:victor_bicudo@outlook.com">
+          <TbMail />
+        </S.SocialsLink>
+      </S.SocialsItem>
+      <S.SocialsItem withResponsive={withScheduleResponsive}>
+        <S.SocialsLink
+          href="https://superpowered.me/martinsbicudo"
+          target="_blank"
+        >
+          <span>{lang.HOME.SCHEDULE.BUTTON_TEXT.MOBILE}</span>
+          <TbCalendarEvent />
+        </S.SocialsLink>
+      </S.SocialsItem>
+    </S.Socials>
+  )
+}
 
 export default Socials

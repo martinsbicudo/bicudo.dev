@@ -30,7 +30,7 @@ export const ScheduleLink = styled.a`
   display: inline-block;
   font-size: 1rem;
   margin-top: 10px;
-  padding: 5px 10px;
+  padding: 7px 10px;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none;

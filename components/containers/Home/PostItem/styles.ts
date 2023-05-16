@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
 
-import { StypedPostItemProps } from './interface'
+import { StyledPostItemProps } from './interface'
 
 export const PostItemWrapper = styled(NextLink)`
   position: relative;
@@ -27,7 +27,7 @@ export const PostItemWrapper = styled(NextLink)`
   }
 `
 
-export const PostItem = styled.li<StypedPostItemProps>`
+export const PostItem = styled.li<StyledPostItemProps>`
   height: 100%;
   position: relative;
   box-sizing: border-box;

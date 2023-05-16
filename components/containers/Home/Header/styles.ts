@@ -6,6 +6,12 @@ export const Header = styled.header`
   width: 100%;
 `
 
+export const HeaderLogoBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`
+
 export const HeaderWelcome = styled.span`
   display: inline-block;
   font-size: 1.2rem;

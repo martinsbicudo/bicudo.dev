@@ -1,25 +1,23 @@
-import { Logo } from '@Commons'
+import { Logo, Lang } from '@Commons'
 
-import CONSTANTS from '~/constants'
+import { useLang } from '~/hooks'
 
 import * as S from './styles'
 
 const Header = (): JSX.Element => {
+  const lang = useLang()
+
   return (
     <S.Header>
-      <figure>
+      <S.HeaderLogoBox>
         <Logo />
-      </figure>
-      <S.HeaderWelcome>BEM-VINDO :)</S.HeaderWelcome>
-      <S.HeaderTitle>Sou o {CONSTANTS.PERSON.NAME}</S.HeaderTitle>
-      <S.HeaderText>
-        Front-end, apaixonado por tecnologia, {CONSTANTS.PERSON.AGE} anos,
-        brasileiro e nascido em Santos/SP.
-      </S.HeaderText>
-      <S.HeaderText>
-        No meu tempo livre eu gosto de jogar no celular, ler mangás, e assistir
-        animes ou filmes/séries de ficção ciêntifica.
-      </S.HeaderText>
+        <Lang />
+      </S.HeaderLogoBox>
+      <S.HeaderWelcome>{lang.HOME.WELCOME}</S.HeaderWelcome>
+      <S.HeaderTitle>{lang.HOME.TITLE}</S.HeaderTitle>
+      {lang.HOME.ABOUT.map((TEXT, i) => (
+        <S.HeaderText key={i}>{TEXT}</S.HeaderText>
+      ))}
     </S.Header>
   )
 }
