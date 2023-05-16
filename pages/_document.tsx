@@ -9,6 +9,8 @@ import Document, {
 
 import { ServerStyleSheet } from 'styled-components'
 
+import CONSTANTS from '~/constants'
+
 class CustomDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
@@ -37,13 +39,14 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Jost:wght@200;400;500&family=Poiret+One&display=swap"
-            rel="stylesheet"
-          />
-          <link rel="icon" href="images/favicon.ico" />
+          <meta charSet="utf-8" />
+          <link rel="icon" href="/images/favicon.ico" />
+          <meta name="lang" content={this.props.locale} />
+          <meta name="author" content={CONSTANTS.PERSON.NAME} />
+          <meta property="og:site_name" content={CONSTANTS.PERSON.NAME} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:creator" content="@martinsbicudo" />
+          <meta name="twitter:site" content="@martinsbicudo" />
         </Head>
         <body>
           <Main />

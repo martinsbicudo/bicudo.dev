@@ -11,12 +11,13 @@ import { readingTime } from 'reading-time-estimator'
 
 import CONSTANTS from '~/constants'
 import { useLang } from '~/hooks'
+import { getDomainWithLocale } from '~/utils'
 
 import Footer from './Footer'
 import { PostProps } from './interface'
 import * as S from './styles'
 
-const Post = ({ post }: PostProps) => {
+const Post = ({ post, locale }: PostProps) => {
   const lang = useLang()
   const router = useRouter()
 
@@ -34,7 +35,15 @@ const Post = ({ post }: PostProps) => {
     <>
       <Head>
         <title>{pageTitle}</title>
+        <meta name="description" content={post.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
         <meta property="og:image" content={post.coverImage} />
+        <meta
+          property="og:url"
+          content={`${getDomainWithLocale(locale)}/${post.slug}`}
+        />
       </Head>
       <S.Post>
         <S.PostHeader>

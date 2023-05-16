@@ -7,8 +7,6 @@ import * as S from './styles'
 const Lang = () => {
   const { pathname, asPath, query, locales, locale, replace } = useRouter()
 
-  const getIsSelected = (key: string) => key === locale
-
   const handleChange = (e) => {
     replace({ pathname, query }, asPath, {
       locale: e.target.value,
@@ -21,9 +19,9 @@ const Lang = () => {
         {locale}
         <TbCaretDown />
       </S.LangLabel>
-      <S.Lang onChange={handleChange}>
+      <S.Lang onChange={handleChange} value={locale}>
         {locales.map((locale, i) => (
-          <option key={i} value={locale} selected={getIsSelected(locale)}>
+          <option key={i} value={locale}>
             {locale}
           </option>
         ))}

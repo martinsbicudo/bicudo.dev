@@ -1,6 +1,13 @@
+import { Jost } from 'next/font/google'
+
 import { createGlobalStyle } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
+
+const jost = Jost({
+  weight: ['200', '400', '500'],
+  subsets: ['latin'],
+})
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
+     ${jost.style}
     font-size: 62.5%;
-    font-family: 'Jost', sans-serif;
     background-color: ${getThemeColor('main')};
     color: ${getThemeColor('white')};
   }
