@@ -24,7 +24,7 @@ const Home = ({ posts, locale }: HomeProps): JSX.Element => {
         <meta property="og:type" content="blog" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="/cover.png" />
+        <meta property="og:image" content="/cover.jpg" />
         <meta property="og:url" content={CONSTANTS.SITE.DOMAIN} />
         <meta property="og:url" content={getDomainWithLocale(locale)} />
       </Head>
