@@ -1,10 +1,6 @@
-export type ContributionDaysType = {
-  count: number
-}
-
 export type ContributionType = {
   week: number
-  days: ContributionDaysType[]
+  count: number
 }
 
 export type ContributionsDataType = {

@@ -3,13 +3,16 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { blogPosts } from '~/utils'
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0]
-  const post = blogPosts.getBySlug(
-    slug,
-    ['slug', 'title', 'description', 'coverImage', 'content', 'date'],
-    locale
-  )
+  const post = blogPosts.getBySlug(slug, [
+    'slug',
+    'title',
+    'description',
+    'coverImage',
+    'content',
+    'date',
+  ])
   const source = await serialize(post.content || '')
 
   return {
@@ -18,19 +21,12 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         ...post,
         source,
       },
-      locale,
     },
   }
 }
 
-export const getStaticPaths = async ({ locales }) => {
-  const posts = locales.reduce(
-    (currentPosts, locale) => [
-      ...currentPosts,
-      ...blogPosts.getAllPosts(['slug'], locale),
-    ],
-    []
-  )
+export const getStaticPaths = async () => {
+  const posts = blogPosts.getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {
@@ -38,7 +34,6 @@ export const getStaticPaths = async ({ locales }) => {
         params: {
           slug: post.slug,
         },
-        locale: post.locale,
       }
     }),
     fallback: false,

@@ -3,8 +3,7 @@ import HeatMap from 'react-best-heatmap'
 
 import { format } from 'date-fns'
 
-import CONSTANTS from '~/constants'
-import { useLang } from '~/hooks'
+import { GITHUB, HOME } from '~/constants'
 import { getGithubContributions } from '~/services'
 
 import legend from './legend'
@@ -12,10 +11,9 @@ import Placeholder from './Placeholder'
 import * as S from './styles'
 
 const GithubContributions = () => {
-  const lang = useLang()
   const [contributions, setContributions] = useState([])
   const [loading, setLoading] = useState(true)
-  const rangeDays = CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS
+  const rangeDays = GITHUB.CONTRIBUTIONS.RANGE_DAYS
 
   const getContributions = async () => {
     const data = await getGithubContributions()
@@ -64,7 +62,7 @@ const GithubContributions = () => {
   return (
     <S.GithubContributionsWrapper>
       <S.GithubContributionsTitle>
-        {lang.HOME.CONTRIBUTIONS.TITLE}
+        {HOME.CONTRIBUTIONS.TITLE}
       </S.GithubContributionsTitle>
       {renderGithubHeatmap()}
     </S.GithubContributionsWrapper>

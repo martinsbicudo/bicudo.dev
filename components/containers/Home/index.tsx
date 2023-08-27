@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import { Socials } from '@Commons'
 
-import CONSTANTS from '~/constants'
+import { PERSON, SITE } from '~/constants'
 import { getDomainWithLocale } from '~/utils'
 
 import GithubContributions from './GithubContributions'
@@ -13,7 +13,7 @@ import Schedule from './Schedule'
 import * as S from './styles'
 
 const Home = ({ posts, locale }: HomeProps): JSX.Element => {
-  const pageTitle = `${CONSTANTS.PERSON.NAME} | Front-End Developer`
+  const pageTitle = `${PERSON.NAME} | Front-End Developer`
   const description = "Bicudo's blog and portfolio"
 
   return (
@@ -25,7 +25,7 @@ const Home = ({ posts, locale }: HomeProps): JSX.Element => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content="/images/cover.jpg" />
-        <meta property="og:url" content={CONSTANTS.SITE.DOMAIN} />
+        <meta property="og:url" content={SITE.DOMAIN} />
         <meta property="og:url" content={getDomainWithLocale(locale)} />
       </Head>
       <S.Home>

@@ -2,12 +2,11 @@ import axios from 'axios'
 import { getDayOfYear, getYear, format } from 'date-fns'
 import https from 'https'
 
-import CONSTANTS from '~/constants'
+import { GITHUB } from '~/constants'
 
 import {
   ContributionsDataType,
   ContributionType,
-  ContributionDaysType,
   ResultContributionType,
 } from './interface'
 
@@ -23,15 +22,10 @@ const getDayToDate = (year: number, day: number) => {
 
 const getContributionsYearDates = (year: number, data: ContributionType[]) => {
   if (data.length) {
-    const contributions = data
-      .reduce<ContributionDaysType[]>(
-        (acc, value) => [...acc, ...value.days],
-        []
-      )
-      .map((value, i) => ({
-        value: value.count,
-        date: getDayToDate(year, i + 1),
-      }))
+    const contributions = data.map((value, i) => ({
+      value: value.count,
+      date: getDayToDate(year, i + 1),
+    }))
 
     return contributions
   }
@@ -54,7 +48,7 @@ const getGithubContributions = async () => {
 
   const years = [currentYear]
 
-  if (currentDayOfYear < CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS) {
+  if (currentDayOfYear < GITHUB.CONTRIBUTIONS.RANGE_DAYS) {
     years.unshift(currentYear - 1)
   }
 

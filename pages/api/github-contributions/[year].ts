@@ -11,7 +11,7 @@ const handler = async (
 ) => {
   const { year } = req.query
   const { data } = await axios.get<ContributionsDataType>(
-    `https://skyline.github.com/martinsbicudo/${year}.json`,
+    `https://github-contributions-api.jogruber.de/v4/martinsbicudo?y=${year}`,
     {
       httpsAgent: new https.Agent({ rejectUnauthorized: false }),
     }

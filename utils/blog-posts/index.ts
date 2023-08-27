@@ -4,22 +4,19 @@ import { join } from 'path'
 
 import { SlugItemsType } from './interface'
 
-const getPostsDirectory = (locale: string) =>
-  join(process.cwd(), `posts/${locale}`)
+const getPostsDirectory = () => join(process.cwd(), 'posts/')
 
-export function getAllSlugs(locale: string) {
-  return fs.readdirSync(getPostsDirectory(locale))
+export function getAllSlugs() {
+  return fs.readdirSync(getPostsDirectory())
 }
 
-export function getBySlug(slug: string, fields: string[] = [], locale: string) {
+export function getBySlug(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.mdx$/, '')
-  const fullPath = join(getPostsDirectory(locale), `${realSlug}.mdx`)
+  const fullPath = join(getPostsDirectory(), `${realSlug}.mdx`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
-  const items: SlugItemsType = {
-    locale,
-  }
+  const items: SlugItemsType = {}
 
   fields.forEach((field) => {
     if (field === 'slug') {
@@ -37,10 +34,10 @@ export function getBySlug(slug: string, fields: string[] = [], locale: string) {
   return items
 }
 
-export function getAllPosts(fields: string[] = [], locale: string) {
-  const slugs = getAllSlugs(locale)
+export function getAllPosts(fields: string[] = []) {
+  const slugs = getAllSlugs()
   const posts = slugs
-    .map((slug) => getBySlug(slug, fields, locale))
+    .map((slug) => getBySlug(slug, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
     .sort(({ fixed }) => (fixed ? -1 : 1))
   return posts

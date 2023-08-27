@@ -5,11 +5,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  i18n: {
-    locales: ['pt_br', 'en'],
-    defaultLocale: 'pt_br',
-    localeDetection: false,
-  },
   webpack(config) {
     config.resolve.fallback = {
       ...config.resolve.fallback,

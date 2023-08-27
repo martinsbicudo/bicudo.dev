@@ -1,10 +1,11 @@
-import CONSTANTS from '~/constants'
+import GITHUB from './github'
+import PERSON from './person'
 
 const HOME = {
   WELCOME: 'BEM-VINDO :)',
-  TITLE: `Sou o ${CONSTANTS.PERSON.NAME}`,
+  TITLE: `Sou o ${PERSON.NAME}`,
   ABOUT: [
-    `Front-end, apaixonado por tecnologia, ${CONSTANTS.PERSON.AGE} anos, brasileiro e nascido em Santos/SP.`,
+    `Front-end, apaixonado por tecnologia, ${PERSON.AGE} anos, brasileiro e nascido em Santos/SP.`,
     'No meu tempo livre eu gosto de jogar no celular, ler mangás, e assistir animes ou filmes/séries de ficção ciêntifica.',
   ],
   SCHEDULE: {
@@ -17,8 +18,8 @@ const HOME = {
   CONTRIBUTIONS: {
     TITLE: (
       <>
-        Últimas contribuições |{' '}
-        <span>{CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS}</span> dias
+        Últimas contribuições | <span>{GITHUB.CONTRIBUTIONS.RANGE_DAYS}</span>{' '}
+        dias
       </>
     ),
   },

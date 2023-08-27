@@ -1,13 +1,13 @@
 import HeatMap from 'react-best-heatmap'
 
-import CONSTANTS from '~/constants'
+import { GITHUB } from '~/constants'
 
 import legend from '../legend'
 import Loading from './Loading'
 import * as S from './styles'
 
 const Placeholder = () => {
-  const rangeDays = CONSTANTS.GITHUB_CONTRIBUTIONS.RANGE_DAYS
+  const rangeDays = GITHUB.CONTRIBUTIONS.RANGE_DAYS
 
   const renderGithubHeatmap = () => {
     const startDate = new Date()

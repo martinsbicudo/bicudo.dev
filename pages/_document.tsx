@@ -9,7 +9,7 @@ import Document, {
 
 import { ServerStyleSheet } from 'styled-components'
 
-import CONSTANTS from '~/constants'
+import { PERSON } from '~/constants'
 
 class CustomDocument extends Document {
   static async getInitialProps(
@@ -42,8 +42,8 @@ class CustomDocument extends Document {
           <meta charSet="utf-8" />
           <link rel="icon" href="/images/favicon.ico" />
           <meta name="lang" content={this.props.locale} />
-          <meta name="author" content={CONSTANTS.PERSON.NAME} />
-          <meta property="og:site_name" content={CONSTANTS.PERSON.NAME} />
+          <meta name="author" content={PERSON.NAME} />
+          <meta property="og:site_name" content={PERSON.NAME} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:creator" content="@martinsbicudo" />
           <meta name="twitter:site" content="@martinsbicudo" />

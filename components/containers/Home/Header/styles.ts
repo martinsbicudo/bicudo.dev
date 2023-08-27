@@ -7,9 +7,7 @@ export const Header = styled.header`
 `
 
 export const HeaderLogoBox = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  width: 100%;
 `
 
 export const HeaderWelcome = styled.span`

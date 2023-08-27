@@ -1,16 +1,5 @@
-import { getAge } from '~/utils'
-
-const CONSTANTS = {
-  SITE: {
-    DOMAIN: 'https://bicudo.dev',
-  },
-  PERSON: {
-    NAME: 'Victor M. Bicudo',
-    AGE: getAge('31/07/1991'),
-  },
-  GITHUB_CONTRIBUTIONS: {
-    RANGE_DAYS: 90,
-  },
-}
-
-export default CONSTANTS
+export { default as GITHUB } from './github'
+export { default as HOME } from './home'
+export { default as PERSON } from './person'
+export { default as POST } from './post'
+export { default as SITE } from './site'
