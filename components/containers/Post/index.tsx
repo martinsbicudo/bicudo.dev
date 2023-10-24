@@ -2,10 +2,9 @@ import { TbCircleFilled, TbBook, TbArrowLeft } from 'react-icons/tb'
 
 import { MDXRemote } from 'next-mdx-remote'
 import ErrorPage from 'next/error'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Logo, Mdx } from '@Commons'
+import { Head, Logo, Mdx } from '@Commons'
 import { format } from 'date-fns'
 import { readingTime } from 'reading-time-estimator'
 
@@ -16,7 +15,7 @@ import Footer from './Footer'
 import { PostProps } from './interface'
 import * as S from './styles'
 
-const Post = ({ post, locale }: PostProps) => {
+const Post = ({ post }: PostProps) => {
   const router = useRouter()
 
   if (!router.isFallback && !post?.slug) return <ErrorPage statusCode={404} />
@@ -31,18 +30,12 @@ const Post = ({ post, locale }: PostProps) => {
 
   return (
     <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={post.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.description} />
-        <meta property="og:image" content={post.coverImage} />
-        <meta
-          property="og:url"
-          content={`${getDomainWithLocale(locale)}/${post.slug}`}
-        />
-      </Head>
+      <Head
+        title={pageTitle}
+        description={post.description}
+        url={getDomainWithLocale(post.slug)}
+        cover={post.coverImage}
+      />
       <S.Post>
         <S.PostHeader>
           <S.PostLogoBox>
