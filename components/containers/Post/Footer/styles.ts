@@ -6,11 +6,12 @@ import { getThemeColor } from '~/utils'
 
 export const Footer = styled.footer`
   width: 100%;
-  background-color: ${getThemeColor('black')};
+  margin-top: 50px;
+  background-color: ${getThemeColor('gray5')};
+  border-top: 1px solid ${getThemeColor('gray3')};
 `
 
 export const FooterContent = styled(Container)`
-  margin-top: 50px;
   padding-top: 50px;
 `
 
@@ -30,8 +31,8 @@ export const FooterImageInfos = styled.div`
 `
 
 export const FooterImageTitle = styled.figcaption`
-  font-size: 2.8rem;
-  font-family: Arial;
+  font-size: 2.4rem;
+  font-weight: 500;
 `
 
 export const FooterImageSubtitle = styled.span`

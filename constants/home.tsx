@@ -19,7 +19,7 @@ const HOME = {
     TITLE: (
       <>
         LATEST CONTRIBUTIONS | <span>{GITHUB.CONTRIBUTIONS.RANGE_DAYS}</span>{' '}
-        dias
+        days
       </>
     ),
   },

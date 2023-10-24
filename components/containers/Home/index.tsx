@@ -20,7 +20,7 @@ const Home = ({ posts, locale }: HomeProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title>{pageTitle} - Frontend Developer</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <meta property="og:type" content="blog" />
         <meta property="og:title" content={pageTitle} />

@@ -25,6 +25,9 @@ export const HeaderTitle = styled.h1`
   font-family: Arial;
   line-height: 5rem;
   margin: 15px 0;
+  background: ${getThemeColor('gradient2')};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `
 
 export const HeaderText = styled.p`

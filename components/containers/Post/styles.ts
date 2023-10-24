@@ -51,6 +51,9 @@ export const PostTitle = styled.h1`
   font-size: 5rem;
   line-height: 5rem;
   margin: 20px 0 15px;
+  background: ${getThemeColor('gradient2')};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   ${up('lg')} {
     text-align: center;
@@ -74,7 +77,7 @@ export const PostImageBox = styled.figure`
   width: 100%;
   height: 300px;
   position: relative;
-  margin: 40px 0 25px;
+  margin: 40px 0;
   border-radius: 5px;
   overflow: hidden;
 
