@@ -3,6 +3,6 @@ export interface SocialsProps {
   withScheduleResponsive?: boolean
 }
 
-export interface StyledSocialsItemProps {
+export interface StyledSocialsItemScheduleProps {
   withResponsive?: boolean
 }

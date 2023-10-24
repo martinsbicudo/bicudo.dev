@@ -8,6 +8,7 @@ import { getDomainWithLocale } from '~/utils'
 import GithubContributions from './GithubContributions'
 import Header from './Header'
 import { HomeProps } from './interface'
+import OpenSourceList from './OpenSourceList'
 import PostList from './PostList'
 import Schedule from './Schedule'
 import * as S from './styles'
@@ -19,7 +20,7 @@ const Home = ({ posts, locale }: HomeProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title>{pageTitle} - test</title>
+        <title>{pageTitle} - Frontend Developer</title>
         <meta name="description" content={description} />
         <meta property="og:type" content="blog" />
         <meta property="og:title" content={pageTitle} />
@@ -41,6 +42,7 @@ const Home = ({ posts, locale }: HomeProps): JSX.Element => {
             </S.HomeTopBottom>
           </S.HomeTop>
           <S.HomeBottom>
+            <OpenSourceList />
             <PostList posts={posts} />
           </S.HomeBottom>
         </S.HomeContainer>

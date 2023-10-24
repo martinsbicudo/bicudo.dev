@@ -1,7 +1,7 @@
 const legend = [
   {
     isInRange: (v) => v === 0,
-    color: 'rgba(150, 150, 150, 0.15)',
+    color: 'rgba(150, 150, 150, 0.10)',
     label: '= 0',
   },
   {

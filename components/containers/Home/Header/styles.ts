@@ -17,7 +17,7 @@ export const HeaderWelcome = styled.span`
   padding: 10px 12px;
   margin-top: 15px;
   border-radius: 5px;
-  background-color: ${getThemeColor('gray3')};
+  background-color: ${getThemeColor('black')};
 `
 
 export const HeaderTitle = styled.h1`
@@ -29,8 +29,9 @@ export const HeaderTitle = styled.h1`
 
 export const HeaderText = styled.p`
   max-width: 450px;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 2.4rem;
   margin-top: 10px;
+  font-weight: 100;
   color: ${getThemeColor('gray')};
 `

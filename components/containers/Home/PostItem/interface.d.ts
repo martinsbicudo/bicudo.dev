@@ -21,4 +21,5 @@ export interface PostItemWrapperProps {
 
 export interface StyledPostItemProps {
   $wip: boolean
+  $fixed: boolean
 }

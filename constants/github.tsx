@@ -1,6 +1,6 @@
 const GITHUB = {
   CONTRIBUTIONS: {
-    RANGE_DAYS: 90,
+    RANGE_DAYS: 180,
   },
 }
 

@@ -27,7 +27,7 @@ const PostItem = ({
 
   return (
     <Wrapper>
-      <S.PostItem $wip={wip}>
+      <S.PostItem $wip={wip} $fixed={fixed}>
         <S.PostItemTop>
           {fixed && (
             <S.PostItemFixed>

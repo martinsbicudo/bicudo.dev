@@ -2,23 +2,23 @@ import GITHUB from './github'
 import PERSON from './person'
 
 const HOME = {
-  WELCOME: 'BEM-VINDO :)',
-  TITLE: `Sou o ${PERSON.NAME}`,
+  WELCOME: 'WELCOME :)',
+  TITLE: `I'm ${PERSON.NAME}`,
   ABOUT: [
-    `Front-end, apaixonado por tecnologia, ${PERSON.AGE} anos, brasileiro e nascido em Santos/SP.`,
-    'No meu tempo livre eu gosto de jogar no celular, ler mangás, e assistir animes ou filmes/séries de ficção ciêntifica.',
+    `Front-end, passionate about technology, ${PERSON.AGE} years old, Brazilian and born in Santos/SP.`,
+    'In my free time I like to play games on my cell phone, read manga, and watch anime or science fiction films/series.',
   ],
   SCHEDULE: {
-    TITLE: 'Quer marcar um papo comigo?',
+    TITLE: 'Shall we schedule a meet?',
     BUTTON_TEXT: {
-      DESKTOP: 'CLIQUE AQUI',
-      MOBILE: 'MARCAR UM PAPO',
+      DESKTOP: 'CLICK HERE',
+      MOBILE: 'SCHEDULE A MEET',
     },
   },
   CONTRIBUTIONS: {
     TITLE: (
       <>
-        Últimas contribuições | <span>{GITHUB.CONTRIBUTIONS.RANGE_DAYS}</span>{' '}
+        LATEST CONTRIBUTIONS | <span>{GITHUB.CONTRIBUTIONS.RANGE_DAYS}</span>{' '}
         dias
       </>
     ),

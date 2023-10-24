@@ -15,10 +15,17 @@ export const ScheduleWrapper = styled.div`
 
 export const Schedule = styled.div`
   width: 100%;
+  padding: 1px;
+  border-radius: 5px;
+  background: ${getThemeColor('gradient')};
+`
+
+export const ScheduleContent = styled.div`
+  width: 100%;
   padding: 15px 20px;
   border-radius: 5px;
   color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('gray3')};
+  background-color: ${getThemeColor('black')};
 `
 
 export const ScheduleTitle = styled.h2`

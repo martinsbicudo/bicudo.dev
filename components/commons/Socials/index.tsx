@@ -46,15 +46,17 @@ const Socials = ({
         <TbMail />
       </S.SocialsLink>
     </S.SocialsItem>
-    <S.SocialsItem withResponsive={withScheduleResponsive}>
-      <S.SocialsLink
-        href="https://superpowered.me/martinsbicudo"
-        target="_blank"
-      >
-        <span>{HOME.SCHEDULE.BUTTON_TEXT.MOBILE}</span>
-        <TbCalendarEvent />
-      </S.SocialsLink>
-    </S.SocialsItem>
+    <S.SocialsItemSchedule withResponsive={withScheduleResponsive}>
+      <S.SocialsItem as="span">
+        <S.SocialsLink
+          href="https://superpowered.me/martinsbicudo"
+          target="_blank"
+        >
+          <span>{HOME.SCHEDULE.BUTTON_TEXT.MOBILE}</span>
+          <TbCalendarEvent />
+        </S.SocialsLink>
+      </S.SocialsItem>
+    </S.SocialsItemSchedule>
   </S.Socials>
 )
 

@@ -8,27 +8,28 @@ export const Home = styled.main`
 
 export const HomeContainer = styled(Container)`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
   position: relative;
   min-height: 100vh;
 
   ${up('md')} {
-    flex-wrap: nowrap;
+    flex-direction: row;
   }
 `
 
 export const HomeTop = styled.div`
   flex: 1;
   display: flex;
+  width: 100%;
   flex-direction: column;
   min-width: 275px;
-  padding-right: 25px;
   padding-top: 25px;
 
   ${up('md')} {
     max-width: 350px;
-    min-height: calc(100vh - 50px);
+    padding-right: 35px;
+    min-height: calc(100vh - 25px);
   }
 
   ${up('lg')} {
@@ -41,16 +42,23 @@ export const HomeTop = styled.div`
 
 export const HomeTopBottom = styled.div`
   flex: 1;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
+  flex-direction: column;
   align-content: space-between;
   padding-top: 30px;
+
+  ${up('sm')} {
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+  }
 `
 
 export const HomeSocialsBox = styled.div`
   flex: 1;
+  width: 100%;
   min-width: 175px;
-  max-width: 300px;
 
   ${up('md')} {
     max-width: initial;

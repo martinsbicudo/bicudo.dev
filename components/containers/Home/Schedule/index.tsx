@@ -8,13 +8,15 @@ const Schedule = () => {
   return (
     <S.ScheduleWrapper>
       <S.Schedule>
-        <S.ScheduleTitle>{HOME.SCHEDULE.TITLE}</S.ScheduleTitle>
-        <S.ScheduleLink
-          href="https://superpowered.me/martinsbicudo"
-          target="_blank"
-        >
-          {HOME.SCHEDULE.BUTTON_TEXT.DESKTOP}
-        </S.ScheduleLink>
+        <S.ScheduleContent>
+          <S.ScheduleTitle>{HOME.SCHEDULE.TITLE}</S.ScheduleTitle>
+          <S.ScheduleLink
+            href="https://superpowered.me/martinsbicudo"
+            target="_blank"
+          >
+            {HOME.SCHEDULE.BUTTON_TEXT.DESKTOP}
+          </S.ScheduleLink>
+        </S.ScheduleContent>
       </S.Schedule>
     </S.ScheduleWrapper>
   )

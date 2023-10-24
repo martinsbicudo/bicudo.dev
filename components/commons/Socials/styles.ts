@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
 
-import { StyledSocialsItemProps } from './interface'
+import { StyledSocialsItemScheduleProps } from './interface'
 
 export const Socials = styled.ul`
   display: flex;
@@ -28,7 +28,7 @@ export const SocialsLink = styled.a`
   padding: 12px;
   border-radius: 50px;
   color: ${getThemeColor('gray')};
-  background-color: ${getThemeColor('gray3')};
+  background-color: ${getThemeColor('black')};
   will-change: color;
   transition: color 0.2s;
   cursor: pointer;
@@ -47,17 +47,16 @@ export const SocialsLink = styled.a`
   }
 `
 
-export const SocialsItem = styled.li<StyledSocialsItemProps>`
+export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
+  padding: 1px;
+  border-radius: 50px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background: ${getThemeColor('gradient')};
 
-  &:last-child ${SocialsLink} {
-    color: ${getThemeColor('main')};
-    background-color: ${getThemeColor('white')};
-  }
-
-  &:not(:last-child) {
-    margin-right: 10px;
+  ${SocialsLink} {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   ${({ withResponsive }) =>
@@ -69,4 +68,18 @@ export const SocialsItem = styled.li<StyledSocialsItemProps>`
         }
       }
     `}
+`
+
+export const SocialsItem = styled.li`
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  &:last-child ${SocialsLink} {
+    color: ${getThemeColor('white')};
+    background-color: ${getThemeColor('black')};
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
 `

@@ -12,7 +12,6 @@ export const PostItemWrapper = styled(NextLink)`
   position: relative;
   text-decoration: none;
   color: ${getThemeColor('white')};
-  padding: 5px;
   min-width: 300px;
   flex: calc(50% - 10px);
   transition: opacity 0.2s;
@@ -33,7 +32,6 @@ export const PostItem = styled.li<StyledPostItemProps>`
   box-sizing: border-box;
   padding: 15px;
   border-radius: 5px;
-  background-color: ${getThemeColor('gray3')};
 
   ${({ $wip }) => {
     if ($wip)
@@ -43,6 +41,19 @@ export const PostItem = styled.li<StyledPostItemProps>`
 
     return css`
       cursor: pointer;
+    `
+  }}
+
+  ${({ $fixed }) => {
+    if ($fixed)
+      return css`
+        background-color: ${getThemeColor('white')};
+        color: ${getThemeColor('black')};
+      `
+
+    return css`
+      background-color: ${getThemeColor('gray4')};
+      color: ${getThemeColor('white')};
     `
   }}
 `
@@ -56,14 +67,14 @@ export const PostItemTop = styled.div`
 export const PostItemDate = styled.span`
   font-size: 1rem;
   line-height: 20px;
-  color: ${getThemeColor('white')};
+  color: inherit;
 `
 
 export const PostItemFixed = styled.span`
   height: 1.2rem;
   font-size: 1.2rem;
   margin-right: 15px;
-  color: ${getThemeColor('white')};
+  color: inherit;
 `
 
 export const PostItemImageBox = styled.figure`
@@ -72,7 +83,7 @@ export const PostItemImageBox = styled.figure`
   height: 150px;
   margin-bottom: 15px;
   border-radius: 5px;
-  box-shadow: 0 0 2rem 0 ${getThemeColor('main')};
+  box-shadow: 0 0 2rem 0 ${getThemeColor('gray3')};
   overflow: hidden;
 `
 
