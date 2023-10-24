@@ -10,6 +10,7 @@ const OpenSourceItem = ({ name, url, description }: OpenSourceItemProps) => {
           <S.OpenSourceItemDescription>
             {description}
           </S.OpenSourceItemDescription>
+          <S.OpenSourceItemURL>{url}</S.OpenSourceItemURL>
         </S.OpenSourceItemContent>
       </S.OpenSourceItem>
     </S.OpenSourceItemWrapper>
