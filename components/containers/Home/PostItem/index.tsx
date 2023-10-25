@@ -14,7 +14,24 @@ const PostItem = ({
   wip,
   ...post
 }: Omit<PostType, 'description' | 'source'>) => {
-  const date = format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
+  const getDate = () => {
+    if (wip) return 'WIP'
+    return format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
+  }
+
+  const getFixedPin = () =>
+    fixed && (
+      <S.PostItemFixed>
+        <BsPin />
+      </S.PostItemFixed>
+    )
+
+  const getCoverImage = () =>
+    coverImage && (
+      <S.PostItemImageBox>
+        <S.PostItemImage src={coverImage} alt={title} fill />
+      </S.PostItemImageBox>
+    )
 
   const Wrapper = useCallback(
     ({ children }: PostItemWrapperProps) => {
@@ -29,23 +46,10 @@ const PostItem = ({
     <Wrapper>
       <S.PostItem $wip={wip} $fixed={fixed}>
         <S.PostItemTop>
-          {fixed && (
-            <S.PostItemFixed>
-              <BsPin />
-            </S.PostItemFixed>
-          )}
-          <S.PostItemDate>{wip ? 'WIP' : date}</S.PostItemDate>
+          {getFixedPin()}
+          <S.PostItemDate>{getDate()}</S.PostItemDate>
         </S.PostItemTop>
-        {coverImage && (
-          <S.PostItemImageBox>
-            <S.PostItemImage
-              src={coverImage}
-              alt={title}
-              priority={true}
-              fill
-            />
-          </S.PostItemImageBox>
-        )}
+        {getCoverImage()}
         <S.PostItemTitle>{title}</S.PostItemTitle>
       </S.PostItem>
     </Wrapper>
