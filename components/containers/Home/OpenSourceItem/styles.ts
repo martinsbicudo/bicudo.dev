@@ -41,7 +41,7 @@ export const OpenSourceItemContent = styled.div`
 export const OpenSourceItemTitle = styled.h3`
   text-transform: uppercase;
   font-size: 1.4rem;
-  padding-bottom: 5px;
+  padding-bottom: 3px;
   font-weight: 500;
 `
 
@@ -52,6 +52,6 @@ export const OpenSourceItemDescription = styled.p`
 `
 
 export const OpenSourceItemURL = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-decoration: underline;
 `

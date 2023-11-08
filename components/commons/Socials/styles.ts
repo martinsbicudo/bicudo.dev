@@ -62,7 +62,7 @@ export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
   ${({ withResponsive }) =>
     withResponsive &&
     css`
-      ${up('lg')} {
+      ${up('md')} {
         &:last-child {
           display: none;
         }

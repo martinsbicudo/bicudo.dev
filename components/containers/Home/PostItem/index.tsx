@@ -29,7 +29,7 @@ const PostItem = ({
   const getCoverImage = () =>
     coverImage && (
       <S.PostItemImageBox>
-        <S.PostItemImage src={coverImage} alt={title} fill />
+        <S.PostItemImage src={coverImage} alt={title} priority={true} fill />
       </S.PostItemImageBox>
     )
 

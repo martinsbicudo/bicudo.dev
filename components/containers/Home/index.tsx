@@ -2,7 +2,6 @@ import { Head, Socials } from '@Commons'
 
 import { PERSON, SITE } from '~/constants'
 
-import GithubContributions from './GithubContributions'
 import Header from './Header'
 import { HomeProps } from './interface'
 import OpenSourceList from './OpenSourceList'
@@ -31,7 +30,6 @@ const Home = ({ posts }: HomeProps): JSX.Element => {
               <S.HomeSocialsBox>
                 <Socials withBicudo withScheduleResponsive />
               </S.HomeSocialsBox>
-              <GithubContributions />
             </S.HomeTopBottom>
           </S.HomeTop>
           <S.HomeBottom>

@@ -8,7 +8,7 @@ export const ScheduleWrapper = styled.div`
   padding-top: 30px;
   display: none;
 
-  ${up('lg')} {
+  ${up('md')} {
     display: initial;
   }
 `

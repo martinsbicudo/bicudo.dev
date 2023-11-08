@@ -12,6 +12,12 @@ const Header = (): JSX.Element => {
       </S.HeaderLogoBox>
       <S.HeaderWelcome>{HOME.WELCOME}</S.HeaderWelcome>
       <S.HeaderTitle>{HOME.TITLE}</S.HeaderTitle>
+      <S.HeaderSkills>
+        <S.HeaderSkill>react.js</S.HeaderSkill>
+        <S.HeaderSkill>next.js</S.HeaderSkill>
+        <S.HeaderSkill>javascript</S.HeaderSkill>
+        <S.HeaderSkill>typescript</S.HeaderSkill>
+      </S.HeaderSkills>
       {HOME.ABOUT.map((TEXT, i) => (
         <S.HeaderText key={i}>{TEXT}</S.HeaderText>
       ))}

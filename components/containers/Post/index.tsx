@@ -51,7 +51,12 @@ const Post = ({ post }: PostProps) => {
           <S.PostDescription>{post.description}</S.PostDescription>
         </S.PostHeader>
         <S.PostImageBox>
-          <S.PostImage src={post.coverImage} alt={post.coverImage} fill />
+          <S.PostImage
+            src={post.coverImage}
+            alt={post.coverImage}
+            priority={true}
+            fill
+          />
         </S.PostImageBox>
         <S.PostContent>
           <MDXRemote {...post.source} components={Mdx} />

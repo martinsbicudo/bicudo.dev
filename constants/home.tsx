@@ -1,4 +1,3 @@
-import GITHUB from './github'
 import PERSON from './person'
 
 const HOME = {
@@ -14,14 +13,6 @@ const HOME = {
       DESKTOP: 'CLICK HERE',
       MOBILE: 'SCHEDULE A MEET',
     },
-  },
-  CONTRIBUTIONS: {
-    TITLE: (
-      <>
-        LATEST CONTRIBUTIONS | <span>{GITHUB.CONTRIBUTIONS.RANGE_DAYS}</span>{' '}
-        days
-      </>
-    ),
   },
 }
 

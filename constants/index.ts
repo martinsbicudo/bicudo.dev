@@ -1,4 +1,3 @@
-export { default as GITHUB } from './github'
 export { default as HOME } from './home'
 export { default as OPEN_SOURCE } from './open_source'
 export { default as PERSON } from './person'

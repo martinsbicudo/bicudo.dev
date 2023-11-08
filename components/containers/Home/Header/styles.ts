@@ -24,14 +24,30 @@ export const HeaderTitle = styled.h1`
   font-size: 5rem;
   font-family: Arial;
   line-height: 5rem;
-  margin: 15px 0;
+  margin: 15px 0 10px;
   background: ${getThemeColor('gradient2')};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `
 
+export const HeaderSkills = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-bottom: 5px;
+  list-style: none;
+`
+
+export const HeaderSkill = styled.li`
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border-radius: 10px;
+  border: 1px solid ${getThemeColor('gray')};
+  color: ${getThemeColor('gray')};
+  padding: 2px 7px;
+`
+
 export const HeaderText = styled.p`
-  max-width: 450px;
   font-size: 2rem;
   line-height: 2.4rem;
   margin-top: 10px;
