@@ -1,3 +1,5 @@
+<img src="https://github.com/martinsbicudo/bicudo.dev/blob/master/public/images/logo.png" width="50" />
+
 ## bicudo.dev
 
 > Bicudo's portfolio :)
