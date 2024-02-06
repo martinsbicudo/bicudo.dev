@@ -10,10 +10,7 @@ const Schedule = () => {
       <S.Schedule>
         <S.ScheduleContent>
           <S.ScheduleTitle>{HOME.SCHEDULE.TITLE}</S.ScheduleTitle>
-          <S.ScheduleLink
-            href="https://superpowered.me/martinsbicudo"
-            target="_blank"
-          >
+          <S.ScheduleLink href="https://appt.link/bicudo" target="_blank">
             {HOME.SCHEDULE.BUTTON_TEXT.DESKTOP}
           </S.ScheduleLink>
         </S.ScheduleContent>

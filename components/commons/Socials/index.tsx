@@ -48,10 +48,7 @@ const Socials = ({
     </S.SocialsItem>
     <S.SocialsItemSchedule withResponsive={withScheduleResponsive}>
       <S.SocialsItem as="span">
-        <S.SocialsLink
-          href="https://superpowered.me/martinsbicudo"
-          target="_blank"
-        >
+        <S.SocialsLink href="https://appt.link/bicudo" target="_blank">
           <span>{HOME.SCHEDULE.BUTTON_TEXT.MOBILE}</span>
           <TbCalendarEvent />
         </S.SocialsLink>
