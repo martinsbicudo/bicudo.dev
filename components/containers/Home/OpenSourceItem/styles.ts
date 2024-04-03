@@ -68,4 +68,5 @@ export const OpenSourceItemDescription = styled.p`
 export const OpenSourceItemURL = styled.span`
   font-size: 1.4rem;
   text-decoration: underline;
+  overflow-wrap: break-word;
 `
