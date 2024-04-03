@@ -1,6 +1,5 @@
 import NextLink from 'next/link'
 
-import { up } from 'styled-breakpoints'
 import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -31,7 +30,7 @@ export const OpenSourceItemWrapper = styled(NextLink)`
     }
   }
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     min-width: 250px;
   }
 

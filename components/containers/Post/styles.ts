@@ -2,7 +2,6 @@ import NextImage from 'next/image'
 import NextLink from 'next/link'
 
 import { Container } from '@Commons'
-import { up } from 'styled-breakpoints'
 import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -20,7 +19,7 @@ export const PostHeader = styled.header`
 export const PostLogoBox = styled.figure`
   margin-bottom: 25px;
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     display: flex;
     justify-content: center;
   }
@@ -33,7 +32,7 @@ export const PostDate = styled.p`
   font-size: 1.2rem;
   color: ${getThemeColor('gray')};
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     justify-content: center;
   }
 
@@ -55,7 +54,7 @@ export const PostTitle = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     text-align: center;
   }
 `
@@ -64,7 +63,7 @@ export const PostDescription = styled.p`
   font-size: 2rem;
   font-weight: 200;
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     text-align: center;
   }
 `
@@ -81,11 +80,11 @@ export const PostImageBox = styled.figure`
   border-radius: 5px;
   overflow: hidden;
 
-  ${up('sm')} {
+  ${({ theme }) => theme.breakpoints.up('sm')} {
     height: 350px;
   }
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     height: 400px;
   }
 `
@@ -101,7 +100,7 @@ export const PostLangBox = styled.div`
   top: 25px;
   right: 15px;
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     right: 50px;
   }
 `
@@ -127,7 +126,7 @@ export const PostBackLink = styled(NextLink)`
     margin-right: 5px;
   }
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     right: 50px;
   }
 `

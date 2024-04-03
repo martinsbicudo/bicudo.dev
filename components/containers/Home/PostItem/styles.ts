@@ -1,7 +1,6 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
-import { up } from 'styled-breakpoints'
 import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -16,7 +15,7 @@ export const PostItemWrapper = styled(NextLink)`
   flex: calc(50% - 10px);
   transition: opacity 0.2s;
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     min-width: 250px;
   }
 

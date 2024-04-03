@@ -1,5 +1,4 @@
 import { Container } from '@Commons'
-import { up } from 'styled-breakpoints'
 import styled from 'styled-components'
 
 export const Home = styled.main`
@@ -13,7 +12,7 @@ export const HomeContainer = styled(Container)`
   position: relative;
   min-height: 100vh;
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     flex-direction: row;
   }
 `
@@ -26,13 +25,13 @@ export const HomeTop = styled.div`
   min-width: 275px;
   padding-top: 25px;
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     max-width: 350px;
     padding-right: 35px;
     min-height: calc(100vh - 25px);
   }
 
-  ${up('lg')} {
+  ${({ theme }) => theme.breakpoints.up('lg')} {
     position: sticky;
     top: 0;
     padding-right: 50px;
@@ -49,7 +48,7 @@ export const HomeTopBottom = styled.div`
   align-content: space-between;
   padding-top: 30px;
 
-  ${up('sm')} {
+  ${({ theme }) => theme.breakpoints.up('sm')} {
     flex-direction: row;
     flex-wrap: wrap-reverse;
   }
@@ -60,7 +59,7 @@ export const HomeSocialsBox = styled.div`
   width: 100%;
   min-width: 175px;
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     max-width: initial;
   }
 `

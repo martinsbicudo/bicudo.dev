@@ -1,4 +1,3 @@
-import { up } from 'styled-breakpoints'
 import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -8,7 +7,7 @@ export const ScheduleWrapper = styled.div`
   padding-top: 30px;
   display: none;
 
-  ${up('md')} {
+  ${({ theme }) => theme.breakpoints.up('md')} {
     display: initial;
   }
 `

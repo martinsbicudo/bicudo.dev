@@ -1,4 +1,3 @@
-import { up } from 'styled-breakpoints'
 import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -59,10 +58,10 @@ export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
     margin-bottom: 0;
   }
 
-  ${({ withResponsive }) =>
+  ${({ withResponsive, theme }) =>
     withResponsive &&
     css`
-      ${up('md')} {
+      ${theme.breakpoints.up('md')} {
         &:last-child {
           display: none;
         }

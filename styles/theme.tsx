@@ -1,4 +1,9 @@
+import { createStyledBreakpointsTheme } from 'styled-breakpoints'
+
+const breakpointsTheme = createStyledBreakpointsTheme()
+
 const theme = {
+  ...breakpointsTheme,
   colors: {
     main: '#121212',
     white: '#ffffff',

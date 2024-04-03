@@ -1,5 +1,4 @@
 import { Container } from '@Commons'
-import { up } from 'styled-breakpoints'
 import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
@@ -58,7 +57,7 @@ export const FooterBottom = styled.div`
 export const FooterSocialsBox = styled.div`
   max-width: 250px;
 
-  ${up('sm')} {
+  ${({ theme }) => theme.breakpoints.up('sm')} {
     max-width: 100%;
   }
 `
