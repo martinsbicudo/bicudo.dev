@@ -51,7 +51,7 @@ export const PostTitle = styled.h1`
   font-size: 5rem;
   line-height: 5rem;
   margin: 20px 0 15px;
-  background: ${getThemeColor('gradient2')};
+  background: ${getThemeColor('gradient')};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 

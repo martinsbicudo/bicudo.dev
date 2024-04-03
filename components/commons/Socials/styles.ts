@@ -52,7 +52,7 @@ export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
   border-radius: 50px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: ${getThemeColor('gradient')};
+  background: ${getThemeColor('gradient2')};
 
   ${SocialsLink} {
     margin-top: 0;

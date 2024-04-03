@@ -5,6 +5,12 @@ import styled from 'styled-components'
 
 import { getThemeColor } from '~/utils'
 
+export const OpenSourceItem = styled.li`
+  padding: 1px;
+  border-radius: 5px;
+  height: 100%;
+`
+
 export const OpenSourceItemWrapper = styled(NextLink)`
   position: relative;
   text-decoration: none;
@@ -12,6 +18,18 @@ export const OpenSourceItemWrapper = styled(NextLink)`
   min-width: 300px;
   flex: calc(50% - 10px);
   transition: opacity 0.2s;
+
+  &:nth-child(1) {
+    ${OpenSourceItem} {
+      background: ${getThemeColor('gradient3')};
+    }
+  }
+
+  &:nth-child(2) {
+    ${OpenSourceItem} {
+      background: ${getThemeColor('gradient4')};
+    }
+  }
 
   ${up('md')} {
     min-width: 250px;
@@ -23,15 +41,11 @@ export const OpenSourceItemWrapper = styled(NextLink)`
   }
 `
 
-export const OpenSourceItem = styled.li`
-  padding: 1px;
-  border-radius: 5px;
-  background: ${getThemeColor('gradient')};
-`
-
 export const OpenSourceItemContent = styled.div`
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: 15px;
   border-radius: 5px;
@@ -46,6 +60,7 @@ export const OpenSourceItemTitle = styled.h3`
 `
 
 export const OpenSourceItemDescription = styled.p`
+  flex: 1;
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 200;

@@ -17,7 +17,7 @@ export const Schedule = styled.div`
   width: 100%;
   padding: 1px;
   border-radius: 5px;
-  background: ${getThemeColor('gradient')};
+  background: ${getThemeColor('gradient2')};
 `
 
 export const ScheduleContent = styled.div`
