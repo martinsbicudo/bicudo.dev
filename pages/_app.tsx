@@ -7,7 +7,7 @@ import theme from '~/styles/theme'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
+    <GlobalStyle theme={theme} />
     <Component {...pageProps} />
   </ThemeProvider>
 )

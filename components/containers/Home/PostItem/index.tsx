@@ -35,11 +35,16 @@ const PostItem = ({
 
   const Wrapper = useCallback(
     ({ children }: PostItemWrapperProps) => {
-      if (wip) return <S.PostItemWrapper as="div">{children}</S.PostItemWrapper>
+      if (wip)
+        return (
+          <S.PostItemWrapper href="/" as="div">
+            {children}
+          </S.PostItemWrapper>
+        )
 
       return <S.PostItemWrapper href={`/${slug}`}>{children}</S.PostItemWrapper>
     },
-    [wip, slug]
+    [wip, slug],
   )
 
   return (
