@@ -4,5 +4,5 @@ export interface SocialsProps {
 }
 
 export interface StyledSocialsItemScheduleProps {
-  withResponsive?: boolean
+  $withResponsive?: boolean
 }

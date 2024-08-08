@@ -46,7 +46,7 @@ const Socials = ({
         <TbMail />
       </S.SocialsLink>
     </S.SocialsItem>
-    <S.SocialsItemSchedule withResponsive={withScheduleResponsive}>
+    <S.SocialsItemSchedule $withResponsive={withScheduleResponsive}>
       <S.SocialsItem as="span">
         <S.SocialsLink href="https://appt.link/bicudo" target="_blank">
           <span>{HOME.SCHEDULE.BUTTON_TEXT.MOBILE}</span>
