@@ -58,8 +58,8 @@ export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
     margin-bottom: 0;
   }
 
-  ${({ withResponsive, theme }) =>
-    withResponsive &&
+  ${({ $withResponsive, theme }) =>
+    $withResponsive &&
     css`
       ${theme.breakpoints.up('md')} {
         &:last-child {
