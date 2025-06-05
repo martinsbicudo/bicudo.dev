@@ -69,6 +69,10 @@ export const PostDescription = styled.p`
 `
 
 export const PostContent = styled.article`
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
   width: 100%;
 `
 

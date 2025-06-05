@@ -1,4 +1,4 @@
-import { Jost } from 'next/font/google'
+import { Jost, Roboto_Slab } from 'next/font/google'
 
 import { createGlobalStyle } from 'styled-components'
 
@@ -9,6 +9,12 @@ const jost = Jost({
   subsets: ['latin'],
 })
 
+const robotoSlab = Roboto_Slab({
+  variable: '--font-roboto-slab',
+  weight: ['100', '200', '400', '500'],
+  subsets: ['latin'],
+})
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -16,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     outline: 0;
     box-sizing: border-box;
+    ${robotoSlab.variable}
   }
 
   html {

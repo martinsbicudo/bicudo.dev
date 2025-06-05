@@ -1,7 +1,7 @@
 import {
   TbBrandLinkedin,
   TbBrandGithub,
-  TbBrandTwitter,
+  TbCoffee,
   TbMail,
   TbCalendarEvent,
 } from 'react-icons/tb'
@@ -37,12 +37,12 @@ const Socials = ({
       </S.SocialsLink>
     </S.SocialsItem>
     <S.SocialsItem>
-      <S.SocialsLink href="https://twitter.com/martinsbicudo" target="_blank">
-        <TbBrandTwitter />
+      <S.SocialsLink href="https://buymeacoffee.com/bicudo" target="_blank">
+        <TbCoffee />
       </S.SocialsLink>
     </S.SocialsItem>
     <S.SocialsItem>
-      <S.SocialsLink href="mailto:victor_bicudo@outlook.com">
+      <S.SocialsLink href="mailto:victor.mbicudo@gmail.com">
         <TbMail />
       </S.SocialsLink>
     </S.SocialsItem>

@@ -4,7 +4,7 @@ import { HOME } from '~/constants'
 
 import * as S from './styles'
 
-const Header = (): JSX.Element => {
+const Header = () => {
   return (
     <S.Header>
       <S.HeaderLogoBox>
@@ -15,8 +15,8 @@ const Header = (): JSX.Element => {
       <S.HeaderSkills>
         <S.HeaderSkill>react.js</S.HeaderSkill>
         <S.HeaderSkill>next.js</S.HeaderSkill>
-        <S.HeaderSkill>javascript</S.HeaderSkill>
         <S.HeaderSkill>typescript</S.HeaderSkill>
+        <S.HeaderSkill>node.js</S.HeaderSkill>
       </S.HeaderSkills>
       {HOME.ABOUT.map((TEXT, i) => (
         <S.HeaderText key={i}>{TEXT}</S.HeaderText>

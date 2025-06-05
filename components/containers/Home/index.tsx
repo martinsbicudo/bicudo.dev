@@ -9,8 +9,8 @@ import PostList from './PostList'
 import Schedule from './Schedule'
 import * as S from './styles'
 
-const Home = ({ posts }: HomeProps): JSX.Element => {
-  const pageTitle = `${PERSON.NAME} | Front-End Developer`
+const Home = ({ posts }: HomeProps) => {
+  const pageTitle = `${PERSON.NAME} | Software Engineer`
   const description = "Bicudo's blog and portfolio"
 
   return (

@@ -30,13 +30,13 @@ export const FooterImageInfos = styled.div`
 `
 
 export const FooterImageTitle = styled.figcaption`
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   font-weight: 500;
 `
 
 export const FooterImageSubtitle = styled.span`
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  font-size: 2rem;
+  line-height: 2rem;
   font-weight: 200;
   color: ${getThemeColor('gray')};
 `
@@ -44,7 +44,7 @@ export const FooterImageSubtitle = styled.span`
 export const FooterAbout = styled.p`
   width: 100%;
   max-width: 500px;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 200;
 `
 

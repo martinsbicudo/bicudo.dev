@@ -11,13 +11,18 @@ export const HeaderLogoBox = styled.div`
 `
 
 export const HeaderWelcome = styled.span`
-  display: inline-block;
+  display: inline-flex;
+  gap: 10px;
   font-size: 1.2rem;
   line-height: 1.2rem;
   padding: 10px 12px;
   margin-top: 15px;
   border-radius: 5px;
   background-color: ${getThemeColor('black')};
+
+  i {
+    font-size: 1.6rem;
+  }
 `
 
 export const HeaderTitle = styled.h1`

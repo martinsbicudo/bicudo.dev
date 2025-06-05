@@ -2,6 +2,7 @@ import { TbCircleFilled, TbBook, TbArrowLeft } from 'react-icons/tb'
 
 import { MDXRemote } from 'next-mdx-remote'
 import ErrorPage from 'next/error'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { Head, Logo, Mdx } from '@Commons'
@@ -39,7 +40,9 @@ const Post = ({ post }: PostProps) => {
       <S.Post>
         <S.PostHeader>
           <S.PostLogoBox>
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </S.PostLogoBox>
           <S.PostDate>
             {date}
