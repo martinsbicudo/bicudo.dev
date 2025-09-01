@@ -16,7 +16,7 @@ const PostItem = ({
 }: Omit<PostType, 'description' | 'source'>) => {
   const getDate = () => {
     if (wip) return 'WIP'
-    return format(new Date(`${post.date}:00:00:00`), 'dd LLL yyyy')
+    return format(new Date(`${post.date} 00:00:00`), 'dd LLL yyyy')
   }
 
   const getFixedPin = () =>
