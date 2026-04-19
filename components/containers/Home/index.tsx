@@ -7,6 +7,7 @@ import { HomeProps } from './interface'
 import OpenSourceList from './OpenSourceList'
 import PostList from './PostList'
 import Schedule from './Schedule'
+import SideProjectList from './SideProjectList'
 import * as S from './styles'
 
 const Home = ({ posts }: HomeProps) => {
@@ -25,6 +26,7 @@ const Home = ({ posts }: HomeProps) => {
         <S.HomeContainer>
           <S.HomeTop>
             <Header />
+            <SideProjectList />
             <Schedule />
             <S.HomeTopBottom>
               <S.HomeSocialsBox>

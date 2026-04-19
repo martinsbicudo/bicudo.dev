@@ -1,9 +1,8 @@
+import { format } from 'date-fns'
 import { useCallback } from 'react'
 import { BsPin } from 'react-icons/bs'
 
-import { format } from 'date-fns'
-
-import { PostType, PostItemWrapperProps } from './interface'
+import { PostItemWrapperProps, PostType } from './interface'
 import * as S from './styles'
 
 const PostItem = ({

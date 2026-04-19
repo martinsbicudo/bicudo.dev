@@ -1,15 +1,13 @@
-import { TbCircleFilled, TbBook, TbArrowLeft } from 'react-icons/tb'
-
-import { MDXRemote } from 'next-mdx-remote'
+import { Head, Logo, Mdx } from '@Commons'
+import { format } from 'date-fns'
 import ErrorPage from 'next/error'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-import { Head, Logo, Mdx } from '@Commons'
-import { format } from 'date-fns'
+import { MDXRemote } from 'next-mdx-remote'
+import { TbArrowLeft, TbBook, TbCircleFilled } from 'react-icons/tb'
 import { readingTime } from 'reading-time-estimator'
 
-import { POST, PERSON } from '~/constants'
+import { PERSON, POST } from '~/constants'
 import { getDomainWithLocale } from '~/utils'
 
 import Footer from './Footer'

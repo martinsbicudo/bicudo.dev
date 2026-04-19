@@ -5,14 +5,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  webpack(config) {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    }
-
-    return config
-  },
+  turbopack: {},
 }
 
-module.exports = nextConfig
+export default nextConfig

@@ -10,26 +10,11 @@ export const HeaderLogoBox = styled.div`
   width: 100%;
 `
 
-export const HeaderWelcome = styled.span`
-  display: inline-flex;
-  gap: 10px;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  padding: 10px 12px;
-  margin-top: 15px;
-  border-radius: 5px;
-  background-color: ${getThemeColor('black')};
-
-  i {
-    font-size: 1.6rem;
-  }
-`
-
 export const HeaderTitle = styled.h1`
   font-size: 5rem;
   font-family: Arial;
   line-height: 5rem;
-  margin: 15px 0 10px;
+  margin: 10px 0;
   background: ${getThemeColor('gradient')};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,23 +23,22 @@ export const HeaderTitle = styled.h1`
 export const HeaderSkills = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 3px;
   padding-bottom: 5px;
   list-style: none;
 `
 
 export const HeaderSkill = styled.li`
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  border-radius: 10px;
-  border: 1px solid ${getThemeColor('gray')};
+  font-size: 1.2rem;
+  border-radius: 5px;
   color: ${getThemeColor('gray')};
+  background-color: ${getThemeColor('gray4')};
   padding: 2px 7px;
 `
 
 export const HeaderText = styled.p`
-  font-size: 2rem;
-  line-height: 2.4rem;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
   margin-top: 10px;
   font-weight: 100;
   color: ${getThemeColor('gray')};

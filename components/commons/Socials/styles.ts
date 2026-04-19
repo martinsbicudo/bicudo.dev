@@ -27,7 +27,7 @@ export const SocialsLink = styled.a`
   padding: 12px;
   border-radius: 50px;
   color: ${getThemeColor('gray')};
-  background-color: ${getThemeColor('black')};
+  background-color: ${getThemeColor('gray4')};
   will-change: color;
   transition: color 0.2s;
   cursor: pointer;
@@ -51,7 +51,6 @@ export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
   border-radius: 50px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: ${getThemeColor('gradient2')};
 
   ${SocialsLink} {
     margin-top: 0;

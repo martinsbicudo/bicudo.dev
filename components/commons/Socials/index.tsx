@@ -1,12 +1,11 @@
+import { Bicudo } from '@Commons'
 import {
-  TbBrandLinkedin,
   TbBrandGithub,
+  TbBrandLinkedin,
+  TbCalendarEvent,
   TbCoffee,
   TbMail,
-  TbCalendarEvent,
 } from 'react-icons/tb'
-
-import { Bicudo } from '@Commons'
 
 import { HOME } from '~/constants'
 

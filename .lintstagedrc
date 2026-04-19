@@ -1,6 +1,5 @@
 {
   "*.{js,jsx,ts,tsx}": [
-    "pretty-quick --write",
-    "eslint --fix"
+    "biome check --write --no-errors-on-unmatched"
   ]
 }

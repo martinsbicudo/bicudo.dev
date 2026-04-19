@@ -1,7 +1,7 @@
 import { getAge } from '~/utils'
 
 const PERSON = {
-  NAME: 'Victor M. Bicudo',
+  NAME: 'Victor Bicudo',
   AGE: getAge('31/07/1991'),
 }
 

@@ -19,6 +19,5 @@ export const OpenSourceList = styled.ul`
 export const OpenSourceListTitle = styled.h2`
   font-size: 1.6rem;
   font-weight: 100;
-  text-transform: uppercase;
   margin-bottom: 10px;
 `

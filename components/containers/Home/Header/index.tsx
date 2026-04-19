@@ -10,7 +10,6 @@ const Header = () => {
       <S.HeaderLogoBox>
         <Logo />
       </S.HeaderLogoBox>
-      <S.HeaderWelcome>{HOME.WELCOME}</S.HeaderWelcome>
       <S.HeaderTitle>{HOME.TITLE}</S.HeaderTitle>
       <S.HeaderSkills>
         <S.HeaderSkill>react.js</S.HeaderSkill>

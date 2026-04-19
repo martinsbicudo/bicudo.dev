@@ -18,18 +18,6 @@ export const OpenSourceItemWrapper = styled(NextLink)`
   flex: calc(50% - 10px);
   transition: opacity 0.2s;
 
-  &:nth-child(1) {
-    ${OpenSourceItem} {
-      background: ${getThemeColor('gradient3')};
-    }
-  }
-
-  &:nth-child(2) {
-    ${OpenSourceItem} {
-      background: ${getThemeColor('gradient4')};
-    }
-  }
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     min-width: 250px;
   }
@@ -46,27 +34,22 @@ export const OpenSourceItemContent = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 10px 15px;
   border-radius: 5px;
-  background-color: ${getThemeColor('black')};
+  background-color: ${getThemeColor('gray4')};
 `
 
 export const OpenSourceItemTitle = styled.h3`
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding-bottom: 3px;
   font-weight: 500;
 `
 
 export const OpenSourceItemDescription = styled.p`
   flex: 1;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  font-weight: 200;
-`
-
-export const OpenSourceItemURL = styled.span`
   font-size: 1.4rem;
-  text-decoration: underline;
-  overflow-wrap: break-word;
+  line-height: 1.6rem;
+  font-weight: 200;
+  color: ${getThemeColor('gray')};
 `

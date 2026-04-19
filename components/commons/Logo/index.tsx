@@ -5,8 +5,8 @@ const Logo = () => (
     src="/images/logo.png"
     title="logo"
     alt="logo"
-    width="48"
-    height="48"
+    width="26"
+    height="26"
   />
 )
 

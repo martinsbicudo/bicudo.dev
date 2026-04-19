@@ -1,4 +1,4 @@
-import { blogPosts } from '~/utils'
+import * as blogPosts from '~/utils/blog-posts'
 
 export const getStaticProps = async () => {
   const posts = blogPosts.getAllPosts([

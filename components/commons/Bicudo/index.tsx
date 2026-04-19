@@ -6,7 +6,7 @@ import * as S from './styles'
 const Bicudo = ({ size = 42 }: BicudoProps) => (
   <S.BicudoWrapper width={`${size}px`} height={`${size}px`}>
     <NextImage
-      src="/images/bicudo.jpg"
+      src="/images/bicudo.jpeg"
       title="bicudo"
       alt="bicudo"
       width={size}

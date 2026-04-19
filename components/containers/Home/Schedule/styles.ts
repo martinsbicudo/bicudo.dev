@@ -4,7 +4,6 @@ import { getThemeColor } from '~/utils'
 
 export const ScheduleWrapper = styled.div`
   width: 100%;
-  padding-top: 30px;
   display: none;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
@@ -16,20 +15,20 @@ export const Schedule = styled.div`
   width: 100%;
   padding: 1px;
   border-radius: 5px;
-  background: ${getThemeColor('gradient2')};
 `
 
 export const ScheduleContent = styled.div`
   width: 100%;
   padding: 15px 20px;
   border-radius: 5px;
-  color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('black')};
+  color: ${getThemeColor('gray')};
+  background-color: ${getThemeColor('gray4')};
 `
 
 export const ScheduleTitle = styled.h2`
   font-size: 1.8rem;
   font-weight: 200;
+  color: ${getThemeColor('gray')};
 `
 
 export const ScheduleLink = styled.a`
@@ -42,5 +41,6 @@ export const ScheduleLink = styled.a`
   text-decoration: none;
   color: ${getThemeColor('main')};
   background-color: ${getThemeColor('white')};
+  font-weight: 500;
   cursor: pointer;
 `

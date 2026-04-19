@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import { blogPosts } from '~/utils'
+import * as blogPosts from '~/utils/blog-posts'
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0]
