@@ -7,7 +7,7 @@ export const Footer = styled.footer`
   width: 100%;
   margin-top: 50px;
   background-color: ${getThemeColor('gray5')};
-  border-top: 1px solid ${getThemeColor('gray3')};
+  border-top: 1px solid ${getThemeColor('gray4')};
 `
 
 export const FooterContent = styled(Container)`
@@ -16,7 +16,7 @@ export const FooterContent = styled(Container)`
 
 export const FooterTop = styled.div`
   padding-bottom: 30px;
-  border-bottom: 1px solid ${getThemeColor('gray3')};
+  border-bottom: 1px solid ${getThemeColor('gray4')};
 `
 
 export const FooterImageBox = styled.figure`

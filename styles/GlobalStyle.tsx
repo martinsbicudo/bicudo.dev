@@ -29,7 +29,19 @@ const GlobalStyle = createGlobalStyle`
      ${jost.style}
     font-size: 62.5%;
     background-color: ${getThemeColor('main')};
-    color: ${getThemeColor('white')};
+    color: ${getThemeColor('text')};
+  }
+
+  a {
+    color: ${getThemeColor('text')};
+    text-decoration: underline;
+    text-decoration-color: ${getThemeColor('gray')};
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+
+    &:hover {
+      text-decoration-color: ${getThemeColor('white')};
+    }
   }
 
   html,

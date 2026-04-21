@@ -74,7 +74,7 @@ export const SocialsItem = styled.li`
 
   &:last-child ${SocialsLink} {
     color: ${getThemeColor('white')};
-    background-color: ${getThemeColor('black')};
+    background-color: ${getThemeColor('gray4')};
   }
 
   &:not(:last-child) {

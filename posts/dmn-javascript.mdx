@@ -1,0 +1,112 @@
+---
+title: 'Bringing DMN to the JavaScript ecosystem'
+description: 'Why I created Veridtools — an open source GitHub organization building DMN tooling for JavaScript and TypeScript.'
+coverImage: '/images/blog/veridtools.webp'
+date: '2026-04-21'
+---
+
+Every company has business rules that change. Eligibility criteria, credit limits, discount policies, regulatory checks. And every time one of those rules needs to be updated, the cycle is predictable: analyst requests, engineer implements, code review, deploy, QA, production. Days — sometimes weeks — to change a condition the analyst understands better than anyone.
+
+There's an open standard that solves this, and has been around for nearly a decade. It's called **DMN — Decision Model and Notation**, maintained by the [Object Management Group](https://www.omg.org/dmn/). It's executable, interoperable, and designed specifically so business analysts and engineers can collaborate on the same artifact, without either one having to translate the other's knowledge.
+
+---
+
+## Why this matters
+
+Decision management is not a niche concern. It's a multi-billion dollar market — the global Business Rules Management Systems space is currently valued at around USD 1.5 billion and projected to grow at double-digit CAGR through the next decade. Banking, insurance, healthcare, and regulatory compliance are the biggest consumers.
+
+DMN specifically has been formally adopted as the industry standard in domains where interoperability of decision logic matters:
+
+- **[MISMO](https://www.mismo.org/)** — the US mortgage industry's standards body — has designated DMN as the approved standard for documenting, implementing, and exchanging business rules across mortgage lenders and third parties.
+- **[BPM+ Health](https://www.bpm-plus.org/)** uses DMN to publish and share clinical decision models, with hundreds of pre-built care pathways and clinical guidelines being used in medical systems today.
+- Retail and commercial banking, insurance, investment platforms, and government systems use DMN for decisions that need to be explainable, auditable, and vendor-independent.
+
+The standard exists. The demand is real. The problem is tooling — specifically, where that tooling lives.
+
+---
+
+## The JavaScript DMN landscape today
+
+Major DMN platforms have existed for years: Drools, Camunda, IBM ODM, Trisotech. Solid, mature solutions with active communities. Most of them live in the Java world, which is where the standard originally matured and where most traditional enterprise systems still run.
+
+The JS/TS side isn't completely empty, either. [`dmn-js`](https://github.com/bpmn-io/dmn-js) from bpmn-io is a mature embeddable editor, widely adopted and well-maintained — it's the reference for viewing and editing DMN diagrams in the browser. [`feelin`](https://github.com/nikku/feelin) provides a partial FEEL expression engine. There are individual utilities scattered across npm.
+
+But a cohesive ecosystem — parsers, diff tools, runners, linters, fixtures, test utilities, full FEEL compliance, composable editors — hasn't existed in JavaScript. Each tool solves one piece. Teams building DMN workflows end up stitching together incomplete solutions, spinning up a parallel Java service, manually reimplementing logic, or giving up on the standard altogether and falling back to plain conditionals.
+
+Meanwhile, the way modern products are built has shifted. A huge portion of fintechs, B2B SaaS platforms, regulatory tools, and internal systems is built in TypeScript, runs on Node.js, needs to work in the browser. For those teams, DMN has always required a bridge.
+
+Not because the standard is Java-exclusive — it isn't. DMN is an OMG standard, portable by definition. The gap was simply that nobody had built the complete JS/TS toolkit.
+
+That's what **Veridtools** is for.
+
+---
+
+## What Veridtools is
+
+Veridtools is an open source GitHub organization that builds DMN tooling for the JavaScript and TypeScript ecosystem. No company, no SaaS, no enterprise licenses. All packages are MIT-licensed, zero-cost, built from scratch and made available for anyone who wants to work with DMN in JS or TS.
+
+The goal is simple: make DMN as accessible in JavaScript as it already is in Java. Native tooling, with the DX the modern JavaScript ecosystem expects — complementary to what `dmn-js` and others already provide, not a replacement.
+
+---
+
+## The first packages
+
+Three packages are available today. Each solves a specific piece of the puzzle.
+
+### dmn-fixtures
+
+[`@veridtools/dmn-fixtures`](https://github.com/veridtools/dmn-fixtures) — **316 curated DMN fixtures covering DMN 1.0 to 1.5.**
+
+Anyone building DMN tooling in JS/TS — parsers, linters, diff tools, editors, runners — needs real DMN files to test against. Lots of them. Covering every corner of the spec: every hit policy, every boxed expression, every FEEL edge case, cross-version migration, XML serialization quirks.
+
+Today, getting those fixtures means either pasting huge XML strings into test files, or cloning Java test suites and extracting fixtures by hand. Neither scales.
+
+The package solves that: 31 organized groups, structured as base/variant pairs designed for diff and parser testing, ready to import as an npm package. No Java, no Maven, no manual extraction.
+
+It's the foundation the rest of the ecosystem tests against.
+
+---
+
+### dmn-diff
+
+[`@veridtools/dmn-diff`](https://github.com/veridtools/dmn-diff) — **Semantic diff for DMN files.**
+
+Regular XML diff tools are noisy on DMN. They report changes that don't actually affect the decision logic — attribute reordering, CDATA vs entities, whitespace, reordered rules — and miss or misclassify the changes that really break downstream consumers.
+
+DMN has semantic identity (`@id`), structural hierarchy (decisions, BKMs, rules), and a clear distinction between cosmetic, non-breaking, and breaking changes. A diff tool that understands that produces output a reviewer can scan in seconds and a CI pipeline can gate on.
+
+The package does exactly this:
+
+- **ID-based identity** — elements matched by `@id`, not position
+- **Severity classification** — every change marked as **breaking**, **non-breaking**, or **cosmetic**
+- **Four output modes** — semantic prose, row-diff table, structured JSON, raw XML
+- **CI/CD native** — exit code 1 on changes, 0 when clean
+- **Full normalization** — CDATA vs entities, default values, wildcards, BOM
+
+The kind of tool any serious DMN workflow needs but didn't have in JavaScript until now.
+
+---
+
+### dmn-diff-highlight
+
+[`@veridtools/dmn-diff-highlight`](https://github.com/veridtools/dmn-diff-highlight) — **Visual diff highlighting in React and vanilla JS.**
+
+Structured diff output is great for scripts and CI. For humans reviewing changes, something more visual helps — color-coded changes side by side, inline highlights, collapsible sections.
+
+The package renders the output of `dmn-diff` as visual components, both as React primitives and as framework-agnostic JS. Composable, stylable, zero-opinion on design systems.
+
+Makes DMN diff review something reviewers actually want to do.
+
+---
+
+## What's next
+
+Veridtools is a long-term project. The roadmap includes a parser, a FEEL expression evaluator, a decision runner, and an editor component — each built natively for JS/TS, each open source.
+
+Everything will be MIT. Everything will be built from scratch, with the JS/TS ecosystem as a first-class target.
+
+If you work with business rules, decision automation, or any kind of rules engine in JavaScript or TypeScript — these tools are built for you. Free to use, free to modify, free to contribute back.
+
+Star the repos you find useful, open issues when something breaks, and [start a discussion](https://github.com/orgs/veridtools/discussions) when something's missing.
+
+Let's make DMN finally work where the rest of us build.
