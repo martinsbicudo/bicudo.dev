@@ -12,7 +12,7 @@ const SideProjectItem = ({ name, url, logo }: SideProjectItemProps) => (
   <S.SideProjectItemWrapper href={url} target="_blank">
     <S.SideProjectItem>
       <S.SideProjectItemLogo>
-        <Image src={logo} alt={name} fill style={{ objectFit: 'contain' }} />
+        <Image src={logo} alt={name} width={20} height={20} />
       </S.SideProjectItemLogo>
       <S.SideProjectItemName>{name}</S.SideProjectItemName>
     </S.SideProjectItem>

@@ -7,7 +7,7 @@ import * as S from './styles'
 
 const OpenSourceList = () => (
   <>
-    <S.OpenSourceListTitle>Open Source</S.OpenSourceListTitle>
+    <S.OpenSourceListTitle>OPEN SOURCE</S.OpenSourceListTitle>
     <S.OpenSourceList>
       {OPEN_SOURCE.PROJECTS.map(({ name, url, description }) => (
         <OpenSourceItem

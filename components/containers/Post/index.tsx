@@ -56,7 +56,8 @@ const Post = ({ post }: PostProps) => {
             src={post.coverImage}
             alt={post.coverImage}
             priority={true}
-            fill
+            width={1180}
+            height={400}
           />
         </S.PostImageBox>
         <S.PostContent>
