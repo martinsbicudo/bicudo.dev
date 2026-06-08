@@ -1,0 +1,134 @@
+---
+title: "Fail Fast with AI: The Development Workflow I've Been Building"
+description: "Most people open Claude Code and immediately ask for the code. I stopped doing that — and it changed everything about how I ship."
+coverImage: "/images/blog/fail-fast-ai-workflow.avif"
+date: "2026-06-08"
+---
+
+Most people open Claude Code and immediately ask for the code.
+
+I stopped doing that.
+
+Not because AI can't write good code. It can. But because the output is only as good as the context behind it — and jumping straight to execution means skipping the part that actually matters.
+
+Here's the workflow I've been building.
+
+---
+
+## The problem with jumping straight to "generate"
+
+When you give an AI a vague prompt, it fills the gaps with assumptions. Reasonable ones, usually. But *its* assumptions, not yours.
+
+The code looks right. It runs. And then, somewhere in the details, it's not quite what you needed. So you iterate. Adjust. Prompt again. Fix the thing that the fix broke.
+
+The loop isn't a bug in the tool. It's a bug in the process.
+
+---
+
+## The workflow
+
+```
+Discovery
+  └── 👁️ Review
+
+Spec
+  └── 👁️ Review
+
+/docs (project context)
+  └── 👁️ Review
+
+BDD / Unit Tests
+  └── 👁️ Review
+
+Code
+  └── 👁️ Review
+
+E2E Tests
+  └── 👁️ Review (final)
+```
+
+Each step feeds the next. And the 👁️ isn't decoration — it's the mechanism that makes the whole thing work.
+
+---
+
+## Discovery
+
+Before anything is written, I have a conversation with Claude Code where I explain the feature or project. But instead of me doing all the talking, I prompt it to ask me questions.
+
+What problem are we solving? Who's the user? What does success look like? What are the constraints?
+
+The back-and-forth forces me to think clearly about what I actually want — and gives the AI the context it needs to be genuinely useful.
+
+**Review:** Does the understanding feel accurate? Any assumptions I haven't addressed?
+
+---
+
+## Spec
+
+With discovery done, the AI helps me produce a structured document: objectives, functional requirements, non-functional requirements, user stories, and — importantly — what's explicitly out of scope.
+
+This becomes the source of truth for everything that follows.
+
+**Review:** Is the spec complete? Does it reflect my actual intent?
+
+---
+
+## /docs
+
+I keep a `/docs` folder that works as persistent memory for Claude Code across sessions. Architecture decisions, naming conventions, tech stack choices, patterns I want repeated.
+
+Every session starts with context, not from scratch.
+
+**Review:** Are the docs current for this feature?
+
+---
+
+## Tests first
+
+Before any implementation, tests come first.
+
+For features, I use BDD — behavior-driven development — because the language stays close to the business requirement. Easy to verify that what's being tested matches what was specified.
+
+For utility functions or isolated logic, a direct unit test is enough. No need to over-engineer it.
+
+**Review:** Do the tests actually reflect the spec? Could they pass without the feature really working?
+
+---
+
+## Code
+
+Only now does Claude Code write the implementation.
+
+And because it has the discovery, the spec, the docs, and the tests — it has everything it needs. The code isn't a guess. It's a response to a well-defined problem.
+
+**Review:** Does the code match the spec and pass the tests in a meaningful way?
+
+---
+
+## E2E tests
+
+Finally, end-to-end tests validate that the full flow works as expected in the real environment.
+
+**Final review:** Does everything hold together end-to-end?
+
+---
+
+## Why review at every step?
+
+With AI, mistakes compound.
+
+A wrong assumption in Discovery becomes a wrong Spec. A wrong Spec becomes wrong tests. Wrong tests become wrong code. By the time you find the bug, you've built five layers on top of a broken foundation.
+
+Reviewing at each step means you catch the error as close to its origin as possible — when it's cheap to fix.
+
+That's the idea behind *fail fast*: not failing often, but failing early.
+
+---
+
+## In practice
+
+I've been applying this with Claude Code and the difference is real — less back-and-forth during implementation, fewer surprises at the end, and code that actually fits the project.
+
+It takes more setup upfront. It saves far more time downstream.
+
+If you've been stuck in the iteration loop, this might be the missing layer.
