@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { TbX } from 'react-icons/tb'
 
@@ -6,6 +7,12 @@ import { ModalProps } from './interface'
 import * as S from './styles'
 
 const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -22,9 +29,9 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
     }
   }, [isOpen, onClose])
 
-  if (!isOpen) return null
+  if (!isOpen || !isMounted) return null
 
-  return (
+  return createPortal(
     <S.Overlay onClick={onClose}>
       <S.Content
         onClick={(event) => event.stopPropagation()}
@@ -38,7 +45,8 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
         {title && <S.Title>{title}</S.Title>}
         {children}
       </S.Content>
-    </S.Overlay>
+    </S.Overlay>,
+    document.body,
   )
 }
 
