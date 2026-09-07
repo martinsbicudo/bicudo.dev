@@ -1,5 +1,6 @@
 import { Modal } from '@Commons'
 import { FormEvent, useState } from 'react'
+import { TbSend } from 'react-icons/tb'
 
 import { ContactModalProps, ContactModalStatus } from './interface'
 import * as S from './styles'
@@ -43,6 +44,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Send me an email">
+      <S.Subtitle>I read every message and reply personally.</S.Subtitle>
       {status === 'success' ? (
         <S.SuccessMessage>
           Thanks for reaching out! I&apos;ll get back to you soon.
@@ -70,6 +72,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
           />
           <S.SubmitButton type="submit" disabled={status === 'submitting'}>
             {status === 'submitting' ? 'Sending...' : 'Send'}
+            <TbSend />
           </S.SubmitButton>
           {status === 'error' && (
             <S.ErrorMessage>
