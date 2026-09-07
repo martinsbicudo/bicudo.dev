@@ -1,6 +1,6 @@
 import { Modal } from '@Commons'
 import { FormEvent, useState } from 'react'
-import { TbSend } from 'react-icons/tb'
+import { TbCheck, TbSend } from 'react-icons/tb'
 
 import { ContactModalProps, ContactModalStatus } from './interface'
 import * as S from './styles'
@@ -18,6 +18,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
     const form = event.currentTarget
     const data = new FormData(form)
+    const name = String(data.get('name') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
+    const message = String(data.get('message') ?? '').trim()
+
+    if (!name || !email || !message) {
+      setStatus('error-validation')
+      return
+    }
 
     setStatus('submitting')
 
@@ -26,9 +34,9 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: data.get('name'),
-          email: data.get('email'),
-          message: data.get('message'),
+          name,
+          email,
+          message,
           company: data.get('company'),
         }),
       })
@@ -36,55 +44,73 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       if (!response.ok) throw new Error('Request failed')
 
       setStatus('success')
-      form.reset()
     } catch {
-      setStatus('error')
+      setStatus('error-server')
     }
   }
+
+  const isLocked = status === 'submitting' || status === 'success'
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Send me an email">
       <S.Subtitle>I read every message and reply personally.</S.Subtitle>
-      {status === 'success' ? (
-        <S.SuccessMessage>
-          Thanks for reaching out! I&apos;ll get back to you soon.
-        </S.SuccessMessage>
-      ) : (
-        <S.Form onSubmit={handleSubmit}>
-          <S.Field type="text" name="name" placeholder="Your name" required />
-          <S.Field
-            type="email"
-            name="email"
-            placeholder="Your email"
-            required
-          />
-          <S.TextArea
-            name="message"
-            placeholder="Your message"
-            rows={5}
-            required
-          />
-          <S.Honeypot
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-          />
-          <S.SubmitButton type="submit" disabled={status === 'submitting'}>
-            {status === 'submitting' ? 'Sending...' : 'Send'}
-            <TbSend />
-          </S.SubmitButton>
-          {status === 'error' && (
-            <S.ErrorMessage>
-              Something went wrong. Try again or email me directly at{' '}
-              <a href="mailto:victor.mbicudo@gmail.com">
-                victor.mbicudo@gmail.com
-              </a>
-              .
-            </S.ErrorMessage>
-          )}
-        </S.Form>
-      )}
+      <S.Form onSubmit={handleSubmit} noValidate>
+        <S.Field
+          type="text"
+          name="name"
+          placeholder="Your name"
+          disabled={isLocked}
+        />
+        <S.Field
+          type="email"
+          name="email"
+          placeholder="Your email"
+          disabled={isLocked}
+        />
+        <S.TextArea
+          name="message"
+          placeholder="Your message"
+          rows={5}
+          disabled={isLocked}
+        />
+        <S.Honeypot
+          type="text"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+        <S.SubmitButton
+          type="submit"
+          disabled={isLocked}
+          $success={status === 'success'}
+        >
+          {status === 'success'
+            ? 'Sent'
+            : status === 'submitting'
+              ? 'Sending...'
+              : 'Send'}
+          {status === 'success' ? <TbCheck /> : <TbSend />}
+        </S.SubmitButton>
+        {status === 'success' && (
+          <S.SuccessMessage>
+            Thanks for reaching out! I&apos;ll get back to you soon.
+          </S.SuccessMessage>
+        )}
+        {status === 'error-validation' && (
+          <S.ErrorMessage>
+            Please fill in your name, email and message.
+          </S.ErrorMessage>
+        )}
+        {status === 'error-server' && (
+          <S.ErrorMessage>
+            Something went wrong. Try again or email me directly at{' '}
+            <a href="mailto:victor.mbicudo@gmail.com">
+              victor.mbicudo@gmail.com
+            </a>
+            .
+          </S.ErrorMessage>
+        )}
+      </S.Form>
     </Modal>
   )
 }

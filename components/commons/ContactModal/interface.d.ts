@@ -3,4 +3,9 @@ export interface ContactModalProps {
   onClose: () => void
 }
 
-export type ContactModalStatus = 'idle' | 'submitting' | 'success' | 'error'
+export type ContactModalStatus =
+  | 'idle'
+  | 'submitting'
+  | 'success'
+  | 'error-validation'
+  | 'error-server'

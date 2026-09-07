@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
+
+const SUCCESS_COLOR = '#22c55e'
 
 export const Subtitle = styled.p`
   font-size: 1.4rem;
@@ -21,7 +23,12 @@ const fieldStyles = `
   font-size: 1.4rem;
   font-family: inherit;
   resize: vertical;
-  transition: border-color 0.2s, background-color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s, opacity 0.2s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `
 
 export const Field = styled.input`
@@ -65,7 +72,7 @@ export const Honeypot = styled.input`
   pointer-events: none;
 `
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button<{ $success?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,13 +85,23 @@ export const SubmitButton = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.03em;
   font-weight: 500;
-  color: ${getThemeColor('main')};
-  background-color: ${getThemeColor('white')};
   cursor: pointer;
   transition:
     transform 0.15s,
     box-shadow 0.15s,
-    opacity 0.15s;
+    opacity 0.15s,
+    background-color 0.2s,
+    color 0.2s;
+
+  color: ${getThemeColor('main')};
+  background-color: ${getThemeColor('white')};
+
+  ${({ $success }) =>
+    $success &&
+    css`
+      color: ${getThemeColor('white')};
+      background-color: ${SUCCESS_COLOR};
+    `}
 
   svg {
     font-size: 1.6rem;
@@ -96,8 +113,8 @@ export const SubmitButton = styled.button`
   }
 
   &:disabled {
-    opacity: 0.6;
     cursor: default;
+    ${({ $success }) => !$success && css`opacity: 0.6;`}
   }
 `
 
