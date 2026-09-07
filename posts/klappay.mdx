@@ -1,0 +1,114 @@
+---
+title: "Why I'm Building Klappay"
+date: "2026-09-07"
+description: "Accepting crypto payments is still broken in 2026. Here's the thesis behind Klappay and who we're building it for."
+coverImage: '/images/blog/klappay.webp'
+---
+
+Accepting crypto payments is still broken in 2026. Not because the blockchain is slow, or because stablecoins aren't ready. Those problems are solved.
+
+It's broken because the tooling is terrible.
+
+---
+
+## The problem I kept running into
+
+Every time I tried to integrate a crypto payment gateway — for a client project, for a side product, for anything — the same things happened.
+
+The documentation was outdated or incomplete. The sandbox didn't work. The SDK, if one existed, had no TypeScript types. The API design made no sense. And after all that, the gateway held the funds. My client's money was sitting in someone else's wallet, waiting for a withdrawal to clear.
+
+I kept thinking: this is a solved problem in the fiat world. Stripe made it so that any developer can accept payments in a weekend. Why is the crypto equivalent still this painful?
+
+The answer isn't that it's technically hard. It's that nobody built it right.
+
+---
+
+## The thesis
+
+Stablecoins are becoming the default rail for international payments.
+
+In 2025, stablecoin payment volume grew 76% year over year. Over 65% of stablecoin usage in Latin America is tied to commerce — not speculation. Cross-border freelancing and SaaS with international clients are driving most of that growth, because USDC and USDT do something that bank transfers and Stripe can't: they move dollars across borders instantly, at near-zero cost, without a bank in the middle.
+
+The infrastructure to accept those payments, though, hasn't kept up.
+
+Most existing gateways are custodial. Your customer pays, the gateway receives the funds, and then — eventually — you get them. That's not crypto. That's a crypto-flavored version of the same intermediary model we've been trying to move away from.
+
+The others are non-custodial but have DX so bad that developers give up halfway through the docs. I've been that developer.
+
+---
+
+## What Klappay is
+
+Klappay is a non-custodial crypto payment infrastructure. Developer-first. Built to the standard that developers actually expect from APIs in 2026.
+
+From zero to first confirmed payment in under 5 minutes:
+
+```ts
+const charge = await klap.charges.create({
+  amount: 49.90,
+  acceptedPayments: [{ token: 'USDC', network: 'base' }],
+  expiresIn: 3600,
+  externalRef: `order_${order.id}`,
+})
+
+await charge.waitForConfirmation()
+// payment confirmed. funds in merchant wallet. done.
+```
+
+The funds go directly to the merchant's wallet via 0xSplits — an audited, immutable smart contract protocol. Klappay never holds the money. There's no withdrawal queue. There's no counterparty risk.
+
+---
+
+## Who we're building the Core for
+
+The Core API is for developers building products that need to accept USDC or USDT.
+
+SaaS companies with international customers who are losing 5-7% to payment processors, currency conversion, and IOF. Agencies and freelancers receiving from clients in the US or Europe. Marketplaces that need to split payments automatically between multiple parties. Crypto-native startups that need infrastructure they can trust.
+
+If you've ever thought "I'd accept crypto if integrating it didn't feel like a second job" — the Core is for you.
+
+---
+
+## What the Core actually does
+
+A charge is a payment request. You create one with an amount, a token, a network, and optionally a set of split recipients. Klappay generates a unique receiving address via 0xSplits and monitors the chain. When USDC arrives, you get a webhook. The status machine handles partial payments, expirations, and real-time updates via server-sent events.
+
+The SDK gives you `waitForConfirmation()` — a clean async primitive that makes payment handling feel like any other async operation. No polling. No event listeners. Just await.
+
+The sandbox uses Base Sepolia. You can simulate a full payment flow — including the webhook delivery and the SSE status update — without spending a dollar. That's table stakes for a developer tool in 2026. It took me a while to understand why so few gateways offer it. I think the answer is that most gateways weren't built by developers who were frustrated with gateways.
+
+---
+
+## What we're building next
+
+The Core is the foundation. On top of it, we're building a suite of products:
+
+**Klappay Link** — shareable payment links without code. Merchant creates a product in the dashboard, gets a URL, starts accepting payments.
+
+**Klappay Give** — a permanent donation page. Creators and open source projects link it once, receive forever.
+
+**Klappay Fund** — on-chain crowdfunding with an escrow. Funds are held in a smart contract and released automatically when the goal is hit.
+
+**Klappay One** — a universal payment button. Wallet saved, payment approved from a push notification. The Apple Pay of crypto.
+
+Each product is non-custodial. Each one is built on the same Core. The infrastructure is the product.
+
+---
+
+## Why now
+
+Base, Arbitrum, and Optimism changed the math. Transaction fees on L2s are fractions of a cent. Confirmations happen in 2 seconds. The UX gap between crypto and card payments is close enough to close.
+
+MiCA in Europe and the US Stablecoin Bill gave institutions the regulatory clarity they were waiting for. Banks and fintechs are moving. The developers who integrate the infrastructure now will be ahead of the wave, not chasing it.
+
+The window is real. The tooling finally needs to catch up.
+
+---
+
+## Closed Beta
+
+Klappay is open for Closed Beta. If you're a developer or technical team that wants to start accepting USDC or USDT — and you want infrastructure that actually respects your time — [sign up here](https://app.klappay.com/signup).
+
+We're approving access gradually. The sooner you join, the sooner you're in.
+
+→ [klappay.com](https://klappay.com)
