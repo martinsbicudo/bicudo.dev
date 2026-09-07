@@ -36,7 +36,7 @@ export const Field = styled.input`
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('gray2')};
+    border-color: ${getThemeColor('gray3')};
   }
 `
 
@@ -53,7 +53,7 @@ export const TextArea = styled.textarea`
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('gray2')};
+    border-color: ${getThemeColor('gray3')};
   }
 `
 
