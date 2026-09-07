@@ -1,6 +1,9 @@
 {
   "name": "bicudo.dev",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
