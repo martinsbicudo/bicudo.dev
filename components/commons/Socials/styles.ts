@@ -23,6 +23,7 @@ export const SocialsLink = styled.a`
   justify-content: flex-end;
   font-size: 1.2rem;
   line-height: 1.2rem;
+  font-family: inherit;
   text-decoration: none;
   padding: 12px;
   border-radius: 50px;
