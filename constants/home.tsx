@@ -4,7 +4,14 @@ const HOME = {
   TITLE: PERSON.NAME,
   ABOUT: [
     `Senior Frontend Engineer and Co-Founder with 10+ years of experience, specialized in React, Next.js, and scalable web architectures.`,
-    'Currently building at Verid and Disrupta. Focused on high-performance applications, AI integration, and great developer experience.',
+    <>
+      Currently building at{' '}
+      <a href="https://klappay.com" target="_blank" rel="noreferrer">
+        Klappay
+      </a>
+      . Focused on high-performance applications, AI integration, and great
+      developer experience.
+    </>,
   ],
   SCHEDULE: {
     TITLE: 'Shall we schedule a meet?',
