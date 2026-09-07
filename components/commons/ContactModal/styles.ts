@@ -26,9 +26,9 @@ const fieldStyles = `
 
 export const Field = styled.input`
   ${fieldStyles}
-  border: 1px solid ${getThemeColor('gray2')};
+  border: 1px solid transparent;
   color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('gray5')};
+  background-color: ${getThemeColor('gray4')};
 
   &::placeholder {
     color: ${getThemeColor('gray')};
@@ -36,17 +36,16 @@ export const Field = styled.input`
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('white')};
-    background-color: ${getThemeColor('gray4')};
+    border-color: ${getThemeColor('gray2')};
   }
 `
 
 export const TextArea = styled.textarea`
   ${fieldStyles}
   min-height: 110px;
-  border: 1px solid ${getThemeColor('gray2')};
+  border: 1px solid transparent;
   color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('gray5')};
+  background-color: ${getThemeColor('gray4')};
 
   &::placeholder {
     color: ${getThemeColor('gray')};
@@ -54,8 +53,7 @@ export const TextArea = styled.textarea`
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('white')};
-    background-color: ${getThemeColor('gray4')};
+    border-color: ${getThemeColor('gray2')};
   }
 `
 

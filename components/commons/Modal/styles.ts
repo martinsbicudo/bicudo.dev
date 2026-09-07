@@ -42,11 +42,7 @@ export const Content = styled.div`
   padding: 36px 32px;
   border-radius: 20px;
   border: 1px solid ${getThemeColor('gray3')};
-  background: linear-gradient(
-    165deg,
-    ${getThemeColor('gray3')} 0%,
-    ${getThemeColor('gray4')} 45%
-  );
+  background-color: ${getThemeColor('main')};
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.04) inset;
