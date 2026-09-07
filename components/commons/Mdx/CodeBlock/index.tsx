@@ -11,7 +11,12 @@ const CodeBlock = ({ className, children }: CodeBlockProps) => {
   const language = className.replace(/language-/, '')
 
   return (
-    <SyntaxHighlighter language={language} style={gradientDark} showLineNumbers>
+    <SyntaxHighlighter
+      language={language}
+      style={gradientDark}
+      showLineNumbers
+      PreTag="span"
+    >
       {children.trim()}
     </SyntaxHighlighter>
   )
