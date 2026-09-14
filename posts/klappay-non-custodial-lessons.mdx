@@ -1,0 +1,143 @@
+---
+title: "What I Learned Building a Non-Custodial Payment Infrastructure from Scratch"
+date: "2026-09-14"
+description: "The decisions that weren't obvious, the mistakes I made, and what I'd do differently building Klappay."
+coverImage: '/images/blog/klappay-non-custodial-lessons.png'
+---
+
+The hardest part of building a payment product is not the payments.
+
+It's the edge cases nobody writes about. The race conditions. The duplicate webhooks. The customer who paid the right amount on the wrong network. The reconciliation job you didn't build until you needed it.
+
+This is what I learned building Klappay — the parts that didn't fit in the pitch.
+
+---
+
+## "Non-custodial" is an architecture decision, not a checkbox
+
+When I started, I thought non-custodial meant "we don't hold funds." That's true but incomplete.
+
+The real question is: who controls the receiving address, and who can change where funds go after they're sent?
+
+A processor can generate an address that looks merchant-owned but actually routes through a provider-controlled wallet first. The funds "settle" but only after the provider decides to release them. That's custodial in practice, even if nobody calls it that.
+
+For Klappay, I went with 0xSplits — an ownerless smart contract protocol. Every receiving address is deterministic, derived from the charge ID, and deployed with no owner set. Once it exists, nobody — not me, not the merchant — can change where it routes. The address is the settlement instruction, and it's on-chain for good.
+
+The trade-off: refunds are now the merchant's problem. There's no processor to call. That's the right trade-off for the use case, but it needs to be explicit in the docs before a developer integrates, not something they discover the first time a customer asks for their money back.
+
+---
+
+## Detecting on-chain payments in real time is harder than it sounds
+
+My first approach was Moralis Streams — subscribe to USDC Transfer events, webhook fires when something lands. It worked in development. In production I didn't have enough control over the detection pipeline for my liking, so I rewrote it.
+
+The current version uses `watchContractEvent` from viem, connected to dRPC WebSocket endpoints, one persistent connection per network — seven networks in production today (Base, Optimism, Polygon, Ethereum, Arbitrum, Avalanche, BNB). When a Transfer event comes in, I look up the receiving address against open charges and process it from there.
+
+```ts
+publicClient.watchContractEvent({
+  address:   USDC_ADDRESS,
+  abi:       erc20Abi,
+  eventName: 'Transfer',
+  onLogs:    (logs) => {
+    for (const log of logs) {
+      handleDetectedTransfer(log.args.to, log)
+    }
+  },
+})
+```
+
+The lesson: own your detection pipeline. Any third-party that sits between your product and on-chain events is a dependency you can't control at the worst possible moment.
+
+---
+
+## Idempotency is not optional — it's the product
+
+I spent more time on idempotency than on the happy path. That felt wrong at first. It turned out to be the most important decision I made.
+
+Webhooks get delivered more than once. Always. Networks fail, your endpoint returns a timeout after processing, the provider retries. If your handler isn't idempotent, you will eventually ship two accounts, provision two subscriptions, or write two ledger entries for one payment.
+
+Right now that idempotency lives at charge creation — a request-hash check that stops a retried "create charge" call from spawning a duplicate. What I still owe the webhook delivery side is the same guarantee, moved into a single transaction: store the event, run the business logic, and only then dispatch — instead of doing it as two separate steps the way it works today. I know exactly where the gap is because I wrote it down the first time I found it, and it's next on the list, not a someday.
+
+---
+
+## The state machine is where bugs hide
+
+Early on, my charge status was basically a boolean — paid or not paid. That broke immediately in production scenarios.
+
+What I actually needed:
+
+```
+PENDING        → charge created, waiting for payment
+PARTIALLY_PAID → some funds arrived, not enough
+CONFIRMED      → full payment detected
+UNDERPAID      → expired with an incomplete payment
+EXPIRED        → time ran out, no payment
+```
+
+Each transition has rules. A charge can go from PENDING to PARTIALLY_PAID, but a CONFIRMED or UNDERPAID charge can never be overwritten by a late event arriving out of order — the update only applies while the charge is still in an open state. The state machine has to be monotonic — it only moves forward.
+
+The next status I'm adding is one for compliance holds — a charge that's technically paid but flagged for review before it counts as settled. Collapsing "money arrived" and "money is actually yours to use" into one status is how edge cases turn into support tickets at 2am.
+
+---
+
+## The sandbox is not a nice-to-have — it's the product
+
+Every gateway I tried before building Klappay had the same problem: their sandbox either didn't exist or didn't work. You'd get back a charge object with fake data that looked nothing like production, and you'd never know if your webhook handler worked until you pushed to production.
+
+I built the sandbox to reuse the exact same code path as production. Trigger any event on a test charge with one call, and it runs through the same payment logic and the same webhook dispatch a real transfer would:
+
+```ts
+await fetch(`/v1/charges/${charge.id}/trigger`, {
+  method: 'POST',
+  body:   JSON.stringify({ event: 'confirmed' }),
+})
+```
+
+The same webhook your production handler receives from a real payment. The same SSE event. The same charge state. The only difference is the API key prefix.
+
+Building this way forced me to keep the production and sandbox code paths identical. There's no "sandbox shortcut" that skips signature verification or returns a simplified payload. If a test passes in sandbox, it behaves the same in production.
+
+---
+
+## DX is a product decision, not a feature
+
+The SDK ships the same Zod schemas as the API, published as their own package and imported by both sides. That means the types on your IDE autocomplete are the exact same types the API validates against. There's no drift. If the API would reject a request, your TypeScript compiler already told you.
+
+```ts
+const charge = await klap.charges.create({
+  amount:           49.90,
+  acceptedPayments: [{ token: 'USDC', network: 'base' }],
+  expiresIn:        3600,
+  externalRef:      `order_${order.id}`,
+})
+```
+
+`waitForConfirmation()` was the DX decision I'm proudest of. Instead of asking developers to set up webhook handlers just to test the happy path, you can await a confirmation directly. It streams over SSE, falls back to polling if the stream isn't available, and cleans up after itself either way. It makes the integration feel like any other async operation.
+
+Most payment SDKs feel like they were built by people who don't use payment SDKs. I tried to build Klappay as the gateway I wanted to integrate.
+
+---
+
+## What I'd do differently
+
+**Ship the outbox pattern before you need it.** The webhook handler still does its event-store step and its dispatch step separately instead of inside one transaction. It hasn't bitten me yet, but I know it's the kind of thing that only fails once, in production, in a way that's expensive to untangle. I'd build it on day one instead of scheduling it as a fix.
+
+**Design the audit log earlier.** I added structured logging — chargeId, txHash, network, amount, timestamp — after the first time a merchant asked "what happened to this payment?" and I had to reconstruct it by hand. It's the difference between a 2-minute support ticket and a 2-hour debugging session.
+
+**Write the unhappy path tests first.** I had solid coverage on the happy path before I tested a single edge case. That's backwards. The happy path almost always works. The duplicate webhook, the expired charge with a late payment, the wrong network transfer — those are where integrations fail.
+
+---
+
+## The part that surprised me most
+
+Building a non-custodial payment product is mostly not about the blockchain.
+
+It's about state machines, idempotency, and reconciliation. The on-chain part is almost the easy part — the blockchain is deterministic, immutable, and inspectable. The hard part is the application layer sitting on top of it, and how honest you're willing to be with yourself about which parts of it are actually finished.
+
+The developers who build the best crypto payment products won't be the ones who know the most about blockchains. They'll be the ones who understand what makes payment infrastructure reliable — and apply those principles to a new settlement layer.
+
+That's what I'm trying to build with Klappay.
+
+---
+
+→ [klappay.com](https://klappay.com) — non-custodial crypto payments API, Closed Beta open now.
