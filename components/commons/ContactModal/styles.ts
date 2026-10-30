@@ -2,10 +2,9 @@ import styled, { css } from 'styled-components'
 
 import { getThemeColor } from '~/utils'
 
-const SUCCESS_COLOR = '#22c55e'
-
 export const Subtitle = styled.p`
   font-size: 1.4rem;
+  line-height: 1.5;
   margin-bottom: 24px;
   color: ${getThemeColor('muted')};
 `
@@ -13,17 +12,36 @@ export const Subtitle = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 `
 
-const fieldStyles = `
+const fieldStyles = css`
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
+  border: 1px solid ${getThemeColor('line')};
   font-size: 1.4rem;
   font-family: inherit;
-  resize: vertical;
-  transition: border-color 0.2s, background-color 0.2s, opacity 0.2s;
+  color: ${getThemeColor('paper')};
+  background-color: ${getThemeColor('bg')};
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    opacity 0.2s;
+
+  &::placeholder {
+    color: ${getThemeColor('muted')};
+  }
+
+  &:hover:not(:disabled) {
+    border-color: ${getThemeColor('lineStrong')};
+  }
+
+  &:focus {
+    outline: none;
+    border-color: ${getThemeColor('paper')};
+    box-shadow: 0 0 0 3px rgba(244, 244, 245, 0.08);
+  }
 
   &:disabled {
     opacity: 0.6;
@@ -33,35 +51,13 @@ const fieldStyles = `
 
 export const Field = styled.input`
   ${fieldStyles}
-  border: 1px solid transparent;
-  color: ${getThemeColor('paper')};
-  background-color: ${getThemeColor('bg')};
-
-  &::placeholder {
-    color: ${getThemeColor('muted')};
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${getThemeColor('lineStrong')};
-  }
 `
 
 export const TextArea = styled.textarea`
   ${fieldStyles}
-  min-height: 110px;
-  border: 1px solid transparent;
-  color: ${getThemeColor('paper')};
-  background-color: ${getThemeColor('bg')};
-
-  &::placeholder {
-    color: ${getThemeColor('muted')};
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${getThemeColor('lineStrong')};
-  }
+  min-height: 120px;
+  line-height: 1.5;
+  resize: vertical;
 `
 
 export const Honeypot = styled.input`
@@ -73,58 +69,63 @@ export const Honeypot = styled.input`
 `
 
 export const SubmitButton = styled.button<{ $success?: boolean }>`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   align-self: flex-start;
-  margin-top: 6px;
-  padding: 11px 20px;
+  height: 40px;
+  margin-top: 8px;
+  padding: 0 16px;
   border-radius: 10px;
+  font-family: inherit;
   font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition:
-    transform 0.15s,
-    box-shadow 0.15s,
-    opacity 0.15s,
-    background-color 0.2s,
-    color 0.2s;
-
   color: ${getThemeColor('ink')};
   background-color: ${getThemeColor('paper')};
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    opacity 0.2s,
+    background-color 0.2s,
+    color 0.2s;
 
   ${({ $success }) =>
     $success &&
     css`
-      color: ${getThemeColor('paper')};
-      background-color: ${SUCCESS_COLOR};
+      color: ${getThemeColor('ink')};
+      background-color: ${getThemeColor('success')};
     `}
 
   svg {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(244, 244, 245, 0.12);
   }
 
   &:disabled {
     cursor: default;
-    ${({ $success }) => !$success && css`opacity: 0.6;`}
+    ${({ $success }) =>
+      !$success &&
+      css`
+        opacity: 0.6;
+      `}
   }
 `
 
 export const SuccessMessage = styled.p`
   font-size: 1.4rem;
-  color: ${getThemeColor('muted')};
+  line-height: 1.5;
+  color: ${getThemeColor('text')};
 `
 
 export const ErrorMessage = styled.p`
-  font-size: 1.2rem;
-  margin-top: 5px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-top: 4px;
   color: ${getThemeColor('muted')};
 `

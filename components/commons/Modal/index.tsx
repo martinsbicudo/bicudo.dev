@@ -6,7 +6,7 @@ import { TbX } from 'react-icons/tb'
 import { ModalProps } from './interface'
 import * as S from './styles'
 
-const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, eyebrow, title, children }: ModalProps) => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -39,9 +39,10 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
         aria-modal="true"
         aria-label={title}
       >
-        <S.CloseButton onClick={onClose} aria-label="Close">
-          <TbX />
+        <S.CloseButton type="button" onClick={onClose} aria-label="Close">
+          <TbX aria-hidden />
         </S.CloseButton>
+        {eyebrow && <S.Eyebrow>{eyebrow}</S.Eyebrow>}
         {title && <S.Title>{title}</S.Title>}
         {children}
       </S.Content>

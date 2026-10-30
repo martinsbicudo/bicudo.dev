@@ -52,24 +52,34 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const isLocked = status === 'submitting' || status === 'success'
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Send me an email">
+    <Modal
+      isOpen={isOpen}
+      onClose={handleClose}
+      eyebrow="Contact"
+      title="Send me an email"
+    >
       <S.Subtitle>I read every message and reply personally.</S.Subtitle>
       <S.Form onSubmit={handleSubmit} noValidate>
         <S.Field
           type="text"
           name="name"
           placeholder="Your name"
+          aria-label="Your name"
+          autoComplete="name"
           disabled={isLocked}
         />
         <S.Field
           type="email"
           name="email"
           placeholder="Your email"
+          aria-label="Your email"
+          autoComplete="email"
           disabled={isLocked}
         />
         <S.TextArea
           name="message"
           placeholder="Your message"
+          aria-label="Your message"
           rows={5}
           disabled={isLocked}
         />
@@ -89,7 +99,11 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             : status === 'submitting'
               ? 'Sending...'
               : 'Send'}
-          {status === 'success' ? <TbCheck /> : <TbSend />}
+          {status === 'success' ? (
+            <TbCheck aria-hidden />
+          ) : (
+            <TbSend aria-hidden />
+          )}
         </S.SubmitButton>
         {status === 'success' && (
           <S.SuccessMessage>
