@@ -1,7 +1,7 @@
 ---
 title: "What I Learned Building a Non-Custodial Payment Infrastructure from Scratch"
 date: "2026-09-14"
-description: "The decisions that weren't obvious, the mistakes I made, and what I'd do differently building Klappay."
+description: "The decisions that weren't obvious, the mistakes I made, and what I'd do differently building Klap."
 coverImage: '/images/blog/klappay-non-custodial-lessons.png'
 ---
 
@@ -9,7 +9,7 @@ The hardest part of building a payment product is not the payments.
 
 It's the edge cases nobody writes about. The race conditions. The duplicate webhooks. The customer who paid the right amount on the wrong network. The reconciliation job you didn't build until you needed it.
 
-This is what I learned building Klappay — the parts that didn't fit in the pitch.
+This is what I learned building Klap — the parts that didn't fit in the pitch.
 
 ---
 
@@ -21,7 +21,7 @@ The real question is: who controls the receiving address, and who can change whe
 
 A processor can generate an address that looks merchant-owned but actually routes through a provider-controlled wallet first. The funds "settle" but only after the provider decides to release them. That's custodial in practice, even if nobody calls it that.
 
-For Klappay, I went with 0xSplits — an ownerless smart contract protocol. Every receiving address is deterministic, derived from the charge ID, and deployed with no owner set. Once it exists, nobody — not me, not the merchant — can change where it routes. The address is the settlement instruction, and it's on-chain for good.
+For Klap, I went with 0xSplits — an ownerless smart contract protocol. Every receiving address is deterministic, derived from the charge ID, and deployed with no owner set. Once it exists, nobody — not me, not the merchant — can change where it routes. The address is the settlement instruction, and it's on-chain for good.
 
 The trade-off: refunds are now the merchant's problem. There's no processor to call. That's the right trade-off for the use case, but it needs to be explicit in the docs before a developer integrates, not something they discover the first time a customer asks for their money back.
 
@@ -82,7 +82,7 @@ The next status I'm adding is one for compliance holds — a charge that's techn
 
 ## The sandbox is not a nice-to-have — it's the product
 
-Every gateway I tried before building Klappay had the same problem: their sandbox either didn't exist or didn't work. You'd get back a charge object with fake data that looked nothing like production, and you'd never know if your webhook handler worked until you pushed to production.
+Every gateway I tried before building Klap had the same problem: their sandbox either didn't exist or didn't work. You'd get back a charge object with fake data that looked nothing like production, and you'd never know if your webhook handler worked until you pushed to production.
 
 I built the sandbox to reuse the exact same code path as production. Trigger any event on a test charge with one call, and it runs through the same payment logic and the same webhook dispatch a real transfer would:
 
@@ -114,7 +114,7 @@ const charge = await klap.charges.create({
 
 `waitForConfirmation()` was the DX decision I'm proudest of. Instead of asking developers to set up webhook handlers just to test the happy path, you can await a confirmation directly. It streams over SSE, falls back to polling if the stream isn't available, and cleans up after itself either way. It makes the integration feel like any other async operation.
 
-Most payment SDKs feel like they were built by people who don't use payment SDKs. I tried to build Klappay as the gateway I wanted to integrate.
+Most payment SDKs feel like they were built by people who don't use payment SDKs. I tried to build Klap as the gateway I wanted to integrate.
 
 ---
 
@@ -136,7 +136,7 @@ It's about state machines, idempotency, and reconciliation. The on-chain part is
 
 The developers who build the best crypto payment products won't be the ones who know the most about blockchains. They'll be the ones who understand what makes payment infrastructure reliable — and apply those principles to a new settlement layer.
 
-That's what I'm trying to build with Klappay.
+That's what I'm trying to build with Klap.
 
 ---
 

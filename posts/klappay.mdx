@@ -1,7 +1,7 @@
 ---
-title: "Why I'm Building Klappay"
+title: "Why I'm Building Klap"
 date: "2026-09-07"
-description: "Accepting crypto payments is still broken in 2026. Here's the thesis behind Klappay and who we're building it for."
+description: "Accepting crypto payments is still broken in 2026. Here's the thesis behind Klap and who we're building it for."
 coverImage: '/images/blog/klappay.png'
 ---
 
@@ -37,9 +37,9 @@ The others are non-custodial but have DX so bad that developers give up halfway 
 
 ---
 
-## What Klappay is
+## What Klap is
 
-Klappay is a non-custodial crypto payment infrastructure. Developer-first. Built to the standard that developers actually expect from APIs in 2026.
+Klap is a non-custodial crypto payment infrastructure. Developer-first. Built to the standard that developers actually expect from APIs in 2026.
 
 From zero to first confirmed payment in under 5 minutes:
 
@@ -55,7 +55,7 @@ await charge.waitForConfirmation()
 // payment confirmed. funds in merchant wallet. done.
 ```
 
-The funds go directly to the merchant's wallet via 0xSplits — an audited, immutable smart contract protocol. Klappay never holds the money. There's no withdrawal queue. There's no counterparty risk.
+The funds go directly to the merchant's wallet via 0xSplits — an audited, immutable smart contract protocol. Klap never holds the money. There's no withdrawal queue. There's no counterparty risk.
 
 ---
 
@@ -71,7 +71,7 @@ If you've ever thought "I'd accept crypto if integrating it didn't feel like a s
 
 ## What the Core actually does
 
-A charge is a payment request. You create one with an amount, a token, a network, and optionally a set of split recipients. Klappay generates a unique receiving address via 0xSplits and monitors the chain. When USDC arrives, you get a webhook. The status machine handles partial payments, expirations, and real-time updates via server-sent events.
+A charge is a payment request. You create one with an amount, a token, a network, and optionally a set of split recipients. Klap generates a unique receiving address via 0xSplits and monitors the chain. When USDC arrives, you get a webhook. The status machine handles partial payments, expirations, and real-time updates via server-sent events.
 
 The SDK gives you `waitForConfirmation()` — a clean async primitive that makes payment handling feel like any other async operation. No polling. No event listeners. Just await.
 
@@ -83,13 +83,13 @@ The sandbox uses Base Sepolia. You can simulate a full payment flow — includin
 
 The Core is the foundation. On top of it, we're building a suite of products:
 
-**Klappay Link** — shareable payment links without code. Merchant creates a product in the dashboard, gets a URL, starts accepting payments.
+**Klap Link** — shareable payment links without code. Merchant creates a product in the dashboard, gets a URL, starts accepting payments.
 
-**Klappay Give** — a permanent donation page. Creators and open source projects link it once, receive forever.
+**Klap Give** — a permanent donation page. Creators and open source projects link it once, receive forever.
 
-**Klappay Fund** — on-chain crowdfunding with an escrow. Funds are held in a smart contract and released automatically when the goal is hit.
+**Klap Fund** — on-chain crowdfunding with an escrow. Funds are held in a smart contract and released automatically when the goal is hit.
 
-**Klappay One** — a universal payment button. Wallet saved, payment approved from a push notification. The Apple Pay of crypto.
+**Klap One** — a universal payment button. Wallet saved, payment approved from a push notification. The Apple Pay of crypto.
 
 Each product is non-custodial. Each one is built on the same Core. The infrastructure is the product.
 
@@ -107,7 +107,7 @@ The window is real. The tooling finally needs to catch up.
 
 ## Closed Beta
 
-Klappay is open for Closed Beta. If you're a developer or technical team that wants to start accepting USDC or USDT — and you want infrastructure that actually respects your time — [sign up here](https://app.klappay.com/signup).
+Klap is open for Closed Beta. If you're a developer or technical team that wants to start accepting USDC or USDT — and you want infrastructure that actually respects your time — [sign up here](https://app.klappay.com/signup).
 
 We're approving access gradually. The sooner you join, the sooner you're in.
 

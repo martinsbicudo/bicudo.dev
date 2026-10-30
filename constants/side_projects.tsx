@@ -1,9 +1,9 @@
 const SIDE_PROJECTS = {
   PROJECTS: [
     {
-      name: 'Klappay',
+      name: 'Klap',
       url: 'https://klappay.com',
-      logo: '/images/klappay.webp',
+      logo: '/images/klap.svg',
     },
   ],
 }

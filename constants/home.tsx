@@ -7,7 +7,7 @@ const HOME = {
     <>
       Currently building at{' '}
       <a href="https://klappay.com" target="_blank" rel="noreferrer">
-        Klappay
+        Klap
       </a>
       . Focused on high-performance applications, AI integration, and great
       developer experience.
