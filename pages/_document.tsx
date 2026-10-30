@@ -40,7 +40,9 @@ class CustomDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <link rel="icon" href="/images/favicon.ico" />
+          <link rel="icon" href="/images/favicon.ico" sizes="any" />
+          <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+          <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
           <meta name="lang" content={this.props.locale} />
           <meta name="author" content={PERSON.NAME} />
           <meta property="og:site_name" content={PERSON.NAME} />

@@ -2,7 +2,7 @@ import NextImage from 'next/image'
 
 const Logo = () => (
   <NextImage
-    src="/images/logo.png"
+    src="/images/logo.svg"
     title="logo"
     alt="logo"
     width="26"
