@@ -33,7 +33,8 @@ const Post = ({ post }: PostProps) => {
         title={pageTitle}
         description={post.description}
         url={getDomainWithLocale(post.slug)}
-        cover={post.coverImage}
+        shareImage={`/images/share/${post.slug}.jpg`}
+        type="article"
       />
       <S.Post>
         <S.PostHeader>
@@ -54,7 +55,7 @@ const Post = ({ post }: PostProps) => {
         <S.PostImageBox>
           <S.PostImage
             src={post.coverImage}
-            alt={post.coverImage}
+            alt={post.title}
             priority={true}
             width={1180}
             height={400}

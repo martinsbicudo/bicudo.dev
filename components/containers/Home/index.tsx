@@ -20,7 +20,7 @@ const Home = ({ posts }: HomeProps) => {
         title={pageTitle}
         description={description}
         url={SITE.DOMAIN}
-        cover="/images/cover.jpg"
+        shareImage="/images/share/home.jpg"
       />
       <S.Home>
         <S.HomeContainer>
