@@ -10,8 +10,9 @@ const HOME = {
       <a href="https://klappay.com" target="_blank" rel="noreferrer">
         Klap
       </a>
-      , a non-custodial crypto payments API. These days I spend most of my time
-      on AI-native workflows and developer experience.
+      , where we&apos;re reinventing how the world gets paid in crypto:
+      non-custodial, developer-first, with every payment settling straight to
+      the merchant&apos;s wallet.
     </>,
   ],
   SKILLS: ['react', 'next.js', 'typescript', 'node.js'],

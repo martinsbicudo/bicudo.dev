@@ -1,6 +1,6 @@
 const PERSON = {
   NAME: 'Victor Bicudo',
-  ROLE: 'Senior Frontend Engineer · Co-founder at Klap',
+  ROLE: 'Senior Frontend Engineer',
 }
 
 export default PERSON

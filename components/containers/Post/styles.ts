@@ -139,14 +139,15 @@ export const PostContent = styled.article`
 export const PostBackLink = styled(NextLink)`
   position: fixed;
   z-index: 1;
-  bottom: 24px;
+  bottom: 16px;
   right: 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  height: 40px;
-  padding: 0 16px 0 12px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   font-size: 1.3rem;
   font-weight: 600;
   text-decoration: none;
@@ -174,7 +175,23 @@ export const PostBackLink = styled(NextLink)`
     }
   }
 
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    bottom: 24px;
+    width: auto;
+    height: 40px;
+    padding: 0 16px 0 12px;
+    border-radius: 10px;
+  }
+
   ${({ theme }) => theme.breakpoints.up('lg')} {
     right: 48px;
+  }
+`
+
+export const PostBackLabel = styled.span`
+  display: none;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    display: inline;
   }
 `

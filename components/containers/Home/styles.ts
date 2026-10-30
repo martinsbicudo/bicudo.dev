@@ -30,7 +30,7 @@ export const HomeTop = styled.div`
   ${({ theme }) => theme.breakpoints.up('md')} {
     max-width: 360px;
     padding-right: 35px;
-    min-height: calc(100vh - 48px);
+    min-height: 100vh;
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
@@ -55,10 +55,17 @@ export const HomeTopBottom = styled.div`
     flex-direction: row;
     flex-wrap: wrap-reverse;
   }
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+  }
 `
 
 export const HomeSocialsBox = styled.div`
-  flex: 1;
+  flex: 0 0 auto;
   ${reveal(240)}
   width: 100%;
   min-width: 175px;

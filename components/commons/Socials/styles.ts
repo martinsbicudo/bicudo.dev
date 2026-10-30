@@ -15,17 +15,17 @@ export const SocialsLinks = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 20px;
+  gap: 6px 14px;
   list-style: none;
 `
 
 export const SocialsLink = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   padding: 0;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-decoration: none;
   color: ${getThemeColor('muted')};
@@ -34,7 +34,7 @@ export const SocialsLink = styled.a`
   transition: color 0.2s;
 
   svg {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   &:hover {

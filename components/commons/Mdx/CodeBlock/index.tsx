@@ -5,6 +5,8 @@ import { CodeBlockProps } from './interface'
 import * as S from './styles'
 
 const CODE_STYLE = {
+  display: 'block',
+  overflowX: 'auto' as const,
   margin: 0,
   padding: '18px 20px',
   background: 'transparent',

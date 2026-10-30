@@ -64,9 +64,9 @@ const Post = ({ post }: PostProps) => {
         <S.PostContent>
           <MDXRemote {...post.source} components={Mdx} />
         </S.PostContent>
-        <S.PostBackLink href="/">
+        <S.PostBackLink href="/" aria-label={POST.FOOTER.BACK_BUTTON_TEXT}>
           <TbArrowLeft aria-hidden />
-          {POST.FOOTER.BACK_BUTTON_TEXT}
+          <S.PostBackLabel>{POST.FOOTER.BACK_BUTTON_TEXT}</S.PostBackLabel>
         </S.PostBackLink>
       </S.Post>
       <Footer />
