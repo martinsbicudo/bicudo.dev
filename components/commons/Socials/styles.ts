@@ -4,81 +4,71 @@ import { getThemeColor } from '~/utils'
 
 import { StyledSocialsItemScheduleProps } from './interface'
 
-export const Socials = styled.ul`
+export const Socials = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+`
+
+export const SocialsLinks = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
   list-style: none;
 `
 
-export const SocialsImageBox = styled.figure`
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  overflow: hidden;
-`
-
 export const SocialsLink = styled.a`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
+  gap: 6px;
+  padding: 0;
   font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500;
   text-decoration: none;
-  padding: 12px;
-  border-radius: 50px;
-  color: ${getThemeColor('gray')};
-  background-color: ${getThemeColor('gray4')};
-  will-change: color;
-  transition: color 0.2s;
+  color: ${getThemeColor('muted')};
+  background: none;
   cursor: pointer;
-
-  span {
-    margin-right: 5px;
-  }
+  transition: color 0.2s;
 
   svg {
-    font-size: 1.8rem;
-    line-height: 1.8rem;
+    font-size: 1.6rem;
   }
 
   &:hover {
-    color: ${getThemeColor('white')};
+    color: ${getThemeColor('paper')};
   }
 `
 
-export const SocialsItemSchedule = styled.li<StyledSocialsItemScheduleProps>`
-  padding: 1px;
-  border-radius: 50px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+export const SocialsSchedule = styled.a<StyledSocialsItemScheduleProps>`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: ${getThemeColor('ink')};
+  background-color: ${getThemeColor('paper')};
+  transition: transform 0.2s;
 
-  ${SocialsLink} {
-    margin-top: 0;
-    margin-bottom: 0;
+  svg {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
   }
 
   ${({ $withResponsive, theme }) =>
     $withResponsive &&
     css`
       ${theme.breakpoints.up('md')} {
-        &:last-child {
-          display: none;
-        }
+        display: none;
       }
     `}
-`
-
-export const SocialsItem = styled.li`
-  margin-top: 5px;
-  margin-bottom: 5px;
-
-  &:last-child ${SocialsLink} {
-    color: ${getThemeColor('white')};
-    background-color: ${getThemeColor('gray4')};
-  }
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
 `

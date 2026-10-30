@@ -23,3 +23,7 @@ export interface StyledPostItemProps {
   $wip: boolean
   $fixed: boolean
 }
+
+export interface StyledPostItemWrapperProps {
+  $fixed: boolean
+}

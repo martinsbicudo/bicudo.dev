@@ -1,8 +1,6 @@
-import { getAge } from '~/utils'
-
 const PERSON = {
   NAME: 'Victor Bicudo',
-  AGE: getAge('31/07/1991'),
+  ROLE: 'Senior Frontend Engineer · Co-founder at Klap',
 }
 
 export default PERSON

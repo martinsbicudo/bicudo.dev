@@ -1,6 +1,6 @@
-export { default as Bicudo } from './Bicudo'
 export { default as ContactModal } from './ContactModal'
 export { default as Container } from './Container'
+export { default as Eyebrow } from './Eyebrow'
 export { default as Head } from './Head'
 export { default as Logo } from './Logo'
 export { default as Mdx } from './Mdx'

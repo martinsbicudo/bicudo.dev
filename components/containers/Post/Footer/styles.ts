@@ -5,59 +5,55 @@ import { getThemeColor } from '~/utils'
 
 export const Footer = styled.footer`
   width: 100%;
-  margin-top: 50px;
-  background-color: ${getThemeColor('gray5')};
-  border-top: 1px solid ${getThemeColor('gray4')};
+  margin-top: 80px;
+  border-top: 1px solid ${getThemeColor('line')};
+  background-color: rgba(10, 10, 10, 0.6);
 `
 
 export const FooterContent = styled(Container)`
-  padding-top: 50px;
+  max-width: 820px;
+  padding-top: 48px;
 `
 
 export const FooterTop = styled.div`
-  padding-bottom: 30px;
-  border-bottom: 1px solid ${getThemeColor('gray4')};
+  padding-bottom: 28px;
+  border-bottom: 1px solid ${getThemeColor('line')};
 `
 
-export const FooterImageBox = styled.figure`
+export const FooterIdentity = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 30px;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
 `
 
-export const FooterImageInfos = styled.div`
-  padding-left: 15px;
+export const FooterTitle = styled.p`
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: ${getThemeColor('paper')};
 `
 
-export const FooterImageTitle = styled.figcaption`
-  font-size: 2.8rem;
-  font-weight: 500;
-`
-
-export const FooterImageSubtitle = styled.span`
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 200;
-  color: ${getThemeColor('gray')};
+export const FooterSubtitle = styled.span`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 1.2rem;
+  color: ${getThemeColor('muted')};
 `
 
 export const FooterAbout = styled.p`
   width: 100%;
-  max-width: 500px;
-  font-size: 1.8rem;
-  font-weight: 200;
+  max-width: 560px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: ${getThemeColor('text')};
 `
 
 export const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 24px 0 96px;
 `
 
 export const FooterSocialsBox = styled.div`
-  max-width: 250px;
-
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    max-width: 100%;
-  }
+  max-width: 100%;
 `

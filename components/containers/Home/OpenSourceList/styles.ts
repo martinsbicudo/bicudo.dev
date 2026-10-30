@@ -1,23 +1,16 @@
 import styled from 'styled-components'
 
-import { PostItemWrapper } from '../PostItem/styles'
+import { reveal } from '~/styles/motion'
+
+export const OpenSourceSection = styled.section`
+  margin-bottom: 40px;
+  ${reveal(120)}
+`
 
 export const OpenSourceList = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: stretch;
   list-style: none;
-  margin-bottom: 30px;
   gap: 10px;
-
-  &:hover > ${PostItemWrapper}:not(:hover) {
-    opacity: 0.3;
-  }
-`
-
-export const OpenSourceListTitle = styled.h2`
-  font-size: 1.2rem;
-  font-weight: 100;
-  margin-bottom: 10px;
 `

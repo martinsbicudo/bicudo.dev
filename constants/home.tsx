@@ -2,23 +2,23 @@ import PERSON from './person'
 
 const HOME = {
   TITLE: PERSON.NAME,
+  ROLE: PERSON.ROLE,
   ABOUT: [
-    `Senior Frontend Engineer and Co-Founder with 10+ years of experience, specialized in React, Next.js, and scalable web architectures.`,
+    `10+ years building web products with React, Next.js and TypeScript, with a focus on fast interfaces and architectures that scale.`,
     <>
-      Currently building at{' '}
+      Co-founder of{' '}
       <a href="https://klappay.com" target="_blank" rel="noreferrer">
         Klap
       </a>
-      . Focused on high-performance applications, AI integration, and great
-      developer experience.
+      , a non-custodial crypto payments API. These days I spend most of my time
+      on AI-native workflows and developer experience.
     </>,
   ],
+  SKILLS: ['react', 'next.js', 'typescript', 'node.js'],
   SCHEDULE: {
-    TITLE: 'Shall we schedule a meet?',
-    BUTTON_TEXT: {
-      DESKTOP: 'CLICK HERE',
-      MOBILE: "LET'S TALK",
-    },
+    LABEL: 'Open to chat',
+    TITLE: 'Have a project or idea in mind?',
+    BUTTON_TEXT: 'Book a call',
   },
 }
 

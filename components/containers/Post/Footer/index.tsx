@@ -1,4 +1,4 @@
-import { Bicudo, Socials } from '@Commons'
+import { Socials } from '@Commons'
 
 import { POST } from '~/constants'
 
@@ -8,15 +8,10 @@ const Footer = () => (
   <S.Footer>
     <S.FooterContent>
       <S.FooterTop>
-        <S.FooterImageBox>
-          <Bicudo size={64} />
-          <S.FooterImageInfos>
-            <S.FooterImageTitle>{POST.FOOTER.TITLE}</S.FooterImageTitle>
-            <S.FooterImageSubtitle>
-              {POST.FOOTER.SUBTITLE}
-            </S.FooterImageSubtitle>
-          </S.FooterImageInfos>
-        </S.FooterImageBox>
+        <S.FooterIdentity>
+          <S.FooterTitle>{POST.FOOTER.TITLE}</S.FooterTitle>
+          <S.FooterSubtitle>{POST.FOOTER.SUBTITLE}</S.FooterSubtitle>
+        </S.FooterIdentity>
         <S.FooterAbout>{POST.FOOTER.ABOUT}</S.FooterAbout>
       </S.FooterTop>
       <S.FooterBottom>

@@ -3,9 +3,9 @@ import PERSON from './person'
 const POST = {
   FOOTER: {
     TITLE: PERSON.NAME,
-    SUBTITLE: 'Senior Frontend Engineer',
-    ABOUT: `Senior Frontend Engineer and Co-Founder with 10+ years of experience, working mainly with React.js and Next.js, passionate about technology and AI, ${PERSON.AGE} years old and Brazilian.`,
-    BACK_BUTTON_TEXT: 'GO HOME',
+    SUBTITLE: PERSON.ROLE,
+    ABOUT: `I've spent 10+ years building web products with React and Next.js. Today I'm co-founding Klap and writing about AI, product and the craft of shipping software. Based in Brazil.`,
+    BACK_BUTTON_TEXT: 'Back home',
   },
 }
 

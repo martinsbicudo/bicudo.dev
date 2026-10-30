@@ -5,51 +5,60 @@ import styled from 'styled-components'
 import { getThemeColor } from '~/utils'
 
 export const OpenSourceItem = styled.li`
-  padding: 1px;
-  border-radius: 5px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid ${getThemeColor('line')};
+  background-color: ${getThemeColor('panel')};
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+`
+
+export const OpenSourceItemHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  svg {
+    font-size: 1.6rem;
+    color: ${getThemeColor('muted')};
+    transition:
+      color 0.2s,
+      transform 0.2s;
+  }
 `
 
 export const OpenSourceItemWrapper = styled(NextLink)`
-  position: relative;
   text-decoration: none;
-  color: ${getThemeColor('white')};
-  min-width: 300px;
+  color: ${getThemeColor('paper')};
+  min-width: 260px;
   flex: calc(50% - 10px);
-  transition: opacity 0.2s;
 
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    min-width: 250px;
+  &:hover ${OpenSourceItem} {
+    border-color: ${getThemeColor('lineStrong')};
+    background-color: ${getThemeColor('panelHover')};
   }
 
-  &:hover {
-    position: relative;
-    z-index: 1;
+  &:hover ${OpenSourceItemHeader} svg {
+    color: ${getThemeColor('paper')};
+    transform: translate(1px, -1px);
   }
-`
-
-export const OpenSourceItemContent = styled.div`
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background-color: ${getThemeColor('gray4')};
 `
 
 export const OpenSourceItemTitle = styled.h3`
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  padding-bottom: 3px;
-  font-weight: 500;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 1.3rem;
+  font-weight: 600;
 `
 
 export const OpenSourceItemDescription = styled.p`
   flex: 1;
   font-size: 1.4rem;
-  line-height: 1.6rem;
-  font-weight: 200;
-  color: ${getThemeColor('gray')};
+  line-height: 1.5;
+  color: ${getThemeColor('muted')};
 `

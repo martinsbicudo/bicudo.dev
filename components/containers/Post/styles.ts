@@ -3,20 +3,30 @@ import NextImage from 'next/image'
 import NextLink from 'next/link'
 import styled from 'styled-components'
 
+import { reveal } from '~/styles/motion'
 import { getThemeColor } from '~/utils'
+
+const READING_WIDTH = '720px'
 
 export const Post = styled(Container)`
   position: relative;
-  padding-top: 25px;
-  padding-bottom: 10px;
+  padding-top: 48px;
+  padding-bottom: 24px;
 `
 
 export const PostHeader = styled.header`
   width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  ${reveal(0)}
+
+  ${({ theme }) => theme.breakpoints.up('lg')} {
+    text-align: center;
+  }
 `
 
 export const PostLogoBox = styled.figure`
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
     display: flex;
@@ -25,111 +35,146 @@ export const PostLogoBox = styled.figure`
 `
 
 export const PostDate = styled.p`
-  width: 100%;
   display: flex;
   align-items: center;
+  gap: 8px;
+  font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 1.2rem;
-  color: ${getThemeColor('gray')};
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${getThemeColor('muted')};
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
     justify-content: center;
   }
+`
 
-  & > svg:first-of-type {
-    font-size: 0.6rem;
-    margin: 0 5px;
-  }
-
-  & > svg:last-of-type {
-    margin-left: 5px;
-  }
+export const PostDateSeparator = styled.span`
+  color: ${getThemeColor('lineStrong')};
 `
 
 export const PostTitle = styled.h1`
-  font-size: 5rem;
-  line-height: 5rem;
-  margin: 20px 0 15px;
-  background: ${getThemeColor('gradient')};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 18px 0 16px;
+  font-size: 3.4rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: ${getThemeColor('paper')};
+  text-wrap: balance;
 
-  ${({ theme }) => theme.breakpoints.up('lg')} {
-    text-align: center;
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    font-size: 4.8rem;
   }
 `
 
 export const PostDescription = styled.p`
-  font-size: 2rem;
-  font-weight: 200;
-
-  ${({ theme }) => theme.breakpoints.up('lg')} {
-    text-align: center;
-  }
-`
-
-export const PostContent = styled.article`
-  font-family: 'Roboto Slab', serif;
-  font-weight: 100;
   font-size: 1.8rem;
-  line-height: 2.8rem;
-  width: 100%;
+  line-height: 1.5;
+  color: ${getThemeColor('muted')};
+  text-wrap: balance;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    font-size: 2rem;
+  }
 `
 
 export const PostImageBox = styled.figure`
   width: 100%;
-  height: 300px;
+  max-width: 960px;
+  aspect-ratio: 1200 / 634;
   position: relative;
-  margin: 40px 0;
-  border-radius: 5px;
+  margin: 48px auto;
+  border-radius: 14px;
+  border: 1px solid ${getThemeColor('line')};
   overflow: hidden;
-
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    height: 350px;
-  }
-
-  ${({ theme }) => theme.breakpoints.up('lg')} {
-    height: 400px;
-  }
+  ${reveal(120)}
 `
 
 export const PostImage = styled(NextImage)`
-  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `
 
-export const PostLangBox = styled.div`
-  position: fixed;
-  z-index: 1;
-  top: 25px;
-  right: 15px;
+export const PostContent = styled.article`
+  width: 100%;
+  max-width: ${READING_WIDTH};
+  margin: 0 auto;
+  font-size: 1.8rem;
+  line-height: 1.75;
+  color: ${getThemeColor('text')};
+  ${reveal(200)}
 
-  ${({ theme }) => theme.breakpoints.up('lg')} {
-    right: 50px;
+  strong {
+    font-weight: 600;
+    color: ${getThemeColor('paper')};
+  }
+
+  ul,
+  ol {
+    margin: 20px 0 0 22px;
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    li::marker {
+      color: ${getThemeColor('muted')};
+    }
+  }
+
+  hr {
+    height: 1px;
+    margin: 48px 0;
+    background-color: ${getThemeColor('line')};
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 10px;
   }
 `
 
 export const PostBackLink = styled(NextLink)`
   position: fixed;
   z-index: 1;
-  bottom: 25px;
-  right: 15px;
+  bottom: 24px;
+  right: 16px;
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px 0 12px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
   text-decoration: none;
-  padding: 12px 15px 12px 10px;
-  border-radius: 25px;
-  color: ${getThemeColor('main')};
-  background-color: ${getThemeColor('white')};
-  box-shadow: 0 0 3rem 0 ${getThemeColor('main')};
+  color: ${getThemeColor('paper')};
+  border: 1px solid ${getThemeColor('lineStrong')};
+  background-color: rgba(20, 20, 20, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
 
   svg {
-    font-size: 1.8rem;
-    margin-right: 5px;
+    font-size: 1.6rem;
+    transition: transform 0.2s;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: ${getThemeColor('paper')};
+
+    svg {
+      transform: translateX(-2px);
+    }
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
-    right: 50px;
+    right: 48px;
   }
 `

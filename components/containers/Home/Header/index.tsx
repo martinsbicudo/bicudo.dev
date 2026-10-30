@@ -11,11 +11,11 @@ const Header = () => {
         <Logo />
       </S.HeaderLogoBox>
       <S.HeaderTitle>{HOME.TITLE}</S.HeaderTitle>
+      <S.HeaderRole>{HOME.ROLE}</S.HeaderRole>
       <S.HeaderSkills>
-        <S.HeaderSkill>react.js</S.HeaderSkill>
-        <S.HeaderSkill>next.js</S.HeaderSkill>
-        <S.HeaderSkill>typescript</S.HeaderSkill>
-        <S.HeaderSkill>node.js</S.HeaderSkill>
+        {HOME.SKILLS.map((skill) => (
+          <S.HeaderSkill key={skill}>{skill}</S.HeaderSkill>
+        ))}
       </S.HeaderSkills>
       {HOME.ABOUT.map((TEXT, i) => (
         <S.HeaderText key={i}>{TEXT}</S.HeaderText>

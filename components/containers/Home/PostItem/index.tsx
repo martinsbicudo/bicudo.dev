@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { useCallback } from 'react'
-import { BsPin } from 'react-icons/bs'
+import { TbArrowRight, TbPinnedFilled } from 'react-icons/tb'
 
 import { PostItemWrapperProps, PostType } from './interface'
 import * as S from './styles'
@@ -8,11 +8,12 @@ import * as S from './styles'
 const PostItem = ({
   slug,
   title,
+  description,
   coverImage,
-  fixed,
+  fixed = false,
   wip,
   ...post
-}: Omit<PostType, 'description' | 'source'>) => {
+}: Omit<PostType, 'source'>) => {
   const getDate = () => {
     if (wip) return 'WIP'
     return format(new Date(`${post.date} 00:00:00`), 'dd LLL yyyy')
@@ -21,7 +22,8 @@ const PostItem = ({
   const getFixedPin = () =>
     fixed && (
       <S.PostItemFixed>
-        <BsPin />
+        <TbPinnedFilled aria-hidden />
+        Pinned
       </S.PostItemFixed>
     )
 
@@ -32,8 +34,9 @@ const PostItem = ({
           src={coverImage}
           alt={title}
           priority={true}
-          width={800}
-          height={150}
+          width={1200}
+          height={634}
+          sizes="(min-width: 768px) 450px, 100vw"
         />
       </S.PostItemImageBox>
     )
@@ -42,25 +45,38 @@ const PostItem = ({
     ({ children }: PostItemWrapperProps) => {
       if (wip)
         return (
-          <S.PostItemWrapper href="/" as="div">
+          <S.PostItemWrapper href="/" as="div" $fixed={fixed}>
             {children}
           </S.PostItemWrapper>
         )
 
-      return <S.PostItemWrapper href={`/${slug}`}>{children}</S.PostItemWrapper>
+      return (
+        <S.PostItemWrapper href={`/${slug}`} $fixed={fixed}>
+          {children}
+        </S.PostItemWrapper>
+      )
     },
-    [wip, slug],
+    [wip, slug, fixed],
   )
 
   return (
     <Wrapper>
       <S.PostItem $wip={wip} $fixed={fixed}>
         <S.PostItemTop>
-          {getFixedPin()}
           <S.PostItemDate>{getDate()}</S.PostItemDate>
+          {getFixedPin()}
         </S.PostItemTop>
         {getCoverImage()}
         <S.PostItemTitle>{title}</S.PostItemTitle>
+        {fixed && (
+          <>
+            <S.PostItemDescription>{description}</S.PostItemDescription>
+            <S.PostItemCta>
+              Read post
+              <TbArrowRight aria-hidden />
+            </S.PostItemCta>
+          </>
+        )}
       </S.PostItem>
     </Wrapper>
   )

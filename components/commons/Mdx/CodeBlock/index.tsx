@@ -1,24 +1,45 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { gradientDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import { CodeBlockProps } from './interface'
+import * as S from './styles'
+
+const CODE_STYLE = {
+  margin: 0,
+  padding: '18px 20px',
+  background: 'transparent',
+  fontSize: '1.4rem',
+  lineHeight: 1.7,
+}
+
+const LINE_NUMBER_STYLE = {
+  minWidth: '2.5em',
+  color: 'rgba(244, 244, 245, 0.22)',
+}
 
 const CodeBlock = ({ className, children }: CodeBlockProps) => {
-  if (!className) {
-    return <code>{children}</code>
+  const isBlock = Boolean(className) || children.includes('\n')
+
+  if (!isBlock) {
+    return <S.InlineCode>{children}</S.InlineCode>
   }
 
-  const language = className.replace(/language-/, '')
+  const language = className ? className.replace(/language-/, '') : 'text'
 
   return (
-    <SyntaxHighlighter
-      language={language}
-      style={gradientDark}
-      showLineNumbers
-      PreTag="span"
-    >
-      {children.trim()}
-    </SyntaxHighlighter>
+    <S.CodeBlock>
+      {className && <S.CodeBlockLanguage>{language}</S.CodeBlockLanguage>}
+      <SyntaxHighlighter
+        language={language}
+        style={atomOneDark}
+        customStyle={CODE_STYLE}
+        lineNumberStyle={LINE_NUMBER_STYLE}
+        showLineNumbers={Boolean(className)}
+        PreTag="span"
+      >
+        {children.trim()}
+      </SyntaxHighlighter>
+    </S.CodeBlock>
   )
 }
 

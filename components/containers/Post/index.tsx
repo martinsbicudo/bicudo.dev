@@ -4,7 +4,7 @@ import ErrorPage from 'next/error'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
-import { TbArrowLeft, TbBook, TbCircleFilled } from 'react-icons/tb'
+import { TbArrowLeft } from 'react-icons/tb'
 import { readingTime } from 'reading-time-estimator'
 
 import { PERSON, POST } from '~/constants'
@@ -44,10 +44,9 @@ const Post = ({ post }: PostProps) => {
             </Link>
           </S.PostLogoBox>
           <S.PostDate>
-            {date}
-            <TbCircleFilled />
+            <time dateTime={post.date}>{date}</time>
+            <S.PostDateSeparator aria-hidden>·</S.PostDateSeparator>
             {getReadTime()}
-            <TbBook />
           </S.PostDate>
           <S.PostTitle>{post.title}</S.PostTitle>
           <S.PostDescription>{post.description}</S.PostDescription>
@@ -57,15 +56,16 @@ const Post = ({ post }: PostProps) => {
             src={post.coverImage}
             alt={post.title}
             priority={true}
-            width={1180}
-            height={400}
+            width={1200}
+            height={634}
+            sizes="(min-width: 1024px) 960px, 100vw"
           />
         </S.PostImageBox>
         <S.PostContent>
           <MDXRemote {...post.source} components={Mdx} />
         </S.PostContent>
         <S.PostBackLink href="/">
-          <TbArrowLeft />
+          <TbArrowLeft aria-hidden />
           {POST.FOOTER.BACK_BUTTON_TEXT}
         </S.PostBackLink>
       </S.Post>

@@ -1,6 +1,8 @@
 import { Container } from '@Commons'
 import styled from 'styled-components'
 
+import { reveal } from '~/styles/motion'
+
 export const Home = styled.main`
   min-height: 100vh;
 `
@@ -23,12 +25,12 @@ export const HomeTop = styled.div`
   width: 100%;
   flex-direction: column;
   min-width: 275px;
-  padding-top: 25px;
+  padding-top: 48px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
-    max-width: 350px;
+    max-width: 360px;
     padding-right: 35px;
-    min-height: calc(100vh - 25px);
+    min-height: calc(100vh - 48px);
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
@@ -46,7 +48,8 @@ export const HomeTopBottom = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-content: space-between;
-  padding-top: 30px;
+  padding-top: 24px;
+  padding-bottom: 32px;
 
   ${({ theme }) => theme.breakpoints.up('sm')} {
     flex-direction: row;
@@ -56,6 +59,7 @@ export const HomeTopBottom = styled.div`
 
 export const HomeSocialsBox = styled.div`
   flex: 1;
+  ${reveal(240)}
   width: 100%;
   min-width: 175px;
 
@@ -66,6 +70,11 @@ export const HomeSocialsBox = styled.div`
 
 export const HomeBottom = styled.div`
   flex: 1;
-  padding-bottom: 25px;
-  padding-top: 25px;
+  width: 100%;
+  padding-bottom: 48px;
+  padding-top: 24px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    padding-top: 48px;
+  }
 `

@@ -7,7 +7,7 @@ const SUCCESS_COLOR = '#22c55e'
 export const Subtitle = styled.p`
   font-size: 1.4rem;
   margin-bottom: 24px;
-  color: ${getThemeColor('gray')};
+  color: ${getThemeColor('muted')};
 `
 
 export const Form = styled.form`
@@ -34,16 +34,16 @@ const fieldStyles = `
 export const Field = styled.input`
   ${fieldStyles}
   border: 1px solid transparent;
-  color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('gray4')};
+  color: ${getThemeColor('paper')};
+  background-color: ${getThemeColor('bg')};
 
   &::placeholder {
-    color: ${getThemeColor('gray')};
+    color: ${getThemeColor('muted')};
   }
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('gray3')};
+    border-color: ${getThemeColor('lineStrong')};
   }
 `
 
@@ -51,16 +51,16 @@ export const TextArea = styled.textarea`
   ${fieldStyles}
   min-height: 110px;
   border: 1px solid transparent;
-  color: ${getThemeColor('white')};
-  background-color: ${getThemeColor('gray4')};
+  color: ${getThemeColor('paper')};
+  background-color: ${getThemeColor('bg')};
 
   &::placeholder {
-    color: ${getThemeColor('gray')};
+    color: ${getThemeColor('muted')};
   }
 
   &:focus {
     outline: none;
-    border-color: ${getThemeColor('gray3')};
+    border-color: ${getThemeColor('lineStrong')};
   }
 `
 
@@ -93,13 +93,13 @@ export const SubmitButton = styled.button<{ $success?: boolean }>`
     background-color 0.2s,
     color 0.2s;
 
-  color: ${getThemeColor('main')};
-  background-color: ${getThemeColor('white')};
+  color: ${getThemeColor('ink')};
+  background-color: ${getThemeColor('paper')};
 
   ${({ $success }) =>
     $success &&
     css`
-      color: ${getThemeColor('white')};
+      color: ${getThemeColor('paper')};
       background-color: ${SUCCESS_COLOR};
     `}
 
@@ -120,11 +120,11 @@ export const SubmitButton = styled.button<{ $success?: boolean }>`
 
 export const SuccessMessage = styled.p`
   font-size: 1.4rem;
-  color: ${getThemeColor('gray')};
+  color: ${getThemeColor('muted')};
 `
 
 export const ErrorMessage = styled.p`
   font-size: 1.2rem;
   margin-top: 5px;
-  color: ${getThemeColor('gray')};
+  color: ${getThemeColor('muted')};
 `

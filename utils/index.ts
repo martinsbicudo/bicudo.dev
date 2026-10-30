@@ -1,4 +1,3 @@
-export { default as getAge } from './get-age'
 export { default as getDomainWithLocale } from './get-domain-with-locale'
 export { default as getThemeColor } from './get-theme-color'
 export { default as markdownToHtml } from './markdown-to-html'

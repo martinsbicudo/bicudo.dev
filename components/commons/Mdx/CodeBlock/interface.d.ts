@@ -1,4 +1,4 @@
 export interface CodeBlockProps {
-  className: string
+  className?: string
   children: string
 }

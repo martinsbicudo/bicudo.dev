@@ -1,5 +1,4 @@
 export interface SocialsProps {
-  withBicudo?: boolean
   withScheduleResponsive?: boolean
 }
 

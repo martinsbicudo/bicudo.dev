@@ -11,8 +11,9 @@ import SideProjectList from './SideProjectList'
 import * as S from './styles'
 
 const Home = ({ posts }: HomeProps) => {
-  const pageTitle = `${PERSON.NAME} | Software Engineer`
-  const description = "Bicudo's blog and portfolio"
+  const pageTitle = `${PERSON.NAME} | Senior Frontend Engineer`
+  const description =
+    'Victor Bicudo is a senior frontend engineer and co-founder of Klap. Notes on building products, AI and developer experience.'
 
   return (
     <>
@@ -30,7 +31,7 @@ const Home = ({ posts }: HomeProps) => {
             <Schedule />
             <S.HomeTopBottom>
               <S.HomeSocialsBox>
-                <Socials withBicudo withScheduleResponsive />
+                <Socials withScheduleResponsive />
               </S.HomeSocialsBox>
             </S.HomeTopBottom>
           </S.HomeTop>

@@ -40,8 +40,10 @@ export const Content = styled.div`
   width: 100%;
   max-width: 440px;
   padding: 36px 32px;
-  border-radius: 20px;
-  background-color: ${getThemeColor('main')};
+  border-radius: 16px;
+  background-color: ${getThemeColor('panel')};
+  border: 1px solid ${getThemeColor('line')};
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
   animation: ${slideDown} 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 `
 
@@ -56,7 +58,7 @@ export const CloseButton = styled.button`
   height: 32px;
   border-radius: 50%;
   background: none;
-  color: ${getThemeColor('gray')};
+  color: ${getThemeColor('muted')};
   cursor: pointer;
   transition:
     background-color 0.2s,
@@ -67,14 +69,15 @@ export const CloseButton = styled.button`
   }
 
   &:hover {
-    color: ${getThemeColor('white')};
-    background-color: ${getThemeColor('gray2')};
+    color: ${getThemeColor('paper')};
+    background-color: ${getThemeColor('panelHover')};
   }
 `
 
 export const Title = styled.h2`
   font-size: 2.2rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin-bottom: 4px;
-  color: ${getThemeColor('white')};
+  color: ${getThemeColor('paper')};
 `
