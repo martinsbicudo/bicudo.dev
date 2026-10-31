@@ -2,7 +2,6 @@ import { Container } from '@Commons'
 import styled from 'styled-components'
 
 import { reveal } from '~/styles/motion'
-import { getThemeColor } from '~/utils'
 
 export const Home = styled.main`
   min-height: 100vh;
@@ -71,7 +70,7 @@ export const HomeTopBottom = styled.div`
     flex-wrap: nowrap;
     justify-content: flex-end;
     gap: 16px;
-    padding-bottom: 40px;
+    padding-bottom: 24px;
   }
 `
 
@@ -89,7 +88,7 @@ export const HomeSocialsBox = styled.div`
 export const HomeBottom = styled.div`
   flex: 1;
   width: 100%;
-  padding-bottom: 48px;
+  padding-bottom: 24px;
   padding-top: 24px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
@@ -107,9 +106,7 @@ export const HomeSidebarCopyright = styled.div`
 `
 
 export const HomeFooterCopyright = styled.div`
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid ${getThemeColor('line')};
+  margin-top: 32px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: none;

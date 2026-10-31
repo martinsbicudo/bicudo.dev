@@ -1,12 +1,9 @@
 import { Container } from '@Commons'
 import styled from 'styled-components'
 
-import { getThemeColor } from '~/utils'
-
 export const Footer = styled.footer`
   width: 100%;
-  margin-top: 96px;
-  border-top: 1px solid ${getThemeColor('line')};
+  margin-top: 40px;
 `
 
 export const FooterContent = styled(Container)`
@@ -14,13 +11,13 @@ export const FooterContent = styled(Container)`
   display: flex;
   flex-direction: column-reverse;
   gap: 16px;
-  padding-top: 28px;
-  padding-bottom: 96px;
+  padding-top: 0;
+  padding-bottom: 80px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
   }
 `

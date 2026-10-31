@@ -11,7 +11,7 @@ const READING_WIDTH = '720px'
 export const Post = styled(Container)`
   position: relative;
   padding-top: 48px;
-  padding-bottom: 24px;
+  padding-bottom: 0;
 `
 
 export const PostHeader = styled.header`
