@@ -12,12 +12,15 @@ export const FooterContent = styled(Container)`
   flex-direction: column-reverse;
   gap: 16px;
   padding-top: 0;
-  padding-bottom: 80px;
+  padding-bottom: 24px;
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding-right: 72px;
+  }
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 24px;
   }
 `
