@@ -1,4 +1,5 @@
 export interface SocialsProps {
+  withSchedule?: boolean
   withScheduleResponsive?: boolean
 }
 

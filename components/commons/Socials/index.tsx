@@ -12,7 +12,10 @@ import { HOME } from '~/constants'
 import { SocialsProps } from './interface'
 import * as S from './styles'
 
-const Socials = ({ withScheduleResponsive = false }: SocialsProps) => {
+const Socials = ({
+  withSchedule = true,
+  withScheduleResponsive = false,
+}: SocialsProps) => {
   const [isContactOpen, setIsContactOpen] = useState(false)
 
   return (
@@ -49,15 +52,17 @@ const Socials = ({ withScheduleResponsive = false }: SocialsProps) => {
           </S.SocialsLink>
         </li>
       </S.SocialsLinks>
-      <S.SocialsSchedule
-        $withResponsive={withScheduleResponsive}
-        href="https://appt.link/bicudo"
-        target="_blank"
-        rel="noreferrer"
-      >
-        {HOME.SCHEDULE.BUTTON_TEXT}
-        <TbArrowRight aria-hidden />
-      </S.SocialsSchedule>
+      {withSchedule && (
+        <S.SocialsSchedule
+          $withResponsive={withScheduleResponsive}
+          href="https://appt.link/bicudo"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {HOME.SCHEDULE.BUTTON_TEXT}
+          <TbArrowRight aria-hidden />
+        </S.SocialsSchedule>
+      )}
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
