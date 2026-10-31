@@ -1,4 +1,4 @@
-import { Head, Socials } from '@Commons'
+import { Copyright, Head, Socials } from '@Commons'
 
 import { PERSON, SITE } from '~/constants'
 
@@ -33,11 +33,17 @@ const Home = ({ posts }: HomeProps) => {
               <S.HomeSocialsBox>
                 <Socials withScheduleResponsive />
               </S.HomeSocialsBox>
+              <S.HomeSidebarCopyright>
+                <Copyright />
+              </S.HomeSidebarCopyright>
             </S.HomeTopBottom>
           </S.HomeTop>
           <S.HomeBottom>
             <OpenSourceList />
             <PostList posts={posts} />
+            <S.HomeFooterCopyright>
+              <Copyright />
+            </S.HomeFooterCopyright>
           </S.HomeBottom>
         </S.HomeContainer>
       </S.Home>

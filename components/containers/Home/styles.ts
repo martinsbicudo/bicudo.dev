@@ -2,6 +2,7 @@ import { Container } from '@Commons'
 import styled from 'styled-components'
 
 import { reveal } from '~/styles/motion'
+import { getThemeColor } from '~/utils'
 
 export const Home = styled.main`
   min-height: 100vh;
@@ -28,21 +29,30 @@ export const HomeTop = styled.div`
   padding-top: 48px;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
+    position: sticky;
+    top: 0;
     max-width: 360px;
+    height: 100vh;
     padding-right: 35px;
-    min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      flex-shrink: 0;
+    }
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
-    position: sticky;
-    top: 0;
     padding-right: 50px;
-    padding-bottom: 0;
   }
 `
 
 export const HomeTopBottom = styled.div`
-  flex: 1;
+  flex: 1 0 auto;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +70,7 @@ export const HomeTopBottom = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    gap: 16px;
     padding-bottom: 40px;
   }
 `
@@ -83,5 +94,24 @@ export const HomeBottom = styled.div`
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     padding-top: 48px;
+  }
+`
+
+export const HomeSidebarCopyright = styled.div`
+  display: none;
+  ${reveal(280)}
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    display: block;
+  }
+`
+
+export const HomeFooterCopyright = styled.div`
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid ${getThemeColor('line')};
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    display: none;
   }
 `
