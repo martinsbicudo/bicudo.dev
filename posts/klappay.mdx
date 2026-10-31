@@ -52,10 +52,10 @@ const charge = await klap.charges.create({
 })
 
 await charge.waitForConfirmation()
-// payment confirmed. funds in merchant wallet. done.
+// confirmed on-chain. the split contract pays the merchant. done.
 ```
 
-The funds go directly to the merchant's wallet via 0xSplits — an audited, immutable smart contract protocol. Klap never holds the money. There's no withdrawal queue. There's no counterparty risk.
+Every charge gets its own 0xSplits contract, audited, immutable and with no owner, and the funds flow from it straight to the merchant's wallet. Klap never holds the money. There's no withdrawal queue. There's no counterparty risk.
 
 ---
 
@@ -71,11 +71,11 @@ If you've ever thought "I'd accept crypto if integrating it didn't feel like a s
 
 ## What the Core actually does
 
-A charge is a payment request. You create one with an amount, a token, a network, and optionally a set of split recipients. Klap generates a unique receiving address via 0xSplits and monitors the chain. When USDC arrives, you get a webhook. The status machine handles partial payments, expirations, and real-time updates via server-sent events.
+A charge is a payment request. You create one with an amount, a token, a network, and optionally a set of split recipients. Klap generates a unique receiving address via 0xSplits and monitors the chain. When USDC or USDT arrives, you get a webhook. The status machine handles partial payments, expirations, and real-time updates via server-sent events.
 
 The SDK gives you `waitForConfirmation()` — a clean async primitive that makes payment handling feel like any other async operation. No polling. No event listeners. Just await.
 
-The sandbox uses Base Sepolia. You can simulate a full payment flow — including the webhook delivery and the SSE status update — without spending a dollar. That's table stakes for a developer tool in 2026. It took me a while to understand why so few gateways offer it. I think the answer is that most gateways weren't built by developers who were frustrated with gateways.
+Test mode runs on testnets like Base Sepolia, and sandbox triggers push a test charge through any state with a single call. You can simulate a full payment flow — including the webhook delivery and the SSE status update — without spending a dollar. That's table stakes for a developer tool in 2026. It took me a while to understand why so few gateways offer it. I think the answer is that most gateways weren't built by developers who were frustrated with gateways.
 
 ---
 
@@ -87,9 +87,9 @@ The Core is the foundation. On top of it, we're building a suite of products:
 
 **Klap Give** — a permanent donation page. Creators and open source projects link it once, receive forever.
 
-**Klap Fund** — on-chain crowdfunding with an escrow. Funds are held in a smart contract and released automatically when the goal is hit.
+**Klap Fund** — on-chain crowdfunding with a goal and a deadline. Contributions sit in an on-chain escrow: if the goal is reached they're released to the project, if it's missed every contributor is refunded.
 
-**Klap One** — a universal payment button. Wallet saved, payment approved from a push notification. The Apple Pay of crypto.
+**Klap One** — a universal payment button. The payer confirms who they are with a one-time code, picks a linked wallet and approves the payment in their own wallet app. Klap never touches their keys.
 
 Each product is non-custodial. Each one is built on the same Core. The infrastructure is the product.
 

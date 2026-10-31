@@ -31,20 +31,23 @@ The trade-off: refunds are now the merchant's problem. There's no processor to c
 
 My first approach was Moralis Streams — subscribe to USDC Transfer events, webhook fires when something lands. It worked in development. In production I didn't have enough control over the detection pipeline for my liking, so I rewrote it.
 
-The current version uses `watchContractEvent` from viem, connected to dRPC WebSocket endpoints, one persistent connection per network — seven networks in production today (Base, Optimism, Polygon, Ethereum, Arbitrum, Avalanche, BNB). When a Transfer event comes in, I look up the receiving address against open charges and process it from there.
+The current version opens one WebSocket per network on dRPC and subscribes to `eth_subscribe` logs through viem's transport: USDC and USDT `Transfer` events, filtered on-chain to the addresses of open charges. That's eight networks in production today (Base, Optimism, Polygon, Ethereum, Arbitrum, Avalanche, BNB and Arc). TRON has no `eth_subscribe` at all, so it gets its own path against self-hosted nodes. It's wired up, but not accepting payments yet.
 
 ```ts
-publicClient.watchContractEvent({
-  address:   USDC_ADDRESS,
-  abi:       erc20Abi,
-  eventName: 'Transfer',
-  onLogs:    (logs) => {
-    for (const log of logs) {
-      handleDetectedTransfer(log.args.to, log)
+const { unsubscribe } = await client.transport.subscribe({
+  params: ['logs', {
+    address: [USDC_ADDRESS, USDT_ADDRESS],
+    topics:  transferTopicsFor(openChargeAddresses),
+  }],
+  onData: (notification) => {
+    for (const log of decodeTransferNotification(notification)) {
+      handleDetectedTransfer(log)
     }
   },
 })
 ```
+
+A socket alone isn't enough, though. Sockets drop, and a log that arrives while you're reconnecting is just gone. So an HTTP log tail runs behind every socket, and a reconciliation job checks open charges against the chain. All three paths end in the same verify-and-credit function, which only credits what the transaction receipt actually says.
 
 The lesson: own your detection pipeline. Any third-party that sits between your product and on-chain events is a dependency you can't control at the worst possible moment.
 
@@ -56,7 +59,7 @@ I spent more time on idempotency than on the happy path. That felt wrong at firs
 
 Webhooks get delivered more than once. Always. Networks fail, your endpoint returns a timeout after processing, the provider retries. If your handler isn't idempotent, you will eventually ship two accounts, provision two subscriptions, or write two ledger entries for one payment.
 
-Right now that idempotency lives at charge creation — a request-hash check that stops a retried "create charge" call from spawning a duplicate. What I still owe the webhook delivery side is the same guarantee, moved into a single transaction: store the event, run the business logic, and only then dispatch — instead of doing it as two separate steps the way it works today. I know exactly where the gap is because I wrote it down the first time I found it, and it's next on the list, not a someday.
+Right now that idempotency lives at charge creation — an idempotency key plus a hash of the request, so a retried "create charge" call returns the original charge instead of spawning a duplicate, and reusing the key with a different body is rejected. What I still owe the webhook delivery side is the same guarantee, moved into a single transaction: store the event, run the business logic, and only then dispatch — instead of doing it as two separate steps the way it works today. I know exactly where the gap is because I wrote it down the first time I found it, and it's next on the list, not a someday.
 
 ---
 
@@ -76,7 +79,7 @@ EXPIRED        → time ran out, no payment
 
 Each transition has rules. A charge can go from PENDING to PARTIALLY_PAID, but a CONFIRMED or UNDERPAID charge can never be overwritten by a late event arriving out of order — the update only applies while the charge is still in an open state. The state machine has to be monotonic — it only moves forward.
 
-The next status I'm adding is one for compliance holds — a charge that's technically paid but flagged for review before it counts as settled. Collapsing "money arrived" and "money is actually yours to use" into one status is how edge cases turn into support tickets at 2am.
+I also needed a way to say "paid, but under review". It ended up as a hold flag on the charge, not a sixth status: while it's set, no updates or webhooks go out for that charge until someone reviews it. Collapsing "money arrived" and "money is actually yours to use" into one status is how edge cases turn into support tickets at 2am.
 
 ---
 
@@ -87,13 +90,14 @@ Every gateway I tried before building Klap had the same problem: their sandbox e
 I built the sandbox to reuse the exact same code path as production. Trigger any event on a test charge with one call, and it runs through the same payment logic and the same webhook dispatch a real transfer would:
 
 ```ts
-await fetch(`/v1/charges/${charge.id}/trigger`, {
-  method: 'POST',
-  body:   JSON.stringify({ event: 'confirmed' }),
+await fetch(`${KLAP_API}/v1/sandbox/charges/${charge.id}/trigger`, {
+  method:  'POST',
+  headers: { Authorization: `Bearer ${KLAP_TEST_KEY}`, 'Content-Type': 'application/json' },
+  body:    JSON.stringify({ event: 'charge.confirmed' }),
 })
 ```
 
-The same webhook your production handler receives from a real payment. The same SSE event. The same charge state. The only difference is the API key prefix.
+The same webhook your production handler receives from a real payment. The same SSE event. The same charge state. The only difference is the API key prefix (`klap_test_` instead of `klap_live_`).
 
 Building this way forced me to keep the production and sandbox code paths identical. There's no "sandbox shortcut" that skips signature verification or returns a simplified payload. If a test passes in sandbox, it behaves the same in production.
 
